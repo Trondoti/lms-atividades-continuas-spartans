@@ -1,0 +1,30 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+    return render(request,"index.html")
+
+def login(request):
+    if request.method == "GET":
+        return render(request, "login.html")
+    else:
+        user=request.POST.get("email")
+        if request.POST.get("senha") != "teste123":
+            print ("Usuário {0} digitou senha errada" .format (user))
+            return render(request,"login.html")
+        else:
+            print ("Usuário {0} entrou com sucesso" .format (user))
+            return render(request, "index.html")
+
+def contato (request):
+    if request.method=="GET":
+        return render (request,"contato.html")
+    else:
+        print (request.POST.get("nome"))
+        print (request.POST.get("email"))
+        print (request.POST.get("assunto"))
+        print (request.POST.get("Mensagem"))
+        print (request.POST.get("PalavrasChave"))
+    return render(request,"contato.html")
+    
+   

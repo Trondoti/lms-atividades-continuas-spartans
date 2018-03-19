@@ -24,7 +24,7 @@ def contato (request):
         print (request.POST.get("email"))
         print (request.POST.get("assunto"))
         print (request.POST.get("Mensagem"))
-        print (request.POST.get("PalavrasChave"))
+        print (request.POST.get("telefone"))
     return render(request,"contato.html")
     
    

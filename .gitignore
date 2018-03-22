@@ -1,1 +1,5 @@
-hello.txt
+# Era só um teste hello.txt
+venv
+.vscode
+__pycache__
+*.cpy

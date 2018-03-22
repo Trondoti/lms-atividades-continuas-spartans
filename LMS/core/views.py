@@ -11,6 +11,7 @@ def login(request):
         user=request.POST.get("email")
         if request.POST.get("senha") != "teste123":
             print ("Usuário {0} digitou senha errada" .format (user))
+            # A função render não redireciona -- veja essa função https://docs.djangoproject.com/en/2.0/topics/http/shortcuts/#redirect
             return render(request,"login.html")
         else:
             print ("Usuário {0} entrou com sucesso" .format (user))

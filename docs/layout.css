@@ -262,13 +262,6 @@ legend
 }
 
 /*CSS DO FORMULARIO*/
-fieldset#fer{
-	text-align:center;
-	position: relative;
-	left:37%;
-	margin-top:25px;
-}
-
 #novocurso.containers{
   
 display: inline-flex;
@@ -276,20 +269,9 @@ justify-content: center;
 align-items: center;
 width: 100%;
 height: 29.2em;
-margin-left: -2%	;
-<<<<<<< HEAD
-
-=======
-top: 
+margin-left: -2%;
 }
 
 #novocurso.containers form {
     text-align: center;
-<<<<<<< HEAD
->>>>>>> 1b7d769aae8288183b057a39f09ce1a712ad4460
-=======
-}
-#novocurso body{
-    background-image: url("img/stars-bg2.jpg"); 
->>>>>>> c5d89d1917a311c7d59c9bd2271e8b6309b259e4
 }

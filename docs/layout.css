@@ -270,7 +270,7 @@ fieldset#fer{
 }
 
 #novocurso.containers{
-    
+  
 display: inline-flex;
 justify-content: center;
 align-items: center;
@@ -285,5 +285,11 @@ top:
 
 #novocurso.containers form {
     text-align: center;
+<<<<<<< HEAD
 >>>>>>> 1b7d769aae8288183b057a39f09ce1a712ad4460
+=======
+}
+#novocurso body{
+    background-image: url("img/stars-bg2.jpg"); 
+>>>>>>> c5d89d1917a311c7d59c9bd2271e8b6309b259e4
 }

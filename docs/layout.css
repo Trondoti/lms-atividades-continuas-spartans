@@ -256,3 +256,9 @@ legend
 .label strong{
  width: 70px;   
 }
+
+/*CSS DO FORMULARIO*/
+form#form1 label{
+	text-align: center;
+
+}

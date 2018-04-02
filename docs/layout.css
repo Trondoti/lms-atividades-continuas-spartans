@@ -270,6 +270,7 @@ fieldset#fer{
 }
 
 #novocurso.containers{
+    
 display: inline-flex;
 justify-content: center;
 align-items: center;
@@ -278,6 +279,6 @@ height: 29.2em;
 top: 
 }
 
-#novocurso.containers fieldset {
+#novocurso.containers form {
     text-align: center;
 }

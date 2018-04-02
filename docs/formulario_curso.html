@@ -3,7 +3,7 @@
 <head>
 	<title> ANALISE E DESENVOLVIMENTO </title>
 	<meta charset="utf-8">	
-	<link rel='stylesheet' href=""/>
+	<link rel='stylesheet' href="layout.css"/>
 	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
@@ -37,8 +37,10 @@
 			</header>
 			
 
-<form id='form1' method="POST">
-
+<form method="POST">
+	<fieldset id='fer'>
+	<label for="solicitante">Solicitante</label>:<br>
+	<input type="text" name="solicitante" id="solicitante" required><br>
 	<label for="nome_curso">Nome do Curso</label>:<br>
 	<input type="text" name="nome_curso" id="nome_curso" placeholder="Banco de Dados" required><br>
 	<label for="carga_horaria">Carga Horária</label>:<br>
@@ -48,15 +50,21 @@
 	<select name="motivo_interesse">
 	<option value="Recomendações">Recomendações</option>
 	<option value="Metodologia">Metodologia</option>
+	<option value="Infraestrutura">Infraestrutura</option>
+	<option value="Valor">Valor</option>
 	<option value="Outros">Outros</option>
 	</select>
 	<br/>
 
 	
 	<label for="mensagem">Mensagem</label><br/>
-	<textarea name="Mensagem" id="mensagem">Digite a Mensagem</textarea>
+	<textarea name="Mensagem" id="mensagem" placeholder='Digite a mensagem'></textarea>
 	<br/>
 	
+	<label for="previsao_inicio">Previsão de Início</label><br/>
+	<input type='date' name="previsao_inicio" id="previsao_inicio">
+	<br/><br/>
+	<!-- 
 	Palavras Chaves:<br/>
 	<label for="problemas">Problemas</label>
 	<input name="chaves" type="checkbox" id="problemas" value="problemas"><br/>
@@ -65,11 +73,11 @@
 	<label for="impacta">Impacta</label>
 	<input name="chaves" type="checkbox" id="impacta" value="impacta"><br/>
 	<label for="emailP">Email</label>
-	<input name="chaves" type="checkbox" id="emailP" value="email"><br/>
+	<input name="chaves" type="checkbox" id="emailP" value="email"><br/
 	<br/>
-	
+	-->
 	<input type="submit">
-	
+	</fieldset>
 
 </form>
 			

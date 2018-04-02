@@ -193,6 +193,7 @@ fieldset
   width:300px;
   border-radius: 10px;
   border: 2px solid black;
+  
 }
 legend
 {
@@ -258,7 +259,9 @@ legend
 }
 
 /*CSS DO FORMULARIO*/
-form#form1 label{
-	text-align: center;
-
+fieldset#fer{
+	text-align:center;
+	position: relative;
+	left:37%;
+	margin-top:25px;
 }

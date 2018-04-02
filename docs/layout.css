@@ -19,6 +19,9 @@ footer{
     color: white;
     text-align: center;
 }
+footer h1{
+    margin: 0em;
+}
 header img {
     width: 11.3em;
 }
@@ -264,4 +267,13 @@ fieldset#fer{
 	position: relative;
 	left:37%;
 	margin-top:25px;
+}
+
+#novocurso.containers{
+display: inline-flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 29.2em;
+top: 
 }

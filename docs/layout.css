@@ -131,13 +131,17 @@ main {
     text-align: center;
     text-decoration: underline;
     text-decoration-color: #116FFF;
+	
 }
 .textoCaixas {
     color: gray;
     margin-left: 0.4em;
     margin-right: 0.4em;
     text-align: justify;
+	
 }
+
+
 .assinaturaCaixas {
     font-style: italic;
     font-size: 0.9em;

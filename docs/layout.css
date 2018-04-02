@@ -1,0 +1,258 @@
+/*CSS do Header*/
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro';
+    background-color: white;
+    color: white;
+}
+header {
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: black;
+    min-height: 4em;
+    padding-top: 0.6em;
+}
+footer{
+    background-color: black;
+    width: 100%;
+    height: 7em;
+    color: white;
+    text-align: center;
+}
+header img {
+    width: 11.3em;
+}
+#containerMenu{
+    float: right;
+}
+#containerMenu nav {
+    display: inline-block;
+    margin-top: 1em;
+    width: 30em;
+}
+#containerMenu nav a {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: white;
+    text-decoration: none;
+}
+#buttonLogin{
+    color: white;
+    background-color: #116FFF;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    padding-right: 1em;
+    padding-left: 1em;
+    border: 1px solid #116FFF;
+    border-radius: 20px;
+}
+/*CSS do Main*/
+main {
+    background-image: url("img/background.png");
+    background-repeat: repeat-y;
+    background-size: 100% 100%;
+}
+.containers {
+    padding-right: 3%;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.titulosContainer {
+    text-align: center;
+    color: black;
+}
+/*CSS das Notícias*/
+.card {
+    background-color: white;
+    border: 1px solid #E1E1E1;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    margin-left: 1%;
+    margin-right: 1%;
+    box-shadow: 0px 0px 0px grey;
+    -webkit-transition:  box-shadow .3s ease-out;
+    box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.15);
+    margin-bottom: 2em;
+}
+.card ul{
+    text-align: left;
+    margin-right: 0.5em;
+}
+.card a{
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 0.2em;
+
+}
+.card a:visited{
+   color:grey;
+}
+.card:hover {
+    box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+    -webkit-transition:  box-shadow .3s ease-in;
+}
+.imgNoticia {
+    width: 100%;
+    max-height: 200px;
+    min-height: 200px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.titulocard {
+    color: black;
+    font-size: 1.3em;
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+    margin-left: 0.4em;
+    text-align: center;
+
+}
+.textocard {
+    color: gray;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    text-align: justify;
+}
+#imgTopo {
+    width: 100%;
+}
+/*CSS das Depoimentos*/
+.caixas{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.tituloCaixas {
+    color: black;
+    font-size: 1.3em;
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #116FFF;
+}
+.textoCaixas {
+    color: gray;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    text-align: justify;
+}
+.assinaturaCaixas {
+    font-style: italic;
+    font-size: 0.9em;
+    float: right;
+    color: gray;
+}
+
+.tituloPremio{
+        color: black;
+        font-size: 1.3em;
+        margin-top: 0.5em;
+        margin-bottom: 0em;
+        text-align: center;
+        text-decoration: underline;
+        text-decoration-color: #116FFF;
+}
+/* DISCPLINAS DO CURSO */
+
+/* CURSOS */
+
+#cursos.containers a{
+    text-align: justify;
+    text-transform: uppercase
+    
+
+}
+
+#cursos.cards{
+    box-shadow:rgb(218, 124, 1);
+    -webkit-transition:  box-shadow .3s ease-in;
+
+}
+
+
+/* CSS LOGIN */
+
+#area
+{
+  position:relative;
+  width:320px;
+  height:270px;
+}
+#arealogin #formulario
+{
+  position:absolute;
+  display:block;
+  bottom: 18em;   
+}
+
+fieldset
+{
+  background-color:rgb(70, 68, 66);
+  width:300px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+legend
+{
+  font-weight:bold;
+  font-family: "Segoe UI","Arial","Times New Roman";
+  padding-top: 50px;
+}
+#formulario label
+{
+  margin-right:5px;
+}
+#formulario input.campo_nome
+{
+  background-color:white;
+  width:225px;
+}
+#formulario input.campo_email
+{ 
+  background-color:white;
+  left:95px;
+  width:225px;
+}
+.label{
+
+    width: 70px;
+    display: inline-block;
+}
+.msg{
+    resize: none;
+    width: 100%;
+}
+.btn{
+    margin-top: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: rgb(0,0,0,0);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.btn:hover{
+    border: 1px solid white;
+    color: white;
+}
+#divSubmit{
+    width: 100%;
+    text-align: center;
+}
+
+#arealogin {
+
+    display: inline-flex;
+    width: 100%;
+    height: 465px;
+    justify-content: center;
+}
+.label strong{
+ width: 70px;   
+}

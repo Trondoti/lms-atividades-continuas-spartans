@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Faculdade Impacta</title>
+        <style>
+            /*CSS do Header*/
+            body {
+                margin: 0;
+                font-family: 'Source Sans Pro';
+                background-color: white;
+                /* color: white; */
+            }
+            header {
+                padding-left: 5%;
+                padding-right: 5%;
+                background-color: black;
+                min-height: 4em;
+                padding-top: 0.6em;
+            }
+            header img {
+                width: 11.3em;
+            }
+            #containerMenu{
+                float: right;
+            }
+            #containerMenu nav {
+                display: inline-block;
+                margin-top: 1em;
+                width: 30em;
+            }
+            #containerMenu nav a {
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                color: white;
+                text-decoration: none;
+            }
+            #buttonLogin{
+                color: white;
+                background-color: #116FFF;
+                padding-top: 0.6em;
+                padding-bottom: 0.6em;
+                padding-right: 1em;
+                padding-left: 1em;
+                border: 1px solid #116FFF;
+                border-radius: 20px;
+            }
+            /*CSS do Main*/
+            main {
+                background-image: url("img/background.png");
+                background-repeat: repeat-y;
+                background-size: 100% 100%;
+            }
+            .containers {
+                padding-right: 3%;
+                padding-left: 3%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .titulosContainer {
+                text-align: center;
+                color: black;
+            }
+            /*CSS das Notícias*/
+            .card {
+                background-color: white;
+                border: 1px solid #E1E1E1;
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+                margin-left: 1%;
+                margin-right: 1%;
+                box-shadow: 0px 0px 0px grey;
+                -webkit-transition:  box-shadow .3s ease-out;
+                box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.15);
+                margin-bottom: 2em;
+            }
+            .card:hover {
+                box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+                -webkit-transition:  box-shadow .3s ease-in;
+            }
+            .imgNoticia {
+                width: 100%;
+                max-height: 200px;
+                min-height: 200px;
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+            }
+            .tituloNoticia {
+                color: black;
+                font-size: 1.3em;
+                margin-top: 0.5em;
+                margin-bottom: 0em;
+                margin-left: 0.4em;
+            }
+            .textoNoticia {
+                color: gray;
+                margin-left: 0.4em;
+                margin-right: 0.4em;
+                text-align: justify;
+            }
+            #imgTopo {
+                width: 100%;
+            }
+            /*CSS das Depoimentos*/
+            .depoimento{
+                margin-left: 2%;
+                margin-right: 2%;
+            }
+            .tituloDepoimento {
+                color: black;
+                font-size: 1.3em;
+                margin-top: 0.5em;
+                margin-bottom: 0em;
+                text-align: center;
+                text-decoration: underline;
+                text-decoration-color: #116FFF;
+            }
+            .textoDepoimento {
+                color: gray;
+                margin-left: 0.4em;
+                margin-right: 0.4em;
+                text-align: center;
+            }
+            .assinaturaDepoimento {
+                font-style: italic;
+                font-size: 0.9em;
+                float: right;
+                color: gray;
+            }
+            /* CSS INFORMAÇÕES */
+            .informacoesCurso_1 {
+              font-size: 2em;
+              font-family: 'Raleway';
+              color: #116fff;
+              font-weight: 500;
+            }
+            .informacoesCurso_2 {
+
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="img/logo.png">
+            <div id="containerMenu">
+                <nav>
+                    <a href="/cursos.html">CURSOS</a>
+                    <a href="#noticias">NOTÍCIAS</a>
+                    <a href="#depoimentos">DEPOIMENTOS</a>
+                    <a href="#premios">PRÊMIOS</a>
+                </nav>
+                <button id="buttonLogin">LOGIN</button>
+            </div>
+        </header>
+
+        <main>
+            <img src="img/ADS.png" id="imgTopo">
+                <div class="nomeCurso">
+                    <h1>ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</h1>
+                        <div>
+                            <a href="#" class="inscrever">Inscreva-se</a>
+                        </div>
+                </div>
+
+                <section class="">
+                    <h2>SOBRE O CURSO</h2>
+                    <p>Entender as necessidades das empresas é fundamental para fazê-las crescer e gerar bons resultados.
+                      Desta maneira, um dos caminhos para alavancar os negócios e se destacar no mercado de trabalho é o
+                      da Tecnologia. Para isso, a Faculdade Impacta oferece a graduação em Análise e Desenvolvimento de Sistemas,
+                      que prepara você para atuar em todas as etapas de projetos de tecnologia da informação - concepção,
+                      gerência e manutenção, aplicação e mensuração de resultados.</p>
+                    <p>O curso é voltado para a criação de programas, softwares e sistemas para as empresas. As etapas do projeto
+                      de sistemas de software, como análise, projeto, teste, gestão, implantação e manutenção de sistemas de
+                      informação também estão entre os aprendizados da graduação.</p>
+                </section>
+
+                <section>
+                    <h2>Informações</h2>
+                        <div class="">
+                            <h4>Duração do Curso</h4>
+                            <p class="">04</p>
+                            <p class="">Semestres</p>
+                        </div>
+                        <div class="">
+                            <h4>Duração do Curso:</h4>
+                            <p class="informacoesCurso_1">2020h</p>
+                            <h4>Modalidade:</h4>
+                            <p class="informacoesCurso_1">Presencial</p>
+                            <h4>Unidade:</h4>
+                            <p class="informacoesCurso_1">Barra Funda</p>
+                        </div>
+                        <div class="">
+                            <h4>Período:</h4>
+                            <p class="">Matutino</p>
+                            <p>| 08h00 às 11h40 |</p>
+                            <p class="">Noturno</p>
+                            <p>| 19h00 às 22h40 |</p>
+                        </div>
+                        <div class="">
+                            <h4>Mensalidade:</h4>
+                            <p class="">Matutino</p>
+                            <p>R$ 582,00</p>
+                            <p class="">Noturno</p>
+                            <p>R$ 657,00</p>
+                        </div>
+                </section>
+
+                <section>
+                    <div class="">
+                        <h2>Matriz Curricular</h2>
+                        <div class="">
+                            <div class="">
+                                <label class="">
+                                    <span>1º Semestre</span>
+                                </label>
+
+                                <div class="">
+                                    <p>Comunicação e Expressão: 80 horas <br />
+                                      Fundamentos de Banco de Dados: 80 horas <br />
+                                      Introdução à Internet das Coisas - IoT: 80 horas <br />
+                                      Linguagem de Programação I: 80 horas <br />
+                                      Lógica de Programação: 80 horas <br/>
+                                      Matemática Aplicada: 80 horas</p>
+                                    <p>Subtotal: 480 horas</p>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <label class="">
+                                    <span>2º Semestre</span>
+                                </label>
+
+                                <div class="">
+                                    <p>Linguagem de Programação II: 80 horas <br />
+                                      Linguagem SQL: 80 horas <br />
+                                      Tecnologia Web: 80 horas <br />
+                                      Engenharia de Software: 80 horas <br />
+                                      Gestão de Projetos: 40 horas <br />
+                                      Ambiente de Desenvolvimento e Operação - DevOps: 80 horas <br />
+                                      Sociedade e Sustentabilidade - Optativa: 40 horas <br />
+                                      Linguagem Brasileira de Sinais - LIBRAS - Optativa: 40 horas</p>
+                                    <p>Subtotal: 520 horas </p>
+                                </div>
+
+                            </div>
+
+                            <div class="">
+                                <label>
+                                    <span>3º Semestre</span>
+                                </label>
+
+                                <div class="">
+                                    <p>Desenvolvimento de Aplicações Distribuídas: 80 horas <br />
+                                      Estrutura de Dados: 80 horas<br />Análise e Modelagem de Sistemas: 80 horas <br />
+                                      Modelagem de Processos de Negócio: 80 horas <br />
+                                      Interface Homem-Computador:
+                                      40 horas <br />
+                                      OPE1 - Oficina Projeto Empresa 1: 120 horas</p>
+                                    <p>Subtotal: 480 horas </p>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <label class="">
+                                    <span>4º Semestre</span>
+                                </label>
+                                <div class="">
+                                    <p>Arquitetura e Projeto de Sistemas: 80 horas <br />
+                                      Desenvolvimento para Dispositivos Móveis: 80 horas<br />
+                                      Desenvolvimento para Internet das Coisas: 80 horas <br />
+                                      Qualidade de Software: 80 horas <br />
+                                      OPE2 - Oficina
+                                      Projeto Empresa 2: 120 horas <br />
+                                      Legislação e Ética: 40 horas</p>
+                                    <p>Subtotal: 480 horas</p>
+                                    <p>Atividades Complementares: 100 horas </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </main>
+    </body>
+</html>

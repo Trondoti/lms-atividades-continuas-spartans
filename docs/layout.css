@@ -303,10 +303,17 @@ header img {
     margin: 0;
     font-size: 0.9em;
 }
+
 #matrizCurricular {
     width: 100%;
     border-collapse: collapse;
 }
+
+#matrizCurricular a {
+    color: white;
+    text-decoration: none;
+}
+
 #matrizCurricular td {
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -447,4 +454,99 @@ select option {
 
 #formularioCurso h1 {
     text-align: center;
+}
+/* CSS DA DISCIPLINA */
+#mainDisciplina {
+    background-image: url("img/neural.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%), url("img/neural.jpeg");
+    padding-bottom: 3em;
+}
+
+.disciplina{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 20%;
+}
+
+@keyframes glowing {
+  0% { text-shadow: 0 0 -10px white; }
+  40% { text-shadow: 0 0 20px white; }
+  60% { text-shadow: 0 0 20px white; }
+  100% { text-shadow: 0 0 -10px white; }
+}
+
+@keyframes glowing2 {
+  0% { text-shadow: 0 0 -10px #4B4B4B; }
+  40% { text-shadow: 0 0 20px #4B4B4B; }
+  60% { text-shadow: 0 0 20px #4B4B4B; }
+  100% { text-shadow: 0 0 -10px #4B4B4B; }
+}
+
+#textoDisciplina1 {
+    animation: glowing 1600ms infinite;
+}
+
+#textoDisciplina2 {
+    animation: glowing 2165ms infinite;
+}
+
+#textoDisciplina3 {
+    animation: glowing 3120ms infinite;
+}
+
+#textoDisciplina4 {
+    animation: glowing 3905ms infinite;
+}
+
+#tituloDisciplina1 {
+    animation: glowing2 3200ms infinite;
+}
+
+#tituloDisciplina2 {
+    animation: glowing2 1205ms infinite;
+}
+
+#tituloDisciplina3 {
+    animation: glowing2 2350ms infinite;
+}
+
+#tituloDisciplina4 {
+    animation: glowing2 1903ms infinite;
+}
+
+.tituloDisciplina {
+    color: #3E67FD;
+}
+
+.textoDisciplina {
+    text-align: justify;
+}
+ /* CSS DO PAINEL ADMIN */
+.btnPainelAdmin {
+    margin-left: 1em;
+    margin-right: 1em; 
+}
+
+#bodyPainelAdmin {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#containerPainelAdmin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#areaPainelAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
 }

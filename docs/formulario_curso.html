@@ -28,47 +28,67 @@
 			<div id="containerMenu">
 				<nav>
 					<a href="cursos.html">CURSOS</a>
-					<a href="index.html #noticias">NOTÍCIAS</a>
-					<a href="index.html #depoimentos">DEPOIMENTOS</a>
-					<a href="index.html #premios">PRÊMIOS</a>
+					<a href="index.html#noticias">NOTÍCIAS</a>
+					<a href="index.html#depoimentos">DEPOIMENTOS</a>
+					<a href="index.html#premios">PRÊMIOS</a>
 				</nav>
 				<a id="buttonLogin" href="login.html">LOGIN</a>
 			</div>
 		</header>
 
 		<main>
-			<div  class="containers" id ='novocurso'>
-				<form  method="POST">
-					<fieldset>
-						<label for="solicitante">Solicitante</label>:<br>
-						<input type="text" name="solicitante" id="solicitante" required><br>
-						<label for="nome_curso">Nome do Curso</label>:<br>
-						<input type="text" name="nome_curso" id="nome_curso" placeholder="Banco de Dados" required><br>
-						<label for="carga_horaria">Carga Horária</label>:<br>
-						<input type="number" name="carga_horaria" id="carga_horaria"  required><br>
+			<div class="containers" id='novocurso'>
+				<form id="formularioCurso" autocomplete="off" method="POST" action="painel_admin.html">
+					<h1>ADICIONAR NOVO CURSO</h1>
 
-						Motivo do Interesse:<br/>
-						<select name="motivo_interesse">
-							<option value="Recomendações">Recomendações</option>
-							<option value="Metodologia">Metodologia</option>
-							<option value="Infraestrutura">Infraestrutura</option>
-							<option value="Valor">Valor</option>
-							<option value="Outros">Outros</option>
-						</select>
-						<br/>
-
-
-						<label for="mensagem">Mensagem</label><br/>
-						<textarea name="Mensagem" id="mensagem" placeholder='Digite a mensagem'></textarea>
-						<br/>
-
-						<label for="previsao_inicio">Previsão de Início</label><br/>
-						<input type='date' name="previsao_inicio" id="previsao_inicio">
-						<br/><br/>
-
-						<input type="submit">
-					</fieldset>
-				</form>
+				    <fieldset>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">SOLICITANTE</strong>
+	                            <input class="inputCurso" type="text" name="solicitante">
+	                        </label>
+						</div>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">NOME DO CURSO</strong>
+	                            <input class="inputCurso" type="text" name="nome_curso" placeholder="Banco de Dados" required="required">
+	                        </label>
+						</div>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">CARGA HORÁRIA</strong>
+	                            <input class="inputCurso" type="number" name="carga_horaria" required="required">
+	                        </label>
+						</div>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">MOTIVO DO INTERESSE</strong>
+	                            <select class="inputCurso" name="motivo_interesse" required="required">
+									<option value="Recomendações">Recomendações</option>
+									<option value="Metodologia">Metodologia</option>
+									<option value="Infraestrutura">Infraestrutura</option>
+									<option value="Valor">Valor</option>
+									<option value="Outros">Outros</option>
+								</select>
+	                        </label>
+						</div>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">MENSAGEM</strong>
+	                            <textarea class="inputCurso textAreaCurso" name="mensagem"></textarea>
+	                        </label>
+						</div>
+						<div class="containerInputCurso">
+	                        <label>
+	                            <strong class="labelCurso">PREVISÃO DE INÍCIO</strong>
+	                            <input class="inputCurso" type="date" name="previsao_inicio">
+	                        </label>
+						</div>
+                        <div id="divSubmitCurso">
+                            <input type="submit" class="btn" value="SALVAR">
+                        </div>
+                    </fieldset>
+                </form>
 			</div>
 		</main>
 		<footer>

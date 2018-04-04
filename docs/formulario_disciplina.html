@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
 		<title>Painel Admin - Nova Disciplina</title>
-		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" content="width=device-width, initial-scale=1.0">
 		<link rel='stylesheet' href="layout.css"/>
 		<link rel="stylesheet" href ="normalize.css">
 		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
@@ -38,51 +38,45 @@
 		</header>
 
 		<main>
-			<div class="containers" id='novocurso'>
+			<div class="containers">
 				<form id="formularioCurso" autocomplete="off" method="POST" action="painel_admin.html">
 					<h1>ADICIONAR NOVA DISCIPLINA</h1>
 
 				    <fieldset>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">SOLICITANTE</strong>
-	                            <input class="inputCurso" type="text" name="solicitante">
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">NOME DA DISCIPLINA</strong>
+	                            <input class="inputForm" type="text" name="nome_disciplina" placeholder="DEVOPS" required="required">
 	                        </label>
 						</div>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">NOME DA DISCIPLINA</strong>
-	                            <input class="inputCurso" type="text" name="nome_disciplina" placeholder="DEVOPS" required="required">
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">CARGA HORÁRIA</strong>
+	                            <input class="inputForm" type="number" name="carga_horaria" required="required">
 	                        </label>
 						</div>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">CARGA HORÁRIA</strong>
-	                            <input class="inputCurso" type="number" name="carga_horaria" required="required">
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">OBJETIVO</strong>
+	                            <textarea class="inputForm textAreaCurso" name="objetivo"></textarea>
 	                        </label>
 						</div>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">MOTIVO DO INTERESSE</strong>
-	                            <select class="inputCurso" name="motivo_interesse" required="required">
-									<option value="Recomendações">Recomendações</option>
-									<option value="Metodologia">Metodologia</option>
-									<option value="Infraestrutura">Infraestrutura</option>
-									<option value="Valor">Valor</option>
-									<option value="Outros">Outros</option>
-								</select>
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">COMPETÊNCIAS</strong>
+	                            <textarea class="inputForm textAreaCurso" name="competencias"></textarea>
 	                        </label>
 						</div>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">MENSAGEM</strong>
-	                            <textarea class="inputCurso textAreaCurso" name="mensagem"></textarea>
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">BIBLIOGRAFIA</strong>
+	                            <textarea class="inputForm textAreaCurso" name="bibliografia"></textarea>
 	                        </label>
 						</div>
-						<div class="containerInputCurso">
-	                        <label>
-	                            <strong class="labelCurso">PREVISÃO DE INÍCIO</strong>
-	                            <input class="inputCurso" type="date" name="previsao_inicio">
+						<div class="containerInputForm">
+	                        <label class="labelForm">
+	                            <strong class="strongLabelForm">CRITÉRIOS DE AVALIAÇÃO</strong>
+	                            <textarea class="inputForm textAreaCurso" name="criterios_avaliacao"></textarea>
 	                        </label>
 						</div>
                         <div id="divSubmitCurso">

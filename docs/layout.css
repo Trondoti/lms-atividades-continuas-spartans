@@ -397,8 +397,8 @@ header img {
     cursor: pointer;
 }
 
-/*CSS DO FORMULARIO*/
-.inputCurso {
+/*CSS DO FORMULARIOS*/
+.inputForm {
     height: 48px;
     border-radius: 0;
     background-color: rgba(255, 255, 255, 0.37);
@@ -406,21 +406,27 @@ header img {
     font-size: 20px;
 }
 
-select option {
-    background-color: gray;
-    color: white;
+.labelForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.labelCurso{
-    width: 12em;
-    display: inline-block;
-}
-
-.containerInputCurso {
+.containerInputForm {
     margin-bottom: 1em;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+}
+
+.strongLabelForm {
+    width: 12em;
+    display: inline-block;
+}
+
+select option {
+    background-color: gray;
+    color: white;
 }
 
 .textAreaCurso {
@@ -527,7 +533,7 @@ select option {
  /* CSS DO PAINEL ADMIN */
 .btnPainelAdmin {
     margin-left: 1em;
-    margin-right: 1em; 
+    margin-right: 1em;
 }
 
 #bodyPainelAdmin {

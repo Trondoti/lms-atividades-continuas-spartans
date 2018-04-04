@@ -550,6 +550,11 @@ select option {
     width: 100%;
 }
 
+#containerPainelAdmin a {
+    text-decoration: none;
+    color: white;
+}
+
 #areaPainelAdmin {
     display: flex;
     flex-direction: column;

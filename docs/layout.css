@@ -562,3 +562,29 @@ select option {
     align-items: center;
     margin-top: 8%;
 }
+
+/*css formulario novo aluno*/
+
+h1#formh1{
+    text-align: center;
+    margin-left: 10px;
+}
+
+#novoaluno {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+#novoaluno.containers {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+form#novofiel{
+    margin-right: 80px; 
+}

@@ -1,24 +1,26 @@
-<html>
+<html lang="pt-br">
 	<head>
-		<title>Meu Formulário Personalizado</title>
+		<meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+		<title>Faculdade Impacta - Login</title>
 		<link rel="stylesheet" type="text/css" href="layout.css">
+		<link rel="stylesheet" href="normalize.css">
 	</head>
 	<body id="bodyLogin">
-    	<main id='mainlogin'>
+    	<main id="mainlogin">
         	<div id="arealogin">
-				<img src="img/logo.png" id="logoLogin" >
-                <form id="formulario" autocomplete="off">
+				<img src="img/logo.png" alt="logo da impacta" id="logoLogin" >
+                <form id="formulario" autocomplete="off" method="POST" action="painel_admin.html">
                     <fieldset>
 						<div class="containerInput">
 	                        <label>
 	                            <strong class="label">EMAIL</strong>
-	                            <input class="campo_nome inputLogin" type="email" name="email">
+	                            <input class="inputLogin" type="email" name="email">
 	                        </label>
 						</div>
 						<div class="containerInput">
 	                        <label>
 	                            <strong class="label">SENHA</strong>
-	                            <input class="campo_email inputLogin" type="password" name="senha">
+	                            <input class="inputLogin" type="password" name="senha">
 	                        </label>
 						</div>
 						<div class="containerInput">
@@ -33,6 +35,6 @@
                     </fieldset>
                 </form>
             </div>
-        </main>
-	  </body>
+    	</main>
+	</body>
 </html>

@@ -563,68 +563,28 @@ select option {
     margin-top: 8%;
 }
 
-/* CSS DO DETALHE DO CURSO */
-.titulos {
-    text-transform: uppercase;
-    color: #116fff;
-    letter-spacing: 2px;
-    font-weight: 800;
-    margin-bottom: 20px;
+/*css formulario novo aluno*/
+
+h1#formh1{
+    text-align: center;
+    margin-left: 10px;
 }
 
-.textosDetalhe {
-    margin-left: 0.4em;
-    margin-right: 0.4em;
-    text-align: justify;
+#novoaluno {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
 }
 
-.textosDetalhe2 {
-    color: gray;
-    margin-left: 0.4em;
-    margin-right: 0.4em;
-    text-align: justify;
-}
-
-.textosDetalheAzul {
-    font-size: 2em;
-    font-family: 'Raleway';
-    color: #116fff;
-    font-weight: 500;
-    margin-top: -20px;
-}
-
-.textosDetalheAzul2 {
-    color: #116fff
-}
-
-.container {
+#novoaluno.containers {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: center;
+
 }
 
-.containerFilho1 {
-    margin-right: 20px;
-}
-
-.containerFilho2 {
-    margin-right: 20px;
-}
-
-.containerFilho3 {
-    margin-right: 25px;
-}
-
-.tituloInformacoes {
-    margin-right: 155px;
-}
-
-#conteudoDetalhe {
-    width: 80%;
-    margin: auto;
-}
-
-#detalhe {
-    width: 50%;
-    display: block;
-    float: left;
+form#novofiel{
+    margin-left: 540px; 
 }

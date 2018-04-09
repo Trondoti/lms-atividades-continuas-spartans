@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+   <head>
+      <title>Disciplina</title>
+      <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
+      <script src="script_2.js" defer></script>
+   </head>
+   <body>
+      <main>
+          <h1>ANALISE DESENVOLVIMENTO DE SISTEMAS</h1>
+               <table border="1">
+                  <tr>
+                     <td><B>DISCIPLINA</B></td>
+                     <td><B>Tecnologias Web</B></td>
+                  </tr>
+                  <tr>
+                     <td><B>SEMESTRE</B></td>
+                     <td><B>1º 2018</B></td>
+                  </tr>
+                  <tr>
+                     <td><B>TURMA</B></td>
+                     <td><B>2B</B></td>
+                  </tr>
+               </table>
+               <br />
+
+						<form name="form" method="post" action="#" onsubmit="validateForm()">
+								<label for="aluno1">RA:1 Nome:Aluno1
+										<input type="radio" name="aluno1" value="Aprovado" class="aprovado"> Aprovado
+										<input type="radio" name="aluno1" value="Cancelado" class="cancelado"> Cancelado
+								</label><br />
+
+								<label for="aluno2">RA:2 Nome:Aluno2</label>
+										<input type="radio" name="aluno2" value="Aprovado" class="aprovado"> Aprovado
+										<input type="radio" name="aluno2" value="Cancelado" class="cancelado"> Cancelado
+								</label><br />
+
+								<label for="aluno3">RA:3 Nome:Aluno3
+										<input type="radio" name="aluno3" value="Aprovado" class="aprovado"> Aprovado
+										<input type="radio" name="aluno3" value="Cancelado" class="cancelado"> Cancelado
+								</label><br />
+
+								<!-- <label for="aluno4">RA:4 Nome:Aluno4</label>
+								<input type="radio" name="aluno4" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno4" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno5">RA:5 Nome:Aluno5</label>
+								<input type="radio" name="aluno5" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno5" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno6">RA:6 Nome:Aluno6</label>
+								<input type="radio" name="aluno6" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno6" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno7">RA:7 Nome:Aluno7</label>
+								<input type="radio" name="aluno7" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno7" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno8">RA:8 Nome:Aluno8</label>
+								<input type="radio" name="aluno8" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno8" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno9">RA:9 Nome:Aluno9</label>
+								<input type="radio" name="aluno9" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno9" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno10">RA:10 Nome:Aluno10</label>
+								<input type="radio" name="aluno10" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno10" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno11">RA:11 Nome:Aluno11</label>
+								<input type="radio" name="aluno11" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno11" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno12">RA:12 Nome:Aluno12</label>
+								<input type="radio" name="aluno12" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno12" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno13">RA:13 Nome:Aluno13</label>
+								<input type="radio" name="aluno13" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno13" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno14">RA:14 Nome:Aluno14</label>
+								<input type="radio" name="aluno14" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno14" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno15">RA:15 Nome:Aluno15</label>
+								<input type="radio" name="aluno15" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno15" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno16">RA:16 Nome:Aluno16</label>
+								<input type="radio" name="aluno16" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno16" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno17">RA:17 Nome:Aluno17</label>
+								<input type="radio" name="aluno17" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno17" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno18">RA:18 Nome:Aluno18</label>
+								<input type="radio" name="aluno18" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno18" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno19">RA:19 Nome:Aluno19</label>
+								<input type="radio" name="aluno19" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno19" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno20">RA:20 Nome:Aluno20</label>
+								<input type="radio" name="aluno20" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno20" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno21">RA:21 Nome:Aluno21</label>
+								<input type="radio" name="aluno21" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno21" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno22">RA:22 Nome:Aluno22</label>
+								<input type="radio" name="aluno22" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno22" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno23">RA:23 Nome:Aluno23</label>
+								<input type="radio" name="aluno23" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno23" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno24">RA:24 Nome:Aluno24</label>
+								<input type="radio" name="aluno24" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno24" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno25">RA:25 Nome:Aluno25</label>
+								<input type="radio" name="aluno25" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno25" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno26">RA:26 Nome:Aluno26</label>
+								<input type="radio" name="aluno26" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno26" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno27">RA:27 Nome:Aluno27</label>
+								<input type="radio" name="aluno27" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno27" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno28">RA:28 Nome:Aluno28</label>
+								<input type="radio" name="aluno28" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno28" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno29">RA:29 Nome:Aluno29</label>
+								<input type="radio" name="aluno29" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno29" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno30">RA:30 Nome:Aluno30</label>
+								<input type="radio" name="aluno30" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno30" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno31">RA:31 Nome:Aluno31</label>
+								<input type="radio" name="aluno31" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno31" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno32">RA:32 Nome:Aluno32</label>
+								<input type="radio" name="aluno32" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno32" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno33">RA:33 Nome:Aluno33</label>
+								<input type="radio" name="aluno33" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno33" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno34">RA:34 Nome:Aluno34</label>
+								<input type="radio" name="aluno34" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno34" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno35">RA:35 Nome:Aluno35</label>
+								<input type="radio" name="aluno35" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno35" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno36">RA:36 Nome:Aluno36</label>
+								<input type="radio" name="aluno36" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno36" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno37">RA:37 Nome:Aluno37</label>
+								<input type="radio" name="aluno37" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno37" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno38">RA:38 Nome:Aluno38</label>
+								<input type="radio" name="aluno38" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno38" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno39">RA:39 Nome:Aluno39</label>
+								<input type="radio" name="aluno39" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno39" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno40">RA:40 Nome:Aluno40</label>
+								<input type="radio" name="aluno40" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno40" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno41">RA:41 Nome:Aluno41</label>
+								<input type="radio" name="aluno41" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno41" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno42">RA:42 Nome:Aluno42</label>
+								<input type="radio" name="aluno42" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno42" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno43">RA:43 Nome:Aluno43</label>
+								<input type="radio" name="aluno43" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno43" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno44">RA:44 Nome:Aluno44</label>
+								<input type="radio" name="aluno44" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno44" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno45">RA:45 Nome:Aluno45</label>
+								<input type="radio" name="aluno45" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno45" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno46">RA:46 Nome:Aluno46</label>
+								<input type="radio" name="aluno46" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno46" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno47">RA:47 Nome:Aluno47</label>
+								<input type="radio" name="aluno47" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno47" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno48">RA:48 Nome:Aluno48</label>
+								<input type="radio" name="aluno48" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno48" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno49">RA:49 Nome:Aluno49</label>
+								<input type="radio" name="aluno49" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno49" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno50">RA:50 Nome:Aluno50</label>
+								<input type="radio" name="aluno50" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno50" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno51">RA:51 Nome:Aluno51</label>
+								<input type="radio" name="aluno51" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno51" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno52">RA:52 Nome:Aluno52</label>
+								<input type="radio" name="aluno52" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno52" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno53">RA:53 Nome:Aluno53</label>
+								<input type="radio" name="aluno53" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno53" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno54">RA:54 Nome:Aluno54</label>
+								<input type="radio" name="aluno54" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno54" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno55">RA:55 Nome:Aluno55</label>
+								<input type="radio" name="aluno55" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno55" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno56">RA:56 Nome:Aluno56</label>
+								<input type="radio" name="aluno56" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno56" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno57">RA:57 Nome:Aluno57</label>
+								<input type="radio" name="aluno57" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno57" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno58">RA:58 Nome:Aluno58</label>
+								<input type="radio" name="aluno58" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno58" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno59">RA:59 Nome:Aluno59</label>
+								<input type="radio" name="aluno59" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno59" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno60">RA:60 Nome:Aluno60</label>
+								<input type="radio" name="aluno60" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno60" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno61">RA:61 Nome:Aluno61</label>
+								<input type="radio" name="aluno61" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno61" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno62">RA:62 Nome:Aluno62</label>
+								<input type="radio" name="aluno62" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno62" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno63">RA:63 Nome:Aluno63</label>
+								<input type="radio" name="aluno63" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno63" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno64">RA:64 Nome:Aluno64</label>
+								<input type="radio" name="aluno64" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno64" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno65">RA:65 Nome:Aluno65</label>
+								<input type="radio" name="aluno65" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno65" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno66">RA:66 Nome:Aluno66</label>
+								<input type="radio" name="aluno66" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno66" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno67">RA:67 Nome:Aluno67</label>
+								<input type="radio" name="aluno67" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno67" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno68">RA:68 Nome:Aluno68</label>
+								<input type="radio" name="aluno68" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno68" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno69">RA:69 Nome:Aluno69</label>
+								<input type="radio" name="aluno69" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno69" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno70">RA:70 Nome:Aluno70</label>
+								<input type="radio" name="aluno70" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno70" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno71">RA:71 Nome:Aluno71</label>
+								<input type="radio" name="aluno71" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno71" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno72">RA:72 Nome:Aluno72</label>
+								<input type="radio" name="aluno72" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno72" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno73">RA:73 Nome:Aluno73</label>
+								<input type="radio" name="aluno73" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno73" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno74">RA:74 Nome:Aluno74</label>
+								<input type="radio" name="aluno74" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno74" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno75">RA:75 Nome:Aluno75</label>
+								<input type="radio" name="aluno75" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno75" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno76">RA:76 Nome:Aluno76</label>
+								<input type="radio" name="aluno76" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno76" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno77">RA:77 Nome:Aluno77</label>
+								<input type="radio" name="aluno77" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno77" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno78">RA:78 Nome:Aluno78</label>
+								<input type="radio" name="aluno78" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno78" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno79">RA:79 Nome:Aluno79</label>
+								<input type="radio" name="aluno79" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno79" value="Cancelado" class="cancelado"> Cancelado <br />
+
+								<label for="aluno80">RA:80 Nome:Aluno80</label>
+								<input type="radio" name="aluno80" value="Aprovado" class="aprovado"> Aprovado
+								<input type="radio" name="aluno80" value="Cancelado" class="cancelado"> Cancelado <br /> -->
+
+								<br />
+
+								<input type="submit" value="Submit">
+
+            </form>
+      </main>
+   </body>
+</html>

@@ -20,18 +20,18 @@ function validateForm() {
     {
         event.preventDefault();
         alert("Favor preencher todas as opcoes");    
-    }
-    else if(cont_aprovado < 20)
-    {
-        event.preventDefault();
-        alert("Mínimo de 20 alunos aprovados!");
-        return false;
-    }
-    else if(cont_aprovado > 60)
-    {
-        event.preventDefault();
-        alert("Máximo de 60 alunos aprovados!");
-        return false;
+        }
+        else if(cont_aprovado < 20)
+        {
+            event.preventDefault();
+            alert("Mínimo de 20 alunos aprovados!");
+            return false;
+        }
+        else if(cont_aprovado > 60)
+        {
+            event.preventDefault();
+            alert("Máximo de 60 alunos aprovados!");
+            return false;
     }
     else
     {

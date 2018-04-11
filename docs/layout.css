@@ -565,6 +565,11 @@ select option {
 
 /*css formulario novo aluno*/
 
+#nov{
+    margin-left: 500px;
+
+}
+
 #novoaluno {
     background-image: url("img/stars-bg2.jpg");
     background-repeat: no-repeat;

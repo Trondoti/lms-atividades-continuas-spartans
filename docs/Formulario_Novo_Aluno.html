@@ -33,7 +33,7 @@
 
 <body id="novocurso">
     <header>
-        <img src="img/logo.png">
+        <a href="index.html"><img alt="logo da impacta" src="img/logo.png"></a>
         <div id="containerMenu">
             <nav>
                 <a href="cursos.html">CURSOS</a>
@@ -47,6 +47,7 @@
 
     <main>
         <h1 id='form1h1'>Cadastro de Novo Aluno</h1>
+<<<<<<< HEAD
         <div class="containers" id=''>
 
             <form name="frmcpf" id='novofiel' method="post">
@@ -84,6 +85,59 @@
             </form>
         </div>
 
+=======
+          <div class="containers" id="nov">
+                <form name="frmcpf" id='formulario' method="post">
+                  <fieldset>
+                      <div class="containerInputForm">
+                        <label for="login" class="labelForm">Login</label>:
+                        <input type="text" name="Login" id="login" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="nome" class="labelForm">Nome Completo</label>:<br>
+                        <input type="text" name="Nome Completo" id="nome" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="email" class="labelForm">Email</label>:<br>
+                        <input type="email" name="Email" id="email" placeholder="email@email.com" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="celular" class="labelForm">Celular</label>:<br>
+                        <input type="tel" name="Celular" id="celular" class="inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="nascimento" class="labelForm">Nascimento</label>:<br>
+                        <input type="date" name="Nascimento" id="nascimento" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="cpf" class="labelForm">CPF</label>:<br>
+                        <input type="text" name="CPF" id="cpf" maxlength="11" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="senha" class="labelForm">Senha</label>:<br>
+                        <input type="password" name="Senha" id="senha" class="obrigatorio inputs"><br>
+                      </div>
+
+                      <div class="containerInputForm">
+                        <label for="confirma_senha" class="labelForm">Confirmação de Senha</label>:<br>
+                        <input type="password" name="Confirmação de Senha" id="confirma_senha" class="obrigatorio inputs"><br>
+                      </div>
+
+                        <br/><br/>
+                      <div class="btnNovoAluno">
+                        <input type="submit" value="Enviar" onclick="return validateForm(event)">
+                        <input type="reset" value="Limpar">
+                      </div>
+                  </fieldset>
+                </form>
+            </div>
+>>>>>>> master
     </main>
 
 

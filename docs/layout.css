@@ -565,26 +565,52 @@ select option {
 
 /*css formulario novo aluno*/
 
-h1#formh1{
-    text-align: center;
-    margin-left: 10px;
+#nov{
+    margin-left: 500px;
+
 }
 
 #novoaluno {
     background-image: url("img/stars-bg2.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+#form1h1 {
+    position: relative;
+    align-self: auto;
+    border-bottom: 50px;
+}
+
+.inputs {
+    margin-left: 5px;
+}
+
+.btnNovoAluno {
+    position: absolute;
+    align-self: center;
+    margin-left: 75px;
+}
+
+.btnmatricula{
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #116FFF;
+    color: white;
+    border: 1px solid black;
+    margin: 5% 0 0 30%;
+}
+#novamatricula {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#novamatricula.containers {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
     
-}
-
-#novoaluno.containers {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-form#novofiel{
-    margin-left: 540px; 
-}

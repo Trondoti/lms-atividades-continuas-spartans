@@ -1,4 +1,4 @@
-function validateForm() {
+function validateForm(event) {//Faltou o event
    
     var inputs = document.querySelectorAll('input[type="radio"]');
     var cont_aprovado = 0;

@@ -1,0 +1,7 @@
+Correção
+
+Novo Aluno: faltou apenas validar idade!
+
+Matricula: O formulário estava faltando enviar o objeto evento. Depois disos funcionou
+
+Nota: 8,0

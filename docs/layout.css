@@ -565,68 +565,54 @@ select option {
     margin-top: 8%;
 }
 
-/* CSS DO DETALHE DO CURSO */
-.titulos {
-    text-transform: uppercase;
-    color: #116fff;
-    letter-spacing: 2px;
-    font-weight: 800;
-    margin-bottom: 20px;
+/*css formulario novo aluno*/
+
+#nov{
+    margin-left: 500px;
+
 }
 
-.textosDetalhe {
-    margin-left: 0.4em;
-    margin-right: 0.4em;
-    text-align: justify;
+#novoaluno {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
-.textosDetalhe2 {
-    color: gray;
-    margin-left: 0.4em;
-    margin-right: 0.4em;
-    text-align: justify;
+#form1h1 {
+    position: relative;
+    align-self: auto;
+    border-bottom: 50px;
 }
 
-.textosDetalheAzul {
-    font-size: 2em;
-    font-family: 'Raleway';
-    color: #116fff;
-    font-weight: 500;
-    margin-top: -20px;
+.inputs {
+    margin-left: 5px;
 }
 
-.textosDetalheAzul2 {
-    color: #116fff
+.btnNovoAluno {
+    position: absolute;
+    align-self: center;
+    margin-left: 75px;
 }
 
-.container {
-    display: flex;
-    justify-content: flex-end;
+.btnmatricula{
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #116FFF;
+    color: white;
+    border: 1px solid black;
+    margin: 5% 0 0 30%; */
+}
+#novamatricula {
+    background-image: url("img/stars-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
-.containerFilho1 {
-    margin-right: 20px;
-}
-
-.containerFilho2 {
-    margin-right: 20px;
-}
-
-.containerFilho3 {
-    margin-right: 25px;
-}
-
-.tituloInformacoes {
-    margin-right: 155px;
-}
-
-#conteudoDetalhe {
-    width: 80%;
-    margin: auto;
-}
-
-#detalhe {
-    width: 50%;
-    display: block;
-    float: left;
-}
+#novamatricula.containers {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    

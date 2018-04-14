@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from core.utils.utils import calculaMediaFinal
+
 
 def index(request):
     return render(request,"index.html")
+
+'''def index(request):
+    #return HttpResponse('login')
+    return HttpResponse(calculaMediaFinal(8,4))   '''
 
 def login(request):
     if request.method == "GET":

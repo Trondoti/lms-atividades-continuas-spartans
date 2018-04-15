@@ -19,25 +19,18 @@ from core import views
 from core import urls
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('login/', views.login),
-    path('contato/', views.contato),
-    path('', views.index),
-    path('admin/', admin.site.urls),
-    # path('login/', views.index)
-=======
-    path(r'^login/$', views.login, name = "login"),
-    path('', views.index, name = ""),
-    path ('base/', views.templateBase, name = "base"),
-    path ('novo-aluno/', views.novoAluno, name = "novo-aluno"),
-    path ('cursos/', views.cursos, name = "cursos"),
-    path ('detalhe-curso/', views.detalheCurso, name = "detalhe-curso"),
-    path ('detalhe-disciplina/', views.detalheDisciplina, name = "detalhe-disciplina"),
-    path ('formulario-curso/', views.formularioCurso, name = "formulario-curso"),
-    path ('formulario-disciplina/', views.formularioDisciplina, name ="formulario-disciplina"),
-    path ('formulario-matricula/', views.formularioMatricula, name = "formulario-matricula"),
-    path ('index/', views.index, name = "index"),
-    path ('painel-admin/', views.painelAdmin, name='painel-admin')
-
->>>>>>> origin/pablo
+    path(r'^login/$', views.login, name="login"),
+    path('', views.index, name=""),
+    path('base/', views.templateBase, name="base"),
+    path('novo-aluno/', views.novoAluno, name="novo-aluno"),
+    path('cursos/', views.cursos, name="cursos"),
+    path('detalhe-curso-ads/', views.detalheCursoADS, name="detalhe-curso-ads"),
+    path('detalhe-curso-bd/', views.detalheCursoBD, name="detalhe-curso-bd"),
+    path('detalhe-curso-jd/', views.detalheCursoJD, name="detalhe-curso-jd"),
+    path('detalhe-disciplina/', views.detalheDisciplina, name="detalhe-disciplina"),
+    path('formulario-curso/', views.formularioCurso, name="formulario-curso"),
+    path('formulario-disciplina/', views.formularioDisciplina, name="formulario-disciplina"),
+    path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
+    path('index/', views.index, name="index"),
+    path('painel-admin/', views.painelAdmin, name='painel-admin')
 ]

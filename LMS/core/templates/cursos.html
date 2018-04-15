@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <h1 class="tituloMain">SPARTANS<br/>É NOIS QUE VOA.</h1>
+            <img src="img/search.png" alt="anuncio da Spartans" id="imgTopo">
+            <div id="cursos">
+                <h1 class="titulosContainer">CURSOS</h1>
+                <div class="containers cursos" >
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">ANÁLISE E DESENVOLVIMENTO</a>
+                        <img src="img/ads.png" alt="logo do curso de ads" class="imgCursos">
+                    </div>
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">CIÊNCIA DA COMPUTAÇÃO</a>
+                        <img src="img/CC.png" alt="logo do curso de ciencia da computação" class="imgCursos">
+                    </div>
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">SISTEMA DA INFORMAÇÃO</a>
+                        <img src="img/si.png" alt="logo do curso de sistema da informação" class="imgCursos">
+                    </div>
+                </div>
+                <div class="containers cursos" >
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">BANCO DE DADOS</a>
+                        <img src="img/bd.png" alt="logo do curso de banco de dados" class="imgCursos">
+                    </div>
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">JOGOS DIGITAIS</a>
+                        <img src="img/jd.png" alt="logo do curso de jogos digitais" class="imgCursos">
+                    </div>
+                    <div class="card cardCurso">
+                        <a href="{% url 'detalhe-curso' %}">REDES DE COMPUTADORES</a>
+                        <img src="img/rc.png" alt="logo do curso de redes de computadores" class="imgCursos">
+                    </div>
+                </div>
+            </div>
+
+        </main>
+{% endblock %}

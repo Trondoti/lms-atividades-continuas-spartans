@@ -1,18 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <title>Minha primeira view Django</title>
-    </head>
-        <body>
-            <form method="POST">
-                <label><strong>E-mail:</strong> </br> 
-                <input type ="email" name="email" placeholder="exemplo@gmail.com" /> <br/>
-                </label>
-                <label><strong>Senha:</strong></br> 
-                <input type ="password" name="senha"/><br/>
-                </label> 
-
-                <input type="submit" />
-            </form>
-        </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+	<body id="bodyLogin">
+    	<main id="mainlogin">
+        	<div id="arealogin">
+				<img src="img/logo.png" alt="logo da impacta" id="logoLogin" >
+                <form id="formulario" autocomplete="off" method="POST" action="painel_admin.html">
+                    <fieldset>
+						<div class="containerInput">
+	                        <label>
+	                            <strong class="label">EMAIL</strong>
+	                            <input class="inputLogin" type="email" name="email">
+	                        </label>
+						</div>
+						<div class="containerInput">
+	                        <label>
+	                            <strong class="label">SENHA</strong>
+	                            <input class="inputLogin" type="password" name="senha">
+	                        </label>
+						</div>
+						<div class="containerInput">
+	                        <label id="rememberLabel">
+	                            <input type="checkbox" checked="checked" name="remember">
+								<strong class="label">LEMBRAR-ME</strong>
+	                        </label>
+						</div>
+                        <div id="divSubmit">
+                            <input type="submit" class="btn" value="FAZER LOGIN">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    	</main>
+{% endblock %}

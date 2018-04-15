@@ -20,7 +20,14 @@ def novoAluno(request):
 
 
 def cursos(request):
-    return render(request, "cursos.html")
+    context = {
+        'curso' : ["Analise e desenvolvimento","Ciência da computação", "Sistema de informação"],
+        'curso2': ["Banco de dados", "Jogos Digitais", "Redes de computadores"],
+        'urls': ["detalhe-curso-bd", "detalhe-curso-ads"]
+        
+            }
+    return render(request, "cursos.html", context)
+    
 
 
 def detalheCurso(request):

@@ -28,7 +28,7 @@ def detalheCurso(request):
 
 
 def detalheDisciplina(request):
-    return render(request, "detalhe_disciplina.html")
+    return render(request, "detalhes_disciplina.html")
 
 
 def formularioCurso(request):

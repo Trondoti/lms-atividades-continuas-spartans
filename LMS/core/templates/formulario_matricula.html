@@ -1,44 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
-   <head>
-      <title>Disciplina</title>
-	  <script src="script_2.js" defer></script>
-	  <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
-	  <title>Faculdade Impacta - Cursos</title>
-	  <link rel="stylesheet" href="layout.css">
-	  <link rel="stylesheet" href ="normalize.css">
-	  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-	  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-	  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-	  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-	  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-	  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-	  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
-	  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-	  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-	  <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
-	  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-	  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-	  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-	  <link rel="manifest" href="/manifest.json">
-	  <meta name="msapplication-TileColor" content="#ffffff">
-	  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	  <meta name="theme-color" content="#ffffff">
-   </head>
-   <body>
-		<header>
-				<a href="index.html"><img alt="logo da impacta" src="img/logo.png"></a>
-				<div id="containerMenu">
-					<nav>
-						<a href="cursos.html">CURSOS</a>
-						<a href="index.html #noticias">NOTÍCIAS</a>
-						<a href="index.html #depoimentos">DEPOIMENTOS</a>
-						<a href="index.html #premios">PRÊMIOS</a>
-					</nav>
-					<a id="buttonLogin" href="login.html">LOGIN</a>
-				</div>
-			</header>
-      <main>
+{% extends "base.html" %}
+{% block content %}
+	    <main>
           <h1>ANALISE DESENVOLVIMENTO DE SISTEMAS</h1>
                <table border="1">
                   <tr>
@@ -57,7 +19,7 @@
                <br />
 
 <form name="form" method="post" onsubmit="validateForm()">
-
+		<fieldset legend = "Alunos">
 	    <label>RA:1 Nome:Aluno1
 		        <input type="radio" name="aluno1" value="Aprovado" class="aprovado"> Aprovado
 		    </label>
@@ -540,11 +502,7 @@
 			</label><br />
 		    
 			<input type="submit" value="Submit">
-
+		</fieldset>		
         </form>
 	</main>
-		<footer>
-            <h1>Faculdade Impacta Tecnologia</h1>
-    	</footer>
-   </body>
-</html>
+{% endblock %}

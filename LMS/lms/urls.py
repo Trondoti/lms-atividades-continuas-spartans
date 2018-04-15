@@ -30,5 +30,6 @@ urlpatterns = [
     path ('formulario-disciplina/', views.formularioDisciplina, name ="formulario-disciplina"),
     path ('formulario-matricula/', views.formularioMatricula, name = "formulario-matricula"),
     path ('index/', views.index, name = "index"),
+    path ('painel-admin/', views.painelAdmin, name='painel-admin')
 
 ]

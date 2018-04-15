@@ -22,4 +22,5 @@ urlpatterns = [
     path('contato/', views.contato),
     path('', views.index),
     path('admin/', admin.site.urls),
+    # path('login/', views.index)
 ]

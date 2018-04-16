@@ -25,16 +25,44 @@ def novoAluno(request):
 
 def cursos(request):
     context = {
-        'curso' : ["Analise e desenvolvimento","Ciência da computação", "Sistema de informação"],
-        'curso2': ["Banco de dados", "Jogos Digitais", "Redes de computadores"],
-        'urls': ["detalhe-curso-bd", "detalhe-curso-ads"]
-        
+        'cursosL1' : [
+            {
+                "nome": "Analise e desenvolvimento",
+                "url": "ads",
+                "img": "img/ads.png"
+            },
+            {
+                "nome": "Ciência da computação",
+                "url": "cc",
+                "img": "img/cc.png"
+            },
+            {
+                "nome": "Sistema de informação",
+                "url": "si",
+                "img": "img/si.png"
             }
+        ],
+        'cursosL2': [
+            {
+                "nome": "Banco de dados",
+                "url": "bd",
+                "img": "img/bd.png"
+            },
+            {
+                "nome": "Jogos Digitais",
+                "url": "jd",
+                "img": "img/jd.png"
+            },
+            {
+                "nome": "Redes de computadores",
+                "url": "rc",
+                "img": "img/rc.png"
+            }
+        ]
+    }
     return render(request, "cursos.html", context)
-    
 
-
-def detalheCursoADS(request):
+def detalheCurso(request, id=None):
     contextDetalheCursoADS = {
         "valorDetalheCurso1": "Entender as necessidades das empresas é fundamental para fazê-las crescer e gerar bons resultados. Desta maneira, um dos caminhos para alavancar os negócios e se destacar no mercado de trabalho é o da Tecnologia. Para isso, a Faculdade Impacta oferece a graduação em Análise e Desenvolvimento de Sistemas, que prepara você para atuar em todas as etapas de projetos de tecnologia da informação - concepção, gerência e manutenção, aplicação e mensuração de resultados.",
         "valorDetalheCurso2": "O curso é voltado para a criação de programas, softwares e sistemas para as empresas. As etapas do projeto de sistemas de software, como análise, projeto, teste, gestão, implantação e manutenção de sistemas de informação também estão entre os aprendizados da graduação.",
@@ -93,7 +121,6 @@ def detalheCursoADS(request):
         "valor53": "120 horas"
     }
     return render(request, "detalhe_curso.html", contextDetalheCursoADS)
-
 
 def detalheCursoBD(request):
     contextDetalheCursoBD = {
@@ -225,7 +252,7 @@ def detalheDisciplinaTecweb(request):
         'bibliografia': 'guilherme ama o baby',
         'avaliacao': '>= 100'
         }
-    
+
     return render(request, "detalhes_disciplina.html",contexto)
 
 

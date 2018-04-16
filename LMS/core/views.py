@@ -217,8 +217,41 @@ def detalheCursoJD(request):
     return render(request, "detalhe_curso.html", contextDetalheCursoJD)
 
 
-def detalheDisciplina(request):
-    return render(request, "detalhes_disciplina.html")
+def detalheDisciplinaTecweb(request):
+    contexto = {
+        'nome':'Tecnologia Web',
+        'objetivo': 'coco fedido',
+        'competencias': 'pablo gay',
+        'bibliografia': 'guilherme ama o baby',
+        'avaliacao': '>= 100'
+        }
+    
+    return render(request, "detalhes_disciplina.html",contexto)
+
+
+def detalheDisciplinaBd(request):
+    contexto = {
+        'nome':'Banco de Dados',
+        'objetivo': 'coco fedido',
+        'competencias': 'pablo gay',
+        'bibliografia': 'guilherme ama o baby',
+        'avaliacao': '>= 100'
+        }
+    return render(request, "detalhes_disciplina.html",contexto)
+
+
+
+def detalheDisciplinaDevops(request):
+    contexto = {
+        'nome':'Ambiente e Desenvolvimento e Operações',
+        'objetivo': 'coco fedido',
+        'competencias': 'pablo gay',
+        'bibliografia': 'guilherme ama o baby',
+        'avaliacao': '>= 100'
+
+    }
+    return render(request, "detalhes_disciplina.html",contexto)
+
 
 
 def formularioCurso(request):

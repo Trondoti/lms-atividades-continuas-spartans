@@ -19,9 +19,21 @@ from core import views
 from core import urls
 
 urlpatterns = [
-    path('login/', views.login),
-    path('contato/', views.contato),
-    path('', views.index),
-    path('admin/', admin.site.urls),
-    #path('', views.index)
+    path(r'^login/$', views.login, name="login"),
+    path('', views.index, name=""),
+    path('base/', views.templateBase, name="base"),
+    path('novo-aluno/', views.novoAluno, name="novo-aluno"),
+    path('cursos/', views.cursos, name="cursos"),
+    path('detalhe-curso-ads/', views.detalheCursoADS, name="detalhe-curso-ads"),
+    path('detalhe-curso-bd/', views.detalheCursoBD, name="detalhe-curso-bd"),
+    path('detalhe-curso-jd/', views.detalheCursoJD, name="detalhe-curso-jd"),
+    path('detalhe-disciplina-tecweb/', views.detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
+    path('detalhe-disciplina-bd/', views.detalheDisciplinaBd, name="detalhe-disciplina-bd"),
+    path('detalhe-disciplina-devops/', views.detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
+    path('formulario-curso/', views.formularioCurso, name="formulario-curso"),
+    path('formulario-disciplina/', views.formularioDisciplina, name="formulario-disciplina"),
+    path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
+    path('index/', views.index, name="index"),
+    path('painel-admin/', views.painelAdmin, name='painel-admin'),
+    path('login/', views.login, name ='login')
 ]

@@ -23,6 +23,7 @@ def novoAluno(request):
     return render(request, "Formulario_Novo_Aluno.html")
 
 
+
 def cursos(request):
     context = {
         'curso' : ["Analise e desenvolvimento","Ciência da computação", "Sistema de informação"],
@@ -268,3 +269,28 @@ def formularioMatricula(request):
 
 def painelAdmin(request):
     return render(request, "painel_admin.html")
+
+def detalheDisciplina(request):
+    return render(request, "detalhes_disciplina.html")
+
+def detalheDisciplinaEngSoft(request):
+    contexto = {
+        'nome':'Tecnologia Web',
+        'objetivo': 'coco fedido',
+        'competencias': 'pablo gay',
+        'bibliografia': 'guilherme ama o baby',
+        'avaliacao': '>= 100'
+        }
+    
+    return render(request, "detalhes_disciplina.html",contexto)
+
+def detalheDisciplinaGestProj(request):
+    contexto = {
+        'nome':'Gestão de Projetos',
+        'objetivo': 'aaa',
+        'competencias': 'bbb',
+        'bibliografia': 'ccc',
+        'avaliacao': '>= 100'
+        }
+    
+    return render(request, "detalhes_disciplina.html",contexto)

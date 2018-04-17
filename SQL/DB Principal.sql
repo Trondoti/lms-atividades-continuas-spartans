@@ -40,7 +40,7 @@ ID int identity(1,1)
 )
 go
 CREATE TABLE Disciplina(
-ID INT
+ID int identity(1,1)
 ,Nome VARCHAR (30) UNIQUE
 ,Data DATE DEFAULT GETDATE()
 ,status_disc VARCHAR (20) DEFAULT('ABERTO') 
@@ -67,7 +67,7 @@ references Coordenador (ID)
  go
 create table Curso
 (
-Id int primary key identity(1,1)
+Id int identity(1,1) primary key 
 ,Nome varchar(30) unique not null
 )
 create table DisciplinaOfertada
@@ -166,7 +166,7 @@ references Atividade_Vinculada (ID)
 go
 create table mensagem
 (
-id int primary key identity (1,1)
+id int identity (1,1) primary key 
 ,IdAluno int not null
 ,IdProfessor int not null
 ,Assunto varchar (1000) null
@@ -180,80 +180,4 @@ id int primary key identity (1,1)
 ,constraint fkProfessorMensagem foreign key (idProfessor) references professor (ID)
 )
 
-
-insert into Coordenador(ID,LOGON,Senha,Nome,Email,Celular)
-Values(01,'GabrielCoordenador','impacta','Gabriel','gabrielcod@gmail.com','999999999')
----------------------------------------------------------------------------------------------
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(01,'PabloImpacta','impacta','Pablo','pabloaluno@gmail.com','999999999','10000')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(02,'LuizImpacta','impacta','Luiz','luizaluno@gmail.com','999999987','10001')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(03,'MarcosImpacta','impacta','Marcos','marcoaluno@gmail.com','99999923','10002')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(04,'GuilhermeImpacta','impacta','Guilherme','guialuno@gmail.com','99999943','10003')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(05,'LucasImpacta','impacta','Lucas','lucasaluno@gmail.com','999999943','10004')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(06,'DouglasImpacta','impacta','Douglas','dougaluno@gmail.com','999999234','10005')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(07,'FraImpacta','impacta','Françoise','franaluno@gmail.com','999999453','10006')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(08,'Juliaimpacta','impacta','Julia','Juliaaluno@gmail.com','999995467','10007')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(09,'Jesusimpacta','impacta','Jesus','jesusaluno@gmail.com','999992314','10008')
-
-insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(10,'Milaimpacta','impacta','Mila','milaaluno@gmail.com','999362314','10009')
----------------------------------------------------------------------------------------------
-insert into Curso(Nome)
-Values('ADS')
-
-insert into Curso(Nome)
-Values('ADM')
-
-insert into Curso(Nome)
-Values('BD')
-
-insert into Curso(Nome)
-Values('GTI')
-
-insert into Curso(Nome)
-Values('JD')
-
-insert into Curso(Nome)
-Values('PG')
-
-insert into Curso(Nome)
-Values('PM')
-
-insert into Curso(Nome)
-Values('REDES')
-
-insert into Curso(Nome)
-Values('SI')
------------------------------------------------------------------------------------
-insert into Disciplina(ID,Nome,Plano_de_ensino,CargaHoraria,Competencias,Habilidades,Ementa,Conteudo_Programatico,Bibliografia_Basica,Bibliografia_Complementar,Percentual_Pratico,Percentual_Teorico,IdCoordenador)
-Values(01,'Linguagem SQL','Conceitos basicos, Linguagem SQL, Manipulação de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
-'Introdução a linguagem,Linguagem de Manipulação de dados, Funções e Visões','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - São Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. São Paulo: Pearson. 2011',75,25,01)
-
-insert into Disciplina(ID,Nome,status_disc,Plano_de_ensino,CargaHoraria,Competencias,Habilidades,Ementa,Conteudo_Programatico,Bibliografia_Basica,Bibliografia_Complementar,Percentual_Pratico,Percentual_Teorico,IdCoordenador)
-Values(02,'Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avançado, Introdução e ferramentas ao Django',80,'Desenvolver aplicação Web','Conhecer e dominar as principais maneiras de  construção de publicação de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts','Introdução a HTML5,CSS3 e JavaScripts programação avançada, revisão e prova','Use a Cabeça!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edição, 2015','Moraes, Construindo Aplicações Web. São Paulo, NovaTec,2015',50,50,01)
-
-
-
-select *
-from Disciplina
-
-
-sp_help atividade
 

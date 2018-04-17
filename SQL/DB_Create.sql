@@ -1,8 +1,7 @@
-CREATE DATABASE LMS33
-
+CREATE DATABASE LMS
 GO
 
-USE LMS33
+USE LMS
 
 GO
 CREATE TABLE coordenador (
@@ -172,7 +171,7 @@ go
 -------------------------------------------------------------------------------
 
 ----------------------- INICIO AC6 ----------------
-
+------------------------------GUILHERME-------------------------------------------------
 /* --Cadastrem: 1 Coordenador, 10 Alunos, ---5 Professores ----- ( INSERT )-- */
 
 insert into coordenador(LOGON,Senha,Nome,Email,Celular)
@@ -209,16 +208,18 @@ Values('Jesusimpacta','impacta','Jesus','jesusaluno@gmail.com','999992314','1000
 insert into aluno(LOGON,Senha,Nome,Email,Celular,RA)
 Values('Milaimpacta','impacta','Mila','milaaluno@gmail.com','999362314','10009')
 
+go
+
 insert into professor (logon,senha,nome,email,celular,dtExpiracao,apelido) values
-('professor1', 'professor1', 'professor 1', 'professor1@gmail.com', '99999991', '07-01-2018', 'TheKing'),
-('professor2', 'professor2', 'professor 2', 'professor2@gmail.com', '99999992', '07-01-2018', 'TheKing'),
-('professor3', 'professor3', 'professor 3', 'professor3@gmail.com', '99999993', '07-01-2018', 'TheKing'),
-('professor4', 'professor4', 'professor 4', 'professor4@gmail.com', '99999994', '07-01-2018', 'TheKing'),
-('professor5', 'professor5', 'professor 5', 'professor5@gmail.com', '99999995', '07-01-2018', 'TheKing')
+('professor1', 'abc321', 'Renato Seixas The Best', 'professor1@gmail.com', '99999991', '07-01-2018', 'Seixas'),
+('professor2', 'abc321', 'Gustavo Maia', 'professor2@gmail.com', '99999992', '07-01-2018', 'Maia'),
+('professor3', 'abc321', 'Yuri Dirickson', 'professor3@gmail.com', '99999993', '07-01-2018', 'Dirickson'),
+('professor4', 'abc321', 'Fernando Sousa', 'professor4@gmail.com', '99999994', '07-01-2018', 'Sousa'),
+('professor5', 'abc321', 'Fabio Campos', 'professor5@gmail.com', '99999995', '07-01-2018', 'Campos')
 
+go
 
-
---------------------------------------------------------------------------------
+------------------------------GUILHERME-------------------------------------------------
 /*•	Cadastrem todos os cursos existentes nesta universidade, se quiserem, 
 podem utilizar os nomes reduzidos dos mesmos, ADS, SI, etc. ( INSERTT ) */ 
 go
@@ -249,24 +250,27 @@ Values('REDES')
 
 insert into Curso(Nome)
 Values('SI')
------------------------------------------------------------------------------------
+
 go
+------------------------------GUILHERME-------------------------------------------------
+
 /*	Criem 2 Disciplinas ( planos de ensino ) – Linguagem SQL e Tec Web
 ( utilizem dados reais para preencher a tabela,
  vejam os planos de ensino apresentados ( INSERT ) */
  
-insert into Disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
 Values('Linguagem SQL', 'Aberto', 'Conceitos basicos, Linguagem SQL, Manipulação de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
 'Introdução a linguagem,Linguagem de Manipulação de dados, Funções e Visões','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - São Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. São Paulo: Pearson. 2011',75,25,01)
 
-insert into Disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
 Values('Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avançado, Introdução e ferramentas ao Django',80,'Desenvolver aplicação Web','Conhecer e dominar as principais maneiras de  construção de publicação de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts','Introdução a HTML5,CSS3 e JavaScripts programação avançada, revisão e prova','Use a Cabeça!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edição, 2015','Moraes, Construindo Aplicações Web. São Paulo, NovaTec,2015',50,50,01)
 
-------------------------------------------------------------------------------------------------------------------------
 go
+----------------------------------------------------------MATIAS--------------------------------------------------------------
+
 /* 	Ofertem a Disciplina “Linguagem SQL” em 2018, 1ºsemestre,
- turma B, para os cursos de SI e ADS. ( INSERT ) (não feito) */
+ turma B, para os cursos de SI e ADS. ( INSERT ) */
  
 insert into disciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
 values(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula terá 50 minutos e atividades contínuas diárias.',
@@ -276,16 +280,9 @@ values(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando p
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts')
 
 
-
-------------------------------------------------------------------------------------
 go
-/* não está na AC */
-insert into professor(LOGON,Senha,Nome,Email,Celular)
-values('Erick_prof','impacta','Erick','erickimpacta@gmail.com',999998886)
-
-
 -----------------------------------MATIAS-------------------------------------------------------
-go
+
 /* Atribuam um Professor diferente à cada uma das disciplinas ofertadas
  ( utilizem o UPDATE alterar uma disciplina ofertada já criada ),
   preenchendo as demais colunas com dados reais ( ver plano de ensino ). ( UPDATE ) */
@@ -304,42 +301,44 @@ ofertadas ( utilizem o UPDATE alterar uma disciplina ofertada já criada ). (UPD
 	update disciplinaOfertada set dtFimMatricula = '2018-12-10' where id = '02'
 
 
------------------------------------------------------------------------------------------------
+-----------------------------------------DOUGLAS------------------------------------------------------------
 go
 /* 	Preencham a solicitação de matricula de pelo menos 3 alunos 
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (05,01,'2018-04-03',01)
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (04,01,'2018-04-08',01)
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (03,01,'2018-03-05',01)
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (02,02,'2018-06-03',01)
 
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (01,02,'2018-06-12',01)
 
 
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
+insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (07,02,'2018-05-22',01)
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------DOUGLAS------------------------------------------------------------
 go
 /*	Atualize as solicitações de matricula, 
 atribuindo status diversos às mesmas, aprovando algumas, rejeitando outras ( UPDATE ) */
-update SolicitacaoMatricula set [Status] = 'Aprovada' where ID = 02
+update solicitacaoMatricula set [Status] = 'Aprovada' where ID = 02
 
-update SolicitacaoMatricula set [Status] = 'Rejeitada' where ID = 03
+update solicitacaoMatricula set [Status] = 'Rejeitada' where ID = 03
 
-update SolicitacaoMatricula set [Status] = 'Cancelada' where ID = 06
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+update solicitacaoMatricula set [Status] = 'Cancelada' where ID = 06
+
 go
+-----------------------------------------DOUGLAS------------------------------------------------------------
+
 /* Criem 2 atividades, e depois vincule uma destas atividades à disciplina ofertada
  “Linguagem SQL”, ano 2018, 1ºsemestre, turma B, curso SI. ( INSERT ) */
 
@@ -349,32 +348,42 @@ values('Construção de formulários com HTML5','Construir um formulário que te
 insert into atividade (titulo,descricao,conteudo,idProfessor)
 values('Layout do formulário','Construir o CSS3 do formulário de Login','Verificar os slides da aula anterior',01)
 
+go
+
+insert into atividadeVinculada (professor,atividade,disciplinaOfertada,rotulo,estado, dtInicioRespostas, dtFimRespostas)
+	values
+	(1,1,1,'AC7','ABERTA','05-16-2018', '05-25-2018')
+go
 -----------------------------------------------------------------------------------------------------
 ------------------------- PABLO --------------------
-go
+
 /* Realizem 2 entregas destes trabalhos vinculados, realizados por qualquer aluno. ( INSERT). */
-go
 
 insert into entrega (idAluno,titulo,resposta,atividadeVinculada,idProfessor,dtAvaliacao,obs) 
 values 
-(1,'Atividade 1', 'segue minha resposta 1', 1,1,'01-01-2018','Parabéns putinha')
+(1,'Atividade 1', 'segue minha resposta 1', 1,1,'01-01-2018','Atividade Referente à AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 1,1,'01-01-2018','Atividade Referente à AC5 de Linguagem SQL Professor Gustavo Maia')
 
--------------------------PABLO ----------------------
+
 go
+-------------------------PABLO ----------------------
+
 /* Atualizem uma destas entregas, atribuindo uma nota pelo professor vigente 
 daquela disciplina ofertada. ( UPDATE ). */
 
 update entrega set nota ='10' where id ='1'
 
--------------------------------------------DOUGLAS ----------------------------
 go
+-------------------------------------------DOUGLAS ----------------------------
 /* •	Cadastrem o envio de 1 dúvida de um aluno qualquer, ao professor da
 disciplina de Linguagem SQL com a seguinte mensagem: “qual a data de entrega da AC6 ?” ( INSERT ) */
 
 insert into mensagem(idAluno,idProfessor,assunto,referencia,conteudo,[Status],dtEnvio, dtResposta, resposta)
 values(1,1,'Duvida','TecWeb','Qual a data da entrega da AC6?','Enviado','01-01-1992','01-10-1992','recebido')
------------------------------------DOUGLAS ------------------------------
+
 go
+-----------------------------------DOUGLAS ------------------------------
+
 /* Registrem a resposta do professor à mensagem acima, informando que a
 “a data de entrega da AC6 é na próxima semana”.(UPDATE) */
 

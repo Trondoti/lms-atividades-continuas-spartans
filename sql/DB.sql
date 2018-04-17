@@ -249,63 +249,11 @@ insert into Disciplina(ID,Nome,status_disc,Plano_de_ensino,CargaHoraria,Competen
 Values(02,'Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avançado, Introdução e ferramentas ao Django',80,'Desenvolver aplicação Web','Conhecer e dominar as principais maneiras de  construção de publicação de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts','Introdução a HTML5,CSS3 e JavaScripts programação avançada, revisão e prova','Use a Cabeça!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edição, 2015','Moraes, Construindo Aplicações Web. São Paulo, NovaTec,2015',50,50,01)
 
-------------------------------------------------------------------------------------------------------------------------
-insert into Professor(ID,LOGON,Senha,Nome,Email,Celular)
-values(01,'Erick_prof','impacta','Erick','erickimpacta@gmail.com',999998886)
-
-----------------------------------------------------------------------------------------------------------------------------
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (05,01,'2018-04-03',01)
-
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (04,01,'2018-04-08',01)
-
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (03,01,'2018-03-05',01)
-
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (02,02,'2018-06-03',01)
-
-
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (01,02,'2018-06-12',01)
-
-
-insert into SolicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (07,02,'2018-05-22',01)
--------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-insert into DisciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-values(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula terá 50 minutos e atividades contínuas diárias.',
-'Maquiná virtual com servidor Microsoft SQL Server 2014','Nota Final = 60% MAC + 40% Prova e Frequência 75% ','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ')
-
-insert into DisciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-values(01,'2018-02-10','2024-04-02',02,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula terá 50 minutos e atividades contínuas diárias.','Computadores com softwares apropriados para a disciplina',
-'Nota Final = 60% MAC + 40% Prova e Frequência 75% ','Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts')
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-update SolicitacaoMatricula set [Status] = 'Aprovada' where ID = 02
-
-update SolicitacaoMatricula set [Status] = 'Rejeitada' where ID = 03
-
-update SolicitacaoMatricula set [Status] = 'Cancelada' where ID = 06
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Construção de formulários com HTML5','Construir um formulário que tenha campos login e senha','Verificar os slides da aula anterior',01)
-
-insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Layout do formulário','Construir o CSS3 do formulário de Login','Verificar os slides da aula anterior',01)
-
 
 
 select *
-from atividade
+from Disciplina
 
-delete from SolicitacaoMatricula
 
 sp_help atividade
 

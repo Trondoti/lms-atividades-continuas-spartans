@@ -3,38 +3,38 @@ go
 use LMS24
 go
 CREATE TABLE Coordenador(
-ID INT 
+ID int identity(1,1) 
 ,LOGON VARCHAR (20) UNIQUE
 ,Senha VARCHAR (20) not null
 ,Nome VARCHAR(30) not null
 ,Email VARCHAR  (40) UNIQUE not null
 ,Celular CHAR(9)  UNIQUE
-, DtExpiração DATE DEFAULT GETDATE()
+, DtExpiraÃ§Ã£o DATE DEFAULT GETDATE()
 , PRIMARY KEY (ID)
 )
 go
 CREATE TABLE Aluno(
-ID INT
+ID int identity(1,1) 
 ,LOGON VARCHAR (20) UNIQUE
 ,Senha VARCHAR (20) not null
 ,Nome VARCHAR(30) not null
 ,Email VARCHAR  (40) UNIQUE not null
 ,Celular CHAR(9)  UNIQUE
 ,foto varchar (255) null
-,DtExpiração DATE DEFAULT GETDATE()
+,DtExpiraÃ§Ã£o DATE DEFAULT GETDATE()
 ,RA varchar (20)
 , PRIMARY KEY (ID)
 )
 
 go
 CREATE TABLE Professor(
-ID INT not null
+ID int identity(1,1) 
 ,LOGON VARCHAR (20) UNIQUE
 ,Senha VARCHAR (20) not null
 ,Nome VARCHAR(30) not null
 ,Email VARCHAR  (40) UNIQUE not null
 ,Celular CHAR(9)  UNIQUE
-,DtExpiração DATE DEFAULT GETDATE()
+,DtExpiraÃ§Ã£o DATE DEFAULT GETDATE()
 ,Apelido VARCHAR (20)
 ,PRIMARY KEY (ID)
 )
@@ -67,7 +67,7 @@ references Coordenador (ID)
  go
 create table Curso
 (
-Id int primary key not null identity(1,1)
+Id int primary key identity(1,1)
 ,Nome varchar(30) unique not null
 )
 create table DisciplinaOfertada
@@ -114,7 +114,7 @@ ID int identity (1,1) primary key
 go
 create table atividade
 (
-id int not null primary key identity (1,1)
+id int primary key identity (1,1)
 ,titulo varchar (50) unique
 ,descricao varchar (1000) not null
 ,conteudo varchar (1000) null
@@ -126,7 +126,7 @@ references professor (ID)
 
 go
 create table Atividade_Vinculada(
-ID int not null
+ID int int identity(1,1) 
 ,professor int not null
 ,atividade int not null
 ,disciplinaofertada int not null
@@ -166,7 +166,7 @@ references Atividade_Vinculada (ID)
 go
 create table mensagem
 (
-id int not null primary key identity (1,1)
+id int primary key identity (1,1)
 ,IdAluno int not null
 ,IdProfessor int not null
 ,Assunto varchar (1000) null
@@ -203,7 +203,7 @@ insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
 Values(06,'DouglasImpacta','impacta','Douglas','dougaluno@gmail.com','999999234','10005')
 
 insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
-Values(07,'FraImpacta','impacta','Françoise','franaluno@gmail.com','999999453','10006')
+Values(07,'FraImpacta','impacta','FranÃ§oise','franaluno@gmail.com','999999453','10006')
 
 insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
 Values(08,'Juliaimpacta','impacta','Julia','Juliaaluno@gmail.com','999995467','10007')
@@ -242,12 +242,12 @@ insert into Curso(Nome)
 Values('SI')
 -----------------------------------------------------------------------------------
 insert into Disciplina(ID,Nome,Plano_de_ensino,CargaHoraria,Competencias,Habilidades,Ementa,Conteudo_Programatico,Bibliografia_Basica,Bibliografia_Complementar,Percentual_Pratico,Percentual_Teorico,IdCoordenador)
-Values(01,'Linguagem SQL','Conceitos basicos, Linguagem SQL, Manipulação de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
-'Introdução a linguagem,Linguagem de Manipulação de dados, Funções e Visões','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - São Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. São Paulo: Pearson. 2011',75,25,01)
+Values(01,'Linguagem SQL','Conceitos basicos, Linguagem SQL, ManipulaÃ§Ã£o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
+'IntroduÃ§Ã£o a linguagem,Linguagem de ManipulaÃ§Ã£o de dados, FunÃ§Ãµes e VisÃµes','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - SÃ£o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. SÃ£o Paulo: Pearson. 2011',75,25,01)
 
 insert into Disciplina(ID,Nome,status_disc,Plano_de_ensino,CargaHoraria,Competencias,Habilidades,Ementa,Conteudo_Programatico,Bibliografia_Basica,Bibliografia_Complementar,Percentual_Pratico,Percentual_Teorico,IdCoordenador)
-Values(02,'Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avançado, Introdução e ferramentas ao Django',80,'Desenvolver aplicação Web','Conhecer e dominar as principais maneiras de  construção de publicação de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplicações web com HTML5,CSS3 e JavaScripts','Introdução a HTML5,CSS3 e JavaScripts programação avançada, revisão e prova','Use a Cabeça!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edição, 2015','Moraes, Construindo Aplicações Web. São Paulo, NovaTec,2015',50,50,01)
+Values(02,'Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avanÃ§ado, IntroduÃ§Ã£o e ferramentas ao Django',80,'Desenvolver aplicaÃ§Ã£o Web','Conhecer e dominar as principais maneiras de  construÃ§Ã£o de publicaÃ§Ã£o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplicaÃ§Ãµes web com HTML5,CSS3 e JavaScripts','IntroduÃ§Ã£o a HTML5,CSS3 e JavaScripts programaÃ§Ã£o avanÃ§ada, revisÃ£o e prova','Use a CabeÃ§a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 ediÃ§Ã£o, 2015','Moraes, Construindo AplicaÃ§Ãµes Web. SÃ£o Paulo, NovaTec,2015',50,50,01)
 
 
 

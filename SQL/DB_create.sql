@@ -47,12 +47,7 @@ id INT NOT NULL IDENTITY(1,1) PRIMARY KEY
 , data DATE DEFAULT GETDATE()
 , statusDisc VARCHAR (20) DEFAULT('ABERTO')
 , planoDeEnsino VARCHAR (1000)
-<<<<<<< HEAD
-, cargaHoraria INT
-CHECK(cargaHoraria = 80 or cargaHoraria = 40)
-=======
 , cargaHoraria INT CHECK(cargaHoraria = 80 OR cargaHoraria = 40)
->>>>>>> a3bb57e90085baba538d44de9fd26b5016ff4ec4
 , competencias VARCHAR (1000)
 , habilidades VARCHAR (1000)
 , ementa VARCHAR (1000)

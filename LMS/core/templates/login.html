@@ -1,9 +1,10 @@
-{% extends "base.html" %}
-{% block content %}
-	<body id="bodyLogin">
+{% extends "baseforms.html" %}
+{% block conteudoforms %}
+{% load static %}
+<body id="bodyLogin">
     	<main id="mainlogin">
         	<div id="arealogin">
-				<img src="img/logo.png" alt="logo da impacta" id="logoLogin" >
+				<img src="" alt="logo da impacta" id="logoLogin" >
                 <form id="formulario" autocomplete="off" method="POST" action="painel_admin.html">
                     <fieldset>
 						<div class="containerInput">
@@ -31,4 +32,6 @@
                 </form>
             </div>
     	</main>
+	</body>
 {% endblock %}
+</html>

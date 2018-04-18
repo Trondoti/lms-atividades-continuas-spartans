@@ -27,10 +27,13 @@ urlpatterns = [
     path('detalhe-curso-ads/', views.detalheCursoADS, name="detalhe-curso-ads"),
     path('detalhe-curso-bd/', views.detalheCursoBD, name="detalhe-curso-bd"),
     path('detalhe-curso-jd/', views.detalheCursoJD, name="detalhe-curso-jd"),
-    path('detalhe-disciplina/', views.detalheDisciplina, name="detalhe-disciplina"),
+    path('detalhe-disciplina-tecweb/', views.detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
+    path('detalhe-disciplina-bd/', views.detalheDisciplinaBd, name="detalhe-disciplina-bd"),
+    path('detalhe-disciplina-devops/', views.detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
     path('formulario-curso/', views.formularioCurso, name="formulario-curso"),
     path('formulario-disciplina/', views.formularioDisciplina, name="formulario-disciplina"),
     path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
     path('index/', views.index, name="index"),
-    path('painel-admin/', views.painelAdmin, name='painel-admin')
+    path('painel-admin/', views.painelAdmin, name='painel-admin'),
+    path('login/', views.login, name ='login')
 ]

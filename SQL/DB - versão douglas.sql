@@ -1,6 +1,6 @@
-create database LMS24
+create database LMS25
 go
-use LMS24
+use LMS25
 go
 CREATE TABLE Coordenador(
 ID INT 
@@ -183,7 +183,10 @@ id int not null primary key identity (1,1)
 
 insert into Coordenador(ID,LOGON,Senha,Nome,Email,Celular)
 Values(01,'GabrielCoordenador','impacta','Gabriel','gabrielcod@gmail.com','999999999')
+
 ---------------------------------------------------------------------------------------------
+
+
 insert into Aluno(ID,LOGON,Senha,Nome,Email,Celular,RA)
 Values(01,'PabloImpacta','impacta','Pablo','pabloaluno@gmail.com','999999999','10000')
 
@@ -301,9 +304,8 @@ insert into atividade (titulo,descricao,conteudo,idProfessor)
 values('Layout do formulário','Construir o CSS3 do formulário de Login','Verificar os slides da aula anterior',01)
 
 
-
 select *
-from atividade
+from Professor
 
 delete from SolicitacaoMatricula
 

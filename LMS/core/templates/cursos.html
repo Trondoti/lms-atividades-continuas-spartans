@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<main> 
+<main>
         <h1 class="tituloMain">SPARTANS<br/>É NOIS QUE VOA.</h1>
         <img src="{% static 'img/search.png' %}" alt="anuncio da Spartans" id="imgTopo">
-        <div id="cursos">            
+        <div id="cursos">
             <h1 class="titulosContainer">CURSOS</h1>
             <div class="containers cursos" >
                 {% for curso in cursosL1 %}
@@ -21,13 +21,9 @@
                 <img src="{% static curso.img %}" alt="logo do curso de {{ curso.nome }}" class="imgCursos">
                 </div>
                 {% endfor %}
-               
-                
-                
             </div>
         </div>
-        
-    </main>
-    
-{% endblock %}
 
+    </main>
+
+{% endblock %}

@@ -252,9 +252,9 @@ def detalheDisciplinaTecweb(request):
         'competencias': 'A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnoloógico',
         'bibliografia': 'Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia., ',
         'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado'
-        }
+    }
+
     return render(request, "detalhes_disciplina.html",contexto)
-    
 
 def detalheDisciplinaBd(request):
     contexto = {
@@ -262,12 +262,8 @@ def detalheDisciplinaBd(request):
         'objetivo': 'Apresentar diferentes maneiras de desenvolver sistemas e ferramentas web com tecnologia mais relevantes para o mercado, utilizando componentes e linguagens relevantes para o atual momento do mercado de TI',
         'competencias': 'A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnológico',
         'bibliografia': 'Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia.',
-        'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado',
-        'objetivo': 'coco fedido',
-        'competencias': 'pablo gay',
-        'bibliografia': 'guilherme ama o baby',
-        'avaliacao': '>= 100'
-        }
+        'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado'
+    }
     return render(request, "detalhes_disciplina.html",contexto)
 
 
@@ -278,11 +274,7 @@ def detalheDisciplinaDevops(request):
         'objetivo': 'Apresentar diferentes maneiras de desenvolver sistemas e ferramentas web com tecnologia mais relevantes para o mercado, utilizando componentes e linguagens relevantes para o atual momento do mercado de TI',
         'competencias': 'A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnológico',
         'bibliografia': 'Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia.',
-        'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado',
-        'objetivo': 'coco fedido',
-        'competencias': 'pablo gay',
-        'bibliografia': 'guilherme ama o baby',
-        'avaliacao': '>= 100'
+        'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado'
 
     }
     return render(request, "detalhes_disciplina.html",contexto)

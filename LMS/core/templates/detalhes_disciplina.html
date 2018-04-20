@@ -4,25 +4,25 @@
 		<main id="mainDisciplina">
 			<h1 class="tituloMain">SPARTANS<br/>É NOIS QUE VOA.</h1>
             <img src="{% static 'img/search.png' %}" alt="apresentação da spartans" id="imgTopo">
-			<h1 class="titulosContainer">Tecnologia Web</h1>
+			<h1 class="titulosContainer"> {{ nome }} </h1>
 			<div>
 				<div class='containers'>
 				 	<div class="disciplina" >
-                        <h2 class="tituloDisciplina" id="tituloDisciplina1">Objetivo</h2>
-                        <p class="textoDisciplina" id="textoDisciplina1">Apresentar diferentes maneiras de desenvolver sistemas e ferramentas web com tecnologia mais relevantes para o mercado, utilizando componentes e linguagens relevantes para o atual momento do mercado de TI</p>
-                    </div>
-                    <div class="disciplina" >
+						<h2 class="tituloDisciplina" id="tituloDisciplina3">Objetivo</h2>
+            <p class="textoDisciplina" id="textoDisciplina1">{{ objetivo }}</p>
+          </div>
+          <div class="disciplina" >
 						<h2 class="tituloDisciplina" id="tituloDisciplina2">Competências</h2>
-						<p class="textoDisciplina" id="textoDisciplina2">A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnoloógico</p>
+						<p class="textoDisciplina" id="textoDisciplina2">{{ competencias }}</p>
 					</div>
-                    <div class="disciplina">
+          <div class="disciplina">
 						<h2 class="tituloDisciplina" id="tituloDisciplina3">Bibliografia</h2>
-						<p class="textoDisciplina"  id="textoDisciplina3">Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia.</p>
+						<p class="textoDisciplina"  id="textoDisciplina3">{{ bibliografia }}</p>
 					</div>
 					<div class="disciplina" >
-						<h2 class="tituloDisciplina" id="tituloDisciplina4">Critérios de Avaliação</h2>
-						<p class="textoDisciplina" id="textoDisciplina4">Os critérios de avaliação mudaram! Através de um sistema de avaliação contínua o aluno aprende mais praticando com mais frequência. (EU DISCORDO)</p>
-                    </div>
+						<h2 class="tituloDisciplina" id="tituloDisciplina3">Avaliação</h2>
+						<p class="textoDisciplina" id="textoDisciplina4">{{ avaliacao }}</p>
+          </div>
 				</div>
 			</div>
 		</main>

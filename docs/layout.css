@@ -135,12 +135,14 @@ header img {
     text-align: center;
     text-decoration: underline;
     text-decoration-color: #116FFF;
+	
 }
 .textoDepoimento {
     color: gray;
     margin-left: 0.4em;
     margin-right: 0.4em;
     text-align: justify;
+	
 }
 .assinaturaDepoimento {
     font-style: italic;

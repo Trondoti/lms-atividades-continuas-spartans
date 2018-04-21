@@ -1,0 +1,10 @@
+Correção:
+
+Cuidado com o allowed Hosts. Idealmente, enquando no settings Debug for True,
+o Allowed Hosts deve estar vazio. O localhost:8000 não está funcionando dessa maneira
+
+O layout de vocês ainda quebra quando diminuo a tela (veja lista de cursos!)
+
+Os requisitos estão certos.
+
+Nota 9

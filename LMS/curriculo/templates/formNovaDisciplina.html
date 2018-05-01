@@ -1,0 +1,106 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+<main>
+    <div class="containers" id="novocurso">
+        <form id="formularioCurso" autocomplete="off" method="POST" action="">
+            <h1>ADICIONAR NOVA DISCIPLINA</h1>
+
+            <fieldset>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">NOME DA DISCIPLINA</strong>
+                        <input class="inputForm" type="text" name="nome" placeholder="DEVOPS" required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">DATA</strong>
+                        <input class="inputForm" type="date" name="data" placeholder="" required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">STATUS</strong>
+                        <input class="inputForm" type="text" name="status" placeholder="" required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">Plano de Ensino</strong>
+                        <input class="inputForm" type="text" name="plano" placeholder="DEVOPS" required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">CARGA HORÁRIA</strong>
+                        <input class="inputForm" type="number" name="carga_horaria" required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">COMPETÊNCIAS</strong>
+                        <textarea class="inputForm textAreaCurso" name="competencias"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">Habilidades</strong>
+                        <textarea class="inputForm textAreaCurso" name="habilidades"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">Ementa</strong>
+                        <textarea class="inputForm textAreaCurso" name="ementa"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">CONTEUDO PROGRAMATICO</strong>
+                        <textarea class="inputForm textAreaCurso" name="conteudo"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">BIBLIOGRAFIA BASICA</strong>
+                        <textarea class="inputForm textAreaCurso" name="bbaisca"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">BIBLIOGRAFIA COMPLEMENTAR</strong>
+                        <textarea class="inputForm textAreaCurso" name="bcomplementar"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">PERCENTUAL PRATICO</strong>
+                        <textarea class="inputForm textAreaCurso" name="ppratico"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">TEORICO</strong>
+                        <textarea class="inputForm textAreaCurso" name="pteorico"></textarea>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                       Coordenador: <select name = 'coordenador'>
+                          <option >SELECIONE</option>
+                          {% for coordenador in coordenadores  %}
+                          <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
+                          {% endfor %}
+                       </select>
+                    </label>
+                 </div>
+                <div id="divSubmitCurso">
+                    <input type="submit" class="btn" value="SALVAR">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</main>
+<footer>
+{% endblock %}

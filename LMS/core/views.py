@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
 
 def index(request):
     return render(request, "index.html")
@@ -282,7 +281,9 @@ def detalheDisciplinaDevops(request):
 
 
 def formularioCurso(request):
-    return render(request, "formulario_curso.html")
+    cursos = curso.objects.all()
+    return render(request,"formulario_curso.html", {'cursos':cursos})
+
 
 
 def formularioDisciplina(request):
@@ -295,3 +296,28 @@ def formularioMatricula(request):
 
 def painelAdmin(request):
     return render(request, "painel_admin.html")
+
+def listarCurso(request):
+    cursos = Curso.objects.all()
+    return render(request, 'crudc.html', {'cursos': cursos})
+
+def inserirCurso(request):
+    context = {}
+    if request.method == 'POST':
+        Curso.objects.create (
+            nome=request.POST.get("curso")
+        )
+        return redirect('/curso/listar')
+    else:
+        return render(request, "formNovoCurso.html", context)
+
+def alterarCurso(request, idcurso):
+    cursos = Curso.objects.get(idcurso=idcurso)
+    context = {"cursos":cursos}
+    if request.method == 'POST':
+       curso = Curso.objects.get(idcurso=idcurso)
+       curso.nome = request.POST.get('curso')
+       curso.save()
+       return redirect('/curso/listar')
+    else:
+        return render(request, "formNovoCurso.html", {'cursos':cursos})

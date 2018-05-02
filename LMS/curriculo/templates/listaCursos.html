@@ -16,11 +16,10 @@
                   </table>
                   <ul>
                       {% for curso in cursos %}
-                      <li>
+                        <li>
                          {{ curso.nome }}
                          <a href="{% url 'alterarcurso' curso.idcurso %}">ALTERAR</a>
-                         <a href="{% url 'deletarcurso' curso.idcurso %}">REMOVER</a>                      </li>
-
+                         <a href="{% url 'deletarcurso' curso.idcurso %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a> 
                         </li>
                       {% endfor %}
                   </ul>

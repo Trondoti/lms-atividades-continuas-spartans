@@ -27,7 +27,7 @@ urlpatterns = [
     path("alterarcurso/<int:idcurso>/", alterarCurso, name = "alterarcurso"),
     path('listardisciplinas/', listarDisciplinas, name ='listardisciplinas'),
     path('inserirdisciplina/', inserirDisciplina, name = 'inserirdisciplina'),
-    path('deletardisciplina/<int:idcurso>/', deletarDisciplina, name = 'deletardisciplina'),
-    path("alterardisciplina/<int:idcurso>/", alterarDisciplina, name = "alterardisciplina"),
+    path('deletardisciplina/<int:iddisciplina>/', deletarDisciplina, name = 'deletardisciplina'),
+    path("alterardisciplina/<int:iddisciplina>/", alterarDisciplina, name = "alterardisciplina"),
     path('admin/', admin.site.urls),
 ]

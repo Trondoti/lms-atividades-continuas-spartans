@@ -1,0 +1,60 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+		<main>
+            <div class="containers" id="novoaluno">
+                <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
+                    {% if atividade.idatividade %}
+                    <h1>ALTERAR ATIVIDADE</h1>
+                    {% else %}
+                    <h1>ADICIONAR NOVA ATIVIDADE</h1>
+                    {% endif %}
+                    
+        
+                    <fieldset>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">TITULO</strong>
+                                <input class="inputForm" type="text" name="titulo" value = "{{ atividade.titulo }}">
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">DESCRICAO</strong>
+                                <input class="inputForm" type="text" name="descricao" value = "{{ atividade.descricao }}" >
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">CONTEUDO</strong>
+                                <input class="inputForm" type="text" name="conteudo" placeholder="seu nome" maxlength="" maxlength="30" required="required" value = "{{ aluno.nome }}">
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">Tipo</strong>
+                                <input class="inputForm" type="text" name="tipo">
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">Extra</strong>
+                                <input class="inputForm" type="text" name="extra" value = "{{ atividade.extra }}">
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                            Professor: <select name = 'professor'>
+                                <option >SELECIONE</option>
+                                {% for professor in professores  %}
+                                <option value = '{{professor.idprofessor}}'>{{professor.nome}}</option>
+                                {% endfor %}
+                            </select>
+                        <div id="divSubmitAluno">
+                            <input type="submit" class="btn" value="SALVAR">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+		</main>
+{% endblock %}

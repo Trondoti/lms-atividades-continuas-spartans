@@ -19,7 +19,7 @@
                       <li>
                          {{ coordenador.nome }}
                          <a href="{% url 'alterarcoordenador' coordenador.idcoordenador %}">ALTERAR</a>
-                         <a href="{% url 'deletarcoordenador' coordenador.idcoordenador %}">REMOVER</a>                      </li>
+                         <a href="{% url 'deletarcoordenador' coordenador.idcoordenador %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                      </li>
                       </li>
                       {% endfor %}
                   </ul>

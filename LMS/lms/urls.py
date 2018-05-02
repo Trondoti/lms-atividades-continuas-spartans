@@ -20,6 +20,7 @@ from core import views
 from core import urls
 from curriculo import urls as curriculo_urls
 from contas import urls as contas_urls
+from restrito import urls as restrito_urls
 
 urlpatterns = [
     path(r'^login/$', views.login, name="login"),
@@ -39,5 +40,6 @@ urlpatterns = [
     path('login/', views.login, name ='login'),
     path('curriculo/', include(curriculo_urls)),
     path('contas/', include(contas_urls)),
+    path('restrito/', include(restrito_urls)),
     path('admin/', admin.site.urls),
 ]

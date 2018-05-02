@@ -29,6 +29,8 @@ class Atividade(models.Model):
         managed = False
         db_table = 'atividade'
 
+    def __str__(self):
+        return self.titulo
 
 class Atividadevinculada(models.Model):
     idatividadevinculada = models.AutoField(db_column='idAtividadeVinculada', primary_key=True)  # Field name made lowercase.
@@ -44,6 +46,11 @@ class Atividadevinculada(models.Model):
         managed = False
         db_table = 'atividadeVinculada'
         unique_together = (('idatividade', 'iddisciplinaofertada'),)
+
+
+    def __str__(self):
+        return self.rotulo
+
 
 class Entrega(models.Model):
     identrega = models.AutoField(db_column='idEntrega', primary_key=True)  # Field name made lowercase.
@@ -61,3 +68,6 @@ class Entrega(models.Model):
     class Meta:
         managed = False
         db_table = 'entrega'
+    
+    def __str__(self):
+        return self.titulo

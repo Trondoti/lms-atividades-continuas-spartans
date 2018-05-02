@@ -2,15 +2,15 @@
 {% block content %}
 {% load %}
 <main>
-    <div class="containers" id="novoaluno">
+    <div class="containers" id="novocoordenador">
         <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
-            <h1>ADICIONAR NOVO ALUNO</h1>
+            <h1>ADICIONAR NOVO COORDENADOR</h1>
 
             <fieldset>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">LOGON</strong>
-                        <input class="inputForm" type="text" name="logon" placeholder="logon" maxlength="20" required="required" value = "{{ aluno.logon }}">
+                        <input class="inputForm" type="text" name="logon" placeholder="logon" maxlength="20" required="required" value = "{{ coordenador.logon }}">
                     </label>
                 </div>
                 <div class="containerInputForm">
@@ -22,28 +22,19 @@
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">NOME</strong>
-                        <input class="inputForm" type="text" name="nome" placeholder="seu nome" maxlength="" maxlength="30" required="required" value = "{{ aluno.nome }}">
+                        <input class="inputForm" type="text" name="nome" placeholder="seu nome" maxlength="" maxlength="30" required="required" value = "{{ coordenador.nome }}">
                     </label>
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">EMAIL</strong>
-                        <input class="inputForm" type="email" name="email" placeholder="email@exemplo.com" maxlength="40" required="required" value = "{{ aluno.email }}">
+                        <input class="inputForm" type="email" name="email" placeholder="email@exemplo.com" maxlength="40" required="required" value = "{{ coordenador.email }}">
                     </label>
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">CELULAR</strong>
-                        <input class="inputForm" type="text" name="celular" placeholder="11 99999-9999" maxlength="11" required="required" value = "{{ aluno.celular }}">
-                    </label>
-                </div>
-                {% if aluno.idaluno %}
-                    <img src="data:image/png;base64, {{ aluno.foto }}">
-                {% endif %}
-				<div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">FOTO</strong>
-                        <input class="inputForm" type="file" name="foto" placeholder="Sua Foto" maxlength="9" required="required" value = "{{ aluno.logon }}">
+                        <input class="inputForm" type="text" name="celular" placeholder="11 99999-9999" maxlength="11" required="required" value = "{{ coordenador.celular }}">
                     </label>
                 </div>
                 <div id="divSubmitAluno">

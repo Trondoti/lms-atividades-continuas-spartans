@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">Lista de Professores</h1>
+                </div>
+                <div>
+                        <a href="{% url "inserirprofessor" %}">INSERIR</a>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                          <td>PROFESSORES</td>
+                      </tr>
+                  </table>
+                  <ul>
+                      {% for professor in professores %}
+                      <li>
+                         {{ professor.nome }}
+                         <a href="{% url 'alterarprofessor' professor.idprofessor %}">ALTERAR</a>
+                         <a href="{% url 'deletarprofessor' professor.idprofessor %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                      </li>
+
+                        </li>
+                      {% endfor %}
+                  </ul>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

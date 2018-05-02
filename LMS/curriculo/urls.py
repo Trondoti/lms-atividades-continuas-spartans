@@ -21,13 +21,13 @@ from curriculo.views import listarDisciplinas, inserirDisciplina, alterarDiscipl
 
 
 urlpatterns = [
-    path('listarcursos/', listarCursos, name ='listarcursos'),
-    path('inserircurso/', inserirCurso, name = 'inserircurso'),
-    path('deletarcurso/<int:idcurso>/', deletarCurso, name = 'deletarcurso'),
-    path("alterarcurso/<int:idcurso>/", alterarCurso, name = "alterarcurso"),
-    path('listardisciplinas/', listarDisciplinas, name ='listardisciplinas'),
-    path('inserirdisciplina/', inserirDisciplina, name = 'inserirdisciplina'),
-    path('deletardisciplina/<int:idcurso>/', deletarDisciplina, name = 'deletardisciplina'),
-    path("alterardisciplina/<int:idcurso>/", alterarDisciplina, name = "alterardisciplina"),
+    path('listarcursos/', listarCursos, name='listarcursos'),
+    path('inserircurso/', inserirCurso, name='inserircurso'),
+    path('deletarcurso/<int:idcurso>/', deletarCurso, name='deletarcurso'),
+    path("alterarcurso/<int:idcurso>/", alterarCurso, name="alterarcurso"),
+    path('listardisciplinas/', listarDisciplinas, name='listardisciplinas'),
+    path('inserirdisciplina/', inserirDisciplina, name='inserirdisciplina'),
+    path('deletardisciplina/<int:idcurso>/', deletarDisciplina, name="deletardisciplina"),
+    path("alterardisciplina/<int:idcurso>/", alterarDisciplina, name="alterardisciplina"),
     path('admin/', admin.site.urls),
 ]

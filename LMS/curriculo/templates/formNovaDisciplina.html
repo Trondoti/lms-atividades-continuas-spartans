@@ -4,97 +4,102 @@
 <main>
     <div class="containers" id="novocurso">
         <form id="formularioCurso" autocomplete="off" method="POST" action="">
+            {% if disciplina.iddisciplina %}
+            <h1>ALTERAR DISCIPLINA</h1>
+            {% else %}
             <h1>ADICIONAR NOVA DISCIPLINA</h1>
-
+            {% endif %}
+            
             <fieldset>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">NOME DA DISCIPLINA</strong>
-                        <input class="inputForm" type="text" name="nome" placeholder="DEVOPS" required="required">
+                        <input class="inputForm" type="text" name="nome" value ="{{ disciplina.nome }}" required="required">
                     </label>
+                    
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">DATA</strong>
-                        <input class="inputForm" type="date" name="data" placeholder="" required="required">
+                        <input class="inputForm" type="date" name="data" value ="{{ disciplina.data }}" required="required">
                     </label>
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">STATUS</strong>
-                        <input class="inputForm" type="text" name="status" placeholder="" required="required">
+                        <input class="inputForm" type="text" name="status" value ="{{ disciplina.statusdisc }}" required="required">
                     </label>
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">Plano de Ensino</strong>
-                        <input class="inputForm" type="text" name="plano" placeholder="DEVOPS" required="required">
+                        <input class="inputForm" type="text" name="plano" value ="{{ disciplina.planodeensino }}" required="required">
                     </label>
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">CARGA HORÁRIA</strong>
-                        <input class="inputForm" type="number" name="carga_horaria" required="required">
+                        <input class="inputForm" type="number" name="carga_horaria" value ="{{ disciplina.cargahoraria }}" required="required">
                     </label>
                 </div>
                 <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">COMPETÊNCIAS</strong>
-                        <textarea class="inputForm textAreaCurso" name="competencias"></textarea>
-                    </label>
-                </div>
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">COMPETENCIAS</strong>
+                            <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.competencias }}" required="required">
+                        </label>
+                    </div>
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">Habilidades</strong>
-                        <textarea class="inputForm textAreaCurso" name="habilidades"></textarea>
+                        <input class='inputForm' type = 'text' value ="{{ disciplina.habilidades }}" name="habilidades">
                     </label>
                 </div>
                 <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">Ementa</strong>
-                        <textarea class="inputForm textAreaCurso" name="ementa"></textarea>
-                    </label>
-                </div>
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">EMENTA</strong>
+                            <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.ementa }}" required="required">
+                        </label>
+                    </div>
                 <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">CONTEUDO PROGRAMATICO</strong>
-                        <textarea class="inputForm textAreaCurso" name="conteudo"></textarea>
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">BIBLIOGRAFIA BASICA</strong>
-                        <textarea class="inputForm textAreaCurso" name="bbaisca"></textarea>
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">BIBLIOGRAFIA COMPLEMENTAR</strong>
-                        <textarea class="inputForm textAreaCurso" name="bcomplementar"></textarea>
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">PERCENTUAL PRATICO</strong>
-                        <textarea class="inputForm textAreaCurso" name="ppratico"></textarea>
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">TEORICO</strong>
-                        <textarea class="inputForm textAreaCurso" name="pteorico"></textarea>
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                       Coordenador: <select name = 'coordenador'>
-                          <option >SELECIONE</option>
-                          {% for coordenador in coordenadores  %}
-                          <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
-                          {% endfor %}
-                       </select>
-                    </label>
-                 </div>
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">Conteudo Programatico</strong>
+                            <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.conteudoprogramatico }}" required="required">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">Bibliografia Basica</strong>
+                                <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.bibliografiabasica }}" required="required">
+                            </label>
+                        </div>
+                        <div class="containerInputForm">
+                                <label class="labelForm">
+                                    <strong class="strongLabelForm">Bibliografia Complementar</strong>
+                                    <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.bibliografiacomplementar }}" required="required">
+                                </label>
+                            </div>
+                            <div class="containerInputForm">
+                                <label class="labelForm">
+                                    <strong class="strongLabelForm">Percentual Pratico</strong>
+                                    <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.percentualpratico }}" required="required">
+                                </label>
+                            </div>
+                            <div class="containerInputForm">
+                                    <label class="labelForm">
+                                        <strong class="strongLabelForm">Percentual Teorico</strong>
+                                        <input class="inputForm" type="text" name="carga_horaria" value ="{{ disciplina.percentualteorico }}" required="required">
+                                    </label>
+                            </div>
+                        <div class="containerInputForm">
+                            <label class="labelForm">
+                            Coordenador: <select name = 'coordenador'>
+                                <option >SELECIONE</option>
+                                {% for coordenador in coordenadores  %}
+                                <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
+                                {% endfor %}
+                            </select>
+                            </label>
+                        </div>
                 <div id="divSubmitCurso">
                     <input type="submit" class="btn" value="SALVAR">
                 </div>

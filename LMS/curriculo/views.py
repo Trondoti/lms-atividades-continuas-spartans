@@ -41,7 +41,7 @@ def listarDisciplinas(request):
     return render(request, 'listaDisciplinas.html', contexto)
 
 def inserirDisciplina(request):
-    coordenadores ={'coordenadores':Coordenador.objects.all()}
+    contexto ={'coordenadores':Coordenador.objects.all()}
     if request.method == 'POST':
         idcoordenador = Coordenador.objects.get(idcoordenador = request.POST.get("coordenador"))
         Disciplina.objects.create (
@@ -62,21 +62,37 @@ def inserirDisciplina(request):
         )
         return redirect('listardisciplinas')
     else:
-        return render(request, "formNovaDisciplina.html", coordenadores)
+        return render(request, "formNovaDisciplina.html", contexto)
 
-def alterarDisciplina(request, idcurso):
-    cursos = Curso.objects.get(idcurso=idcurso)
-    context = {"cursos":cursos}
+def alterarDisciplina(request, iddisciplina):
     if request.method == 'POST':
-       curso = Curso.objects.get(idcurso=idcurso)
-       curso.nome = request.POST.get('curso')
-       curso.save()
-       return redirect('listardisciplinas')
+        idcoordenador = Coordenador.objects.get(idcoordenador = request.POST.get("coordenador"))
+        disciplina = Disciplina.objects.get(iddisciplina=iddisciplina)
+        disciplina.nome=request.POST.get("nome"),
+        disciplina.data = request.POST.get("data"),
+        disciplina.statusdisc = request.POST.get("status"),
+        disciplina.planodeensino = request.POST.get("plano"),
+        disciplina.cargahoraria = request.POST.get("carga_horaria"),
+        disciplina.competencias = request.POST.get("competencias"),
+        disciplina.habilidades = request.POST.get("habilidades"),
+        disciplina.ementa = request.POST.get("ementa"),
+        disciplina.conteudoprogramatico = request.POST.get("conteudo"),
+        disciplina.bibliografiabasica = request.POST.get("bbasica"),
+        disciplina.bibliografiacomplementar = request.POST.get("bcomplementar"),
+        disciplina.percentualpratico = request.POST.get("ppratico"),
+        disciplina.percentualteorico = request.POST.get("pteorico"),
+        disciplina.idcoordenador = idcoordenador
+        disciplina.save()
+        return redirect('listardisciplinas')
     else:
-        return render(request, "formNovoCurso.html", {'cursos':cursos})
+        contexto ={
+        'coordenadores':Coordenador.objects.all(),
+        'disciplina':Disciplina.objects.get(iddisciplina=iddisciplina)
+        }
+        return render(request, "formNovaDisciplina.html", contexto)
 
 
-def deletarDisciplina(request, idcurso):
-    curso = Curso.objects.get(idcurso=idcurso)
-    curso.delete()
+def deletarDisciplina(request, iddisciplina):
+    disciplina = Disciplina.objects.get(iddisciplina=iddisciplina)
+    disciplina.delete()
     return redirect ('listardisciplinas')

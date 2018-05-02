@@ -3,7 +3,7 @@
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">Adicionar Novo Curso</h1>
+                    <h1 class="tituloCrud">LISTA DISCIPLINAS</h1>
                 </div>
                 <div>
                         <a href="{% url "inserirdisciplina" %}">INSERIR</a>
@@ -11,7 +11,7 @@
                 <div>
                   <table>
                     <tr>
-                          <td>CURSOS</td>
+                          <td>DISCIPLINAS</td>
                       </tr>
                   </table>
                   <ul>
@@ -19,9 +19,9 @@
                       <li>
                          {{ disciplina.nome }}
                          <a href="{% url 'alterardisciplina' disciplina.iddisciplina %}">ALTERAR</a>
-                         <a href="{% url 'deletardisciplina' disciplina.iddisciplina %}">REMOVER</a>                      </li>
-
-                        </li>
+                         <a href="{% url 'deletardisciplina' disciplina.iddisciplina %}">REMOVER</a>                     
+                         </li>
+                     
                       {% endfor %}
                   </ul>
                 </div>

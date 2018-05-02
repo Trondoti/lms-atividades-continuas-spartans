@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
+from django.conf.urls import url, include
 from core import views
 from core import urls
+from curriculo import urls as curriculo_urls
 
 urlpatterns = [
     path(r'^login/$', views.login, name="login"),
@@ -34,5 +35,7 @@ urlpatterns = [
     path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
     path('index/', views.index, name="index"),
     path('painel-admin/', views.painelAdmin, name='painel-admin'),
-    path('login/', views.login, name ='login')
+    path('login/', views.login, name ='login'),
+    path('curriculo/', include(curriculo_urls)),
+    path('admin/', admin.site.urls),
 ]

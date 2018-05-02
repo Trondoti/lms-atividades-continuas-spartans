@@ -83,7 +83,7 @@ DATABASES = {
     'NAME': 'LMS',
     'USER': 'sa',
     'PASSWORD': 'P@ssword1',
-    'HOST': 'DESKTOP-M8FGI40\SQL',
+    'HOST': 'DESKTOP-296MP4O\SQLEXPRESS',
     'PORT': '',
 
     'OPTIONS': {

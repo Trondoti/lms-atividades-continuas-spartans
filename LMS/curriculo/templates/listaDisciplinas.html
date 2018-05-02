@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">Adicionar Novo Curso</h1>
+                </div>
+                <div>
+                        <a href="{% url "inserirdisciplina" %}">INSERIR</a>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                          <td>CURSOS</td>
+                      </tr>
+                  </table>
+                  <ul>
+                      {% for disciplina in disciplinas %}
+                      <li>
+                         {{ disciplina.nome }}
+                         <a href="{% url 'alterardisciplina' disciplina.iddisciplina %}">ALTERAR</a>
+                         <a href="{% url 'deletardisciplina' disciplina.iddisciplina %}">REMOVER</a>                      </li>
+
+                        </li>
+                      {% endfor %}
+                  </ul>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

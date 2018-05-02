@@ -18,8 +18,8 @@
                       {% for disciplina in disciplinas %}
                       <li>
                          {{ disciplina.nome }}
-                         <a href="{% url 'alterardisciplina' disciplina.iddisciplina %}">ALTERAR</a>
-                         <a href="{% url 'deletardisciplina' disciplina.iddisciplina %}">REMOVER</a>                     
+                        <a href="{% url 'alterardisciplina' disciplina.iddisciplina %}">ALTERAR</a>
+                        <a href="{% url 'deletardisciplina' disciplina.iddisciplina %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                     
                          </li>
                      
                       {% endfor %}

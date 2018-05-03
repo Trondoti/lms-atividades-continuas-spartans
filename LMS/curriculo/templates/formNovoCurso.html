@@ -4,7 +4,11 @@
 		<main>
 			<div class="containers" id="novocurso">
 				<form id="formularioCurso" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
-					<h1>ADICIONAR NOVO CURSO</h1>
+                    {% if cursos.idcurso %}
+                    <h1>ALTERAR CURSO</h1>
+                    {% else %}
+                    <h1>ADICIONAR NOVO CURSO</h1>
+                    {% endif %}                    
 				    <fieldset>
                         <label> Nome do curso
                                 <input type ='text' name ='curso' value = "{{ cursos.nome }}">

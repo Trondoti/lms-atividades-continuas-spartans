@@ -6,8 +6,8 @@ class Aluno(models.Model):
     senha = models.CharField(max_length=20)
     nome = models.CharField(max_length=30)
     email = models.CharField(unique=True, max_length=40)
-    celular = models.CharField(unique=True, max_length=9, blank=True, null=True)
-    foto = models.CharField(max_length=255, blank=True, null=True)
+    celular = models.CharField(unique=True, max_length=11, blank=True, null=True)
+    foto = models.CharField(max_length=11, blank=True, null=True)
     dtexpiracao = models.DateField(db_column='dtExpiracao', blank=True, null=True)  # Field name made lowercase.
     ra = models.CharField(max_length=20, blank=True, null=True)
 
@@ -30,10 +30,9 @@ class Coordenador(models.Model):
     class Meta:
         managed = False
         db_table = 'coordenador'
-    
+
     def __str__(self):
         return self.nome
-
 
 class Professor(models.Model):
     idprofessor = models.AutoField(db_column='idProfessor', primary_key=True)  # Field name made lowercase.
@@ -48,7 +47,7 @@ class Professor(models.Model):
     class Meta:
         managed = False
         db_table = 'professor'
-    
+
     def __str__(self):
         return self.nome
 

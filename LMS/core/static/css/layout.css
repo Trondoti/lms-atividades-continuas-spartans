@@ -570,13 +570,6 @@ h1#formh1{
     margin-left: 10px;
 }
 
-#novoaluno {
-    background-image: url("../img/stars-bg2.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-}
-
 #novoaluno.containers {
     width: 100%;
     display: flex;

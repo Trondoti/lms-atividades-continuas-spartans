@@ -27,14 +27,17 @@
                         <div class="containerInputForm">
                             <label class="labelForm">
                                 <strong class="strongLabelForm">CONTEUDO</strong>
-                                <input class="inputForm" type="text" name="conteudo" placeholder="seu nome" maxlength="" maxlength="30" required="required" value = "{{ aluno.nome }}">
+                                <input class="inputForm" type="text" name="conteudo" value = "{{ atividade.conteudo }}">
                             </label>
                         </div>
                         <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">Tipo</strong>
-                                <input class="inputForm" type="text" name="tipo">
-                            </label>
+                                <label class="labelForm">
+                                    Tipo: <select name = 'tipo'>
+                                    <option >SELECIONE</option>
+                                    <option value ='RESPOSTA ABERTA'> RESPOSTA ABERTA</option>
+                                    <option value ='TESTE'> TESTE</option>
+                                </label>
+                        </select>
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">
@@ -50,6 +53,8 @@
                                 <option value = '{{professor.idprofessor}}'>{{professor.nome}}</option>
                                 {% endfor %}
                             </select>
+                            </label>
+                        </div>    
                         <div id="divSubmitAluno">
                             <input type="submit" class="btn" value="SALVAR">
                         </div>

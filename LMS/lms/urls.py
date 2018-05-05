@@ -16,30 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from core import views
+from core.views import templateBase, cursos, detalheCurso
+from core.views import detalheDisciplinaBd, detalheDisciplinaDevops, detalheDisciplinaTecweb
+from core.views import index, painelAdmin
 from core import urls
 from curriculo import urls as curriculo_urls
 from contas import urls as contas_urls
 from restrito import urls as restrito_urls
+from core import urls as core_urls
+
 
 urlpatterns = [
-    path(r'^login/$', views.login, name="login"),
-    path('', views.index, name=""),
-    path('base/', views.templateBase, name="base"),
-    path('novo-aluno/', views.novoAluno, name="novo-aluno"),
-    path('cursos/', views.cursos, name="cursos"),
-    url(r'^detalheCurso/([a-z]+)$', views.detalheCurso, name="detalheCurso"),
-    path('detalhe-disciplina-tecweb/', views.detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
-    path('detalhe-disciplina-bd/', views.detalheDisciplinaBd, name="detalhe-disciplina-bd"),
-    path('detalhe-disciplina-devops/', views.detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
-    path('formulario-curso/', views.formularioCurso, name="formulario-curso"),
-    path('formulario-disciplina/', views.formularioDisciplina, name="formulario-disciplina"),
-    path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
-    path('index/', views.index, name="index"),
-    path('painel-admin/', views.painelAdmin, name='painel-admin'),
-    path('login/', views.login, name ='login'),
+    path('', index, name=""),
+    path('base/', templateBase, name="base"),
+    path('cursos/', cursos, name="cursos"),
+    url(r'^detalheCurso/([a-z]+)$', detalheCurso, name="detalheCurso"),
+    path('detalhe-disciplina-tecweb/', detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
+    path('detalhe-disciplina-bd/', detalheDisciplinaBd, name="detalhe-disciplina-bd"),
+    path('detalhe-disciplina-devops/', detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
+    path('index/', index, name="index"),
+    path('painel-admin/', painelAdmin, name='painel-admin'),
     path('curriculo/', include(curriculo_urls)),
     path('contas/', include(contas_urls)),
     path('restrito/', include(restrito_urls)),
-    path('admin/', admin.site.urls),
+    path('core/', include(core_urls)), 
+    
 ]

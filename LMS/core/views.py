@@ -1,17 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .backend import autenticar
 
 def index(request):
     return render(request, "index.html")
 
-
-# def index(request):
-    # return HttpResponse('Login')
-#    return HttpResponse(calculaMediaFinal(10, 5))
-
-
 def login(request):
-    return render(request, "login.html")
+    context = {
+        "titulo":"entrar"
+    }
+    if request.POST:
+        if autenticar(request):
+            pass
+        else:
+            context["erro"] = "usuario ou senha inválidos"
+            return render(request, "formLogin.html", context)
+    else:
+        return render(request, "formLogin.html", context)
 
 
 def templateBase(request):
@@ -281,7 +286,7 @@ def detalheDisciplinaDevops(request):
 
 
 def formularioCurso(request):
-    cursos = curso.objects.all()
+    cursos = Curso.objects.all()
     return render(request,"formulario_curso.html", {'cursos':cursos})
 
 
@@ -295,7 +300,7 @@ def formularioMatricula(request):
 
 
 def painelAdmin(request):
-    return render(request, "painel_admin.html")
+    return render(request, "painelAdmin.html")
 
 def listarCurso(request):
     cursos = Curso.objects.all()

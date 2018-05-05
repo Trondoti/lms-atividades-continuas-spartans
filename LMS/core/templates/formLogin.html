@@ -1,21 +1,25 @@
 {% extends "baseforms.html" %}
-{% block conteudoforms %}
+{% block content %}
 {% load static %}
 <body id="bodyLogin">
     	<main id="mainlogin">
         	<div id="arealogin">
 				<img src="" alt="logo da impacta" id="logoLogin" >
-                <form id="formulario" autocomplete="off" method="POST" action="painel_admin.html">
+				{% if erro %}
+				<p style='color:brown'>{{ erro }}</p>
+				{% else %}
+				{% endif %}
+                <form id="formLogin" method="POST" action="">
                     <fieldset>
 						<div class="containerInput">
 	                        <label>
-	                            <strong class="label">EMAIL</strong>
+	                            <strong class="label">VIADO</strong>
 	                            <input class="inputLogin" type="email" name="email">
 	                        </label>
 						</div>
 						<div class="containerInput">
 	                        <label>
-	                            <strong class="label">SENHA</strong>
+	                            <strong class="label">VIADO</strong>
 	                            <input class="inputLogin" type="password" name="senha">
 	                        </label>
 						</div>
@@ -26,7 +30,7 @@
 	                        </label>
 						</div>
                         <div id="divSubmit">
-                            <input type="submit" class="btn" value="FAZER LOGIN">
+                            <input type="submit" class="btn">
                         </div>
                     </fieldset>
                 </form>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Curso, Disciplina
-from contas.models import Coordenador
+from contas.models.coordenador import Coordenador
 
 
 def listarCursos(request):

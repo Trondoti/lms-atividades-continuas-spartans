@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Professor
-from .models import Aluno, Coordenador
+from .models.professor import Professor
+from .models.aluno import Aluno
+from .models.coordenador import Coordenador
 import base64
 import hashlib
 

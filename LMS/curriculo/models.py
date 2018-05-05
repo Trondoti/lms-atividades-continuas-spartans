@@ -1,5 +1,6 @@
 from django.db import models
-from contas.models import Coordenador, Professor
+from contas.models.coordenador import Coordenador
+from contas.models.professor import Professor
 
 class Curso(models.Model):
     idcurso = models.AutoField(db_column='idCurso', primary_key=True)  # Field name made lowercase.

@@ -1,7 +1,8 @@
 from django.db import models
-from contas.models import Aluno,Coordenador,Professor
+from contas.models.aluno import Aluno
+from contas.models.professor import Professor
+from contas.models.coordenador import Coordenador
 from curriculo.models import Disciplina,Disciplinaofertada, Curso
-
 
 
 class Solicitacaomatricula(models.Model):

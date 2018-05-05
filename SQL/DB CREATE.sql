@@ -168,6 +168,9 @@ idMensagem INT NOT NULL PRIMARY KEY identity (1,1)
 )
 
 go
+
+Create table section (
+
 -------------------------------------------------------------------------------
 
 ----------------------- INICIO AC6 ----------------

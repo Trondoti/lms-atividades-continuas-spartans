@@ -11,7 +11,7 @@ def login(request):
     }
     if request.POST:
         if autenticar(request):
-            pass
+            return redirect ('/')
         else:
             context["erro"] = "usuario ou senha inválidos"
             return render(request, "formLogin.html", context)

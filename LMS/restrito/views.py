@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Atividade, Professor
+from .models.atividade import Atividade
+from contas.models.professor import Professor
     
 def listarAtividades(request):
     contexto = {

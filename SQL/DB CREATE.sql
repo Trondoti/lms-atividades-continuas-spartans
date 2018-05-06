@@ -1,7 +1,7 @@
 CREATE DATABASE LMS
 GO
 
-USE lms
+USE LMS
 
 GO
 CREATE TABLE coordenador (
@@ -169,7 +169,6 @@ idMensagem INT NOT NULL PRIMARY KEY identity (1,1)
 
 go
 
-Create table section (
 
 -------------------------------------------------------------------------------
 
@@ -178,7 +177,16 @@ Create table section (
 /* --Cadastrem: 1 Coordenador, 10 Alunos, ---5 Professores ----- ( INSERT )-- */
 
 insert into coordenador(LOGON,Senha,Nome,Email,Celular)
-Values('GabrielCoordenador','impacta','Gabriel','gabrielcod@gmail.com','999999999')
+Values
+('Pablo','impacta','coordenador1','coordenador1@gmail.com','999999999'),
+('Luiz','impacta','coordenador2','coordenador2@gmail.com','99999998'),
+('Douglas','impacta','coordenador3','coordenador3@gmail.com','999999997'),
+('Guilherme','impacta','coordenador4','coordenador4@gmail.com','999999996'),
+('Matias','impacta','coordenador5','coordenador5@gmail.com','999999995'),
+('Silvio','impacta','coordenador6','coordenador6@gmail.com','999999994'),
+('Pablo Vitar','impacta','coordenador7','coordenador7@gmail.com','999999993'),
+('Thamy Gretchen','impacta','coordenador8','coordenador8@gmail.com','999999992'),
+('Sashe Grey','impacta','coordenador9','coordenador9@gmail.com','999999991')
 
 go
 insert into aluno(LOGON,Senha,Nome,Email,Celular,RA)
@@ -270,16 +278,46 @@ Values('Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 go
+
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+Values('BANCO DE DADOS','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+Values('DevOps','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+Values('LINGUAGEM PROGRAMACAO 1','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+Values('REDES','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+Values('IOT','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 ----------------------------------------------------------MATIAS--------------------------------------------------------------
 
 /* 	Ofertem a Disciplina �Linguagem SQL� em 2018, 1�semestre,
  turma B, para os cursos de SI e ADS. ( INSERT ) */
  
 insert into disciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
-values(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
+values
+(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
 'M�quina virtual com servidor Microsoft SQL Server 2014','Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova '),
 
-(01,'2018-02-10','2024-04-02',01,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+(02,'2018-02-10','2024-04-02',01,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
+
+(03,'2018-02-10','2024-04-02',02,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
+
+(04,'2018-02-10','2024-04-02',03,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
+
+(05,'2018-02-10','2024-04-02',04,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts')
 
 
@@ -310,24 +348,34 @@ go
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (05,01,'2018-04-03',01)
+values (01,01,'2018-04-03',01)
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (04,01,'2018-04-08',01)
+values (01,02,'2018-04-08',01)
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (03,01,'2018-03-05',01)
+values (01,03,'2018-03-05',01)
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (02,02,'2018-06-03',01)
+values (01,03,'2018-06-03',01)
 
 
 insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
 values (01,02,'2018-06-12',01)
 
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (07,02,'2018-05-22',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
+values (02,1,'2018-05-22',01,'Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
+values (02,2,'2018-05-22',01,'Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
+values (02,3,'2018-05-22',01,'Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
+values (02,4,'2018-05-22',01,'Aprovada')
+
+
+
+
 
 -----------------------------------------DOUGLAS------------------------------------------------------------
 go

@@ -15,3 +15,10 @@ class Aluno(Pessoa):
     def __str__(self):
 
         return self.nome
+
+    def retornaCargaHoraria(self):
+        for disciplina in self.__disciplinas:
+            cargahorariatotal += disciplina.getCargaHoraria()
+        return cargahorariatotal
+        
+    

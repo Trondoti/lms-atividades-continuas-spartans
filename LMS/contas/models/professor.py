@@ -12,8 +12,4 @@ class Professor(Pessoa):
     def __str__(self):
         return self.nome
     
-    def retornaCargaHoraria(self):
-        cargahorariatotal = 0
-        for disciplina in self.__disciplinas:
-            cargahorariatotal += disciplina.getCargaHoraria()
-        return cargahorariatotal
+

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models.professor import Professor
 from .models.aluno import Aluno
 from .models.coordenador import Coordenador
+from restrito.models.solicitacaoMatricula import Solicitacaomatricula
 import base64
 import hashlib
 
@@ -51,7 +52,9 @@ def deletarProfessor(request, idprofessor):
 
 def listarAlunos(request):
     alunos = Aluno.objects.all()
-    return render(request, 'listaAlunos.html', { 'alunos' : alunos })
+    a = Aluno()
+    cargaHoraria = a.retornaCargaHoraria(1)
+    return render(request, 'listaAlunos.html', { 'alunos' : alunos }, {'cargaHoraria': cargaHoraria })
 
 def inserirAluno(request):
     if request.method == 'POST':

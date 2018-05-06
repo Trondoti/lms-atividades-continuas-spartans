@@ -26,4 +26,4 @@ class Disciplinaofertada(models.Model):
         db_table = 'disciplinaOfertada'
 
     def __str__(self):
-        pass
+        return self.iddisciplina

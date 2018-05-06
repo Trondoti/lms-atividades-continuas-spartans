@@ -1,7 +1,6 @@
 from .pessoa import Pessoa
 from django.db import models
 
-
 class Aluno(Pessoa):
     idaluno = models.AutoField(db_column='idAluno', primary_key=True)  # Field name made lowercase.
     foto = models.CharField(max_length=11, blank=True, null=True)
@@ -15,10 +14,5 @@ class Aluno(Pessoa):
     def __str__(self):
 
         return self.nome
-
-    def retornaCargaHoraria(self):
-        for disciplina in self.__disciplinas:
-            cargahorariatotal += disciplina.getCargaHoraria()
-        return cargahorariatotal
-        
-    
+  
+   

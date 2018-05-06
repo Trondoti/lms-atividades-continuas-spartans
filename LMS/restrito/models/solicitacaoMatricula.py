@@ -1,8 +1,8 @@
 
 from django.db import models
-from contas.models.aluno import Aluno
 from contas.models.coordenador import Coordenador
-from curriculo.models import Disciplina,Disciplinaofertada, Curso
+from contas.models.aluno import Aluno
+from curriculo.models.disciplinaOfertada import Disciplinaofertada
 
 
 class Solicitacaomatricula(models.Model):
@@ -16,3 +16,8 @@ class Solicitacaomatricula(models.Model):
     class Meta:
         managed = False
         db_table = 'solicitacaoMatricula'
+    
+    def __str__(self):
+        return self.idsolicitacaomatricula
+
+    

@@ -16,3 +16,13 @@ class Aluno(Pessoa):
         return self.nome
   
    
+    def retornaCargaHoraria(self):
+        from restrito.models.solicitacaoMatricula import Solicitacaomatricula
+        aluno = Aluno.objects.get(idaluno=self.idaluno)
+        solicitacoes = Solicitacaomatricula.objects.filter(idaluno=self.idaluno)
+        cargaHoraria = 0
+        for i in solicitacoes:
+            cargaHoraria+= i.iddisciplinaofertada.iddisciplina.cargahoraria
+        return cargaHoraria
+            
+        

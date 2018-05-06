@@ -1,8 +1,7 @@
 from django.db import models
+from .atividadevinculada import Atividadevinculada
 from contas.models.aluno import Aluno
 from contas.models.professor import Professor
-from curriculo.models import Disciplina,Disciplinaofertada, Curso
-
 
 
 class Entrega(models.Model):
@@ -24,3 +23,4 @@ class Entrega(models.Model):
     
     def __str__(self):
         return self.titulo
+

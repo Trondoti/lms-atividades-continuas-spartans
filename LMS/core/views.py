@@ -9,7 +9,8 @@ def login(request):
     context = {
         "titulo":"entrar"
     }
-    if request.POST:
+
+    if request.method == 'POST':
         if autenticar(request):
             return redirect ('/')
         else:

@@ -1,7 +1,11 @@
 from django.db import models
+from .atividadevinculada import Atividadevinculada
 from contas.models.aluno import Aluno
 from contas.models.professor import Professor
+<<<<<<< HEAD
 from restrito.models.atividadeVinculada import Atividadevinculada
+=======
+>>>>>>> 21020715d79f9e6f3e66993d74cd2356df83d1f0
 
 
 class Entrega(models.Model):
@@ -24,6 +28,7 @@ class Entrega(models.Model):
     def __str__(self):
         return self.titulo
 
+<<<<<<< HEAD
     #métodos para o aluno ver as atividades enviadas, não enviadas e pendentes de envio
 
     def retornaAtividadesEnviadasAluno(disciplinaOfertada, idAluno):
@@ -83,3 +88,5 @@ class Entrega(models.Model):
         return atividadesEntregues
 
     
+=======
+>>>>>>> 21020715d79f9e6f3e66993d74cd2356df83d1f0

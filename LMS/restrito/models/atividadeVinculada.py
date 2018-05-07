@@ -1,10 +1,6 @@
 from django.db import models
-from contas.models.aluno import Aluno
 from contas.models.professor import Professor
-from contas.models.coordenador import Coordenador
-from curriculo.models.disciplina import Disciplina
 from curriculo.models.disciplinaOfertada import Disciplinaofertada
-from curriculo.models.curso import Curso
 from .atividade import Atividade
 
 class Atividadevinculada(models.Model):

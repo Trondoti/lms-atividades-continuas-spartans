@@ -52,9 +52,7 @@ def deletarProfessor(request, idprofessor):
 
 def listarAlunos(request):
     alunos = Aluno.objects.all()
-    a = Aluno()
-    cargaHoraria = a.retornaCargaHoraria(1)
-    return render(request, 'listaAlunos.html', { 'alunos' : alunos }, {'cargaHoraria': cargaHoraria })
+    return render(request, 'listaAlunos.html', { 'alunos' : alunos })
 
 def inserirAluno(request):
     if request.method == 'POST':
@@ -62,7 +60,7 @@ def inserirAluno(request):
         encoded = base64.b64encode(file.read())
         #senha = hashlib.sha224(request.POST.get("senha").encode('utf-8')).hexdigest()
         #print(senha);
-        Aluno.objects.create (
+        Aluno.objects.create(
             logon=request.POST.get("logon"),
             senha=request.POST.get("senha"),
             nome=request.POST.get("nome"),
@@ -78,7 +76,6 @@ def inserirAluno(request):
 def alterarAluno(request, idaluno):
     aluno = Aluno.objects.get(idaluno=idaluno)
     aluno.foto = aluno.foto[2:-1]
-
     if request.method == 'POST':
         file = request.FILES['foto']
         encoded = base64.b64encode(file.read())

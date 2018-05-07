@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models.atividade import Atividade
 from curriculo.models.disciplina import Disciplina
 from curriculo.models.disciplinaOfertada import Disciplinaofertada
-from .models.atividadevinculada import Atividadevinculada
+from .models.atividadeVinculada import Atividadevinculada
 from contas.models.professor import Professor
 from .models.entrega import Entrega
     

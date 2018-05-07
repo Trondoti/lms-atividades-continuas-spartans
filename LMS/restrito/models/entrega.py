@@ -1,5 +1,5 @@
 from django.db import models
-from .atividadevinculada import Atividadevinculada
+from .atividadeVinculada import Atividadevinculada
 from contas.models.aluno import Aluno
 from contas.models.professor import Professor
 

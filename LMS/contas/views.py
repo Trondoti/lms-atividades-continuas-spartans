@@ -69,7 +69,7 @@ def inserirAluno(request):
             foto=encoded
         )
 
-        return redirect('listarAlunos')
+        return redirect('listaralunos')
     else:
         return render(request, "formNovoAluno.html")
 
@@ -91,7 +91,7 @@ def alterarAluno(request, idaluno):
         aluno.save()
         return redirect('listaralunos')
     else:
-        return render(request, "formNovoAluno.html", { "aluno" : aluno })
+        return render(request, "formNovoAluno.html",  {"aluno":aluno})
 
 def deletarAluno(request, idaluno):
     aluno = Aluno.objects.get(idaluno=idaluno)

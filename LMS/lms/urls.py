@@ -14,29 +14,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from core import views
+from django.urls import path, include
+from django.conf.urls import url, include
+from core.views import templateBase, cursos, detalheCurso
+from core.views import detalheDisciplinaBd, detalheDisciplinaDevops, detalheDisciplinaTecweb
+from core.views import index, painelAdmin
 from core import urls
+from curriculo import urls as curriculo_urls
+from contas import urls as contas_urls
+from restrito import urls as restrito_urls
+from core import urls as core_urls
+
 
 urlpatterns = [
-    path(r'^login/$', views.login, name="login"),
-    path('', views.index, name=""),
-    path('base/', views.templateBase, name="base"),
-    path('novo-aluno/', views.novoAluno, name="novo-aluno"),
-    path('cursos/', views.cursos, name="cursos"),
-    path('detalhe-curso-ads/', views.detalheCursoADS, name="detalhe-curso-ads"),
-    path('detalhe-curso-bd/', views.detalheCursoBD, name="detalhe-curso-bd"),
-    path('detalhe-curso-jd/', views.detalheCursoJD, name="detalhe-curso-jd"),
-    path('detalhe-disciplina-tecweb/', views.detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
-    path('detalhe-disciplina-bd/', views.detalheDisciplinaBd, name="detalhe-disciplina-bd"),
-    path('detalhe-disciplina-devops/', views.detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
-    path('formulario-curso/', views.formularioCurso, name="formulario-curso"),
-    path('formulario-disciplina/', views.formularioDisciplina, name="formulario-disciplina"),
-    path('formulario-matricula/', views.formularioMatricula, name="formulario-matricula"),
-    path('index/', views.index, name="index"),
-    path('painel-admin/', views.painelAdmin, name='painel-admin'),
-    path('login/', views.login, name ='login'),
-    path('detalhes_disciplina/', views.detalheDisciplina, name ='Detalhe_Disciplina'),
-    path('detalhes_disciplina-Gest-Proj/', views.detalheDisciplinaGestProj, name ='Detalhe_Disciplina'),
-
+    path('', index, name=""),
+    path('base/', templateBase, name="base"),
+    path('cursos/', cursos, name="cursos"),
+    url(r'^detalheCurso/([a-z]+)$', detalheCurso, name="detalheCurso"),
+    path('detalhe-disciplina-tecweb/', detalheDisciplinaTecweb, name="detalhe-disciplina-tecweb"),
+    path('detalhe-disciplina-bd/', detalheDisciplinaBd, name="detalhe-disciplina-bd"),
+    path('detalhe-disciplina-devops/', detalheDisciplinaDevops, name="detalhe-disciplina-devops"),
+    path('index/', index, name="index"),
+    path('painel-admin/', painelAdmin, name='painel-admin'),
+    path('curriculo/', include(curriculo_urls)),
+    path('contas/', include(contas_urls)),
+    path('restrito/', include(restrito_urls)),
+    path('core/', include(core_urls)), 
+    
 ]

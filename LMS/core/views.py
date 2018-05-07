@@ -1,18 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from .backend import autenticar
 
 def index(request):
     return render(request, "index.html")
 
-
-# def index(request):
-    # return HttpResponse('Login')
-#    return HttpResponse(calculaMediaFinal(10, 5))
-
-
 def login(request):
-    return render(request, "login.html")
+    context = {
+        "titulo":"entrar"
+    }
+
+    if request.method == 'POST':
+        if autenticar(request):
+            return redirect ('/')
+        else:
+            context["erro"] = "usuario ou senha inválidos"
+            return render(request, "formLogin.html", context)
+    else:
+        return render(request, "formLogin.html", context)
 
 
 def templateBase(request):
@@ -23,19 +28,47 @@ def novoAluno(request):
     return render(request, "Formulario_Novo_Aluno.html")
 
 
-
 def cursos(request):
     context = {
-        'curso' : ["Analise e desenvolvimento","Ciência da computação", "Sistema de informação"],
-        'curso2': ["Banco de dados", "Jogos Digitais", "Redes de computadores"],
-        'urls': ["detalhe-curso-bd", "detalhe-curso-ads"]
-        
+        'cursosL1' : [
+            {
+                "nome": "Analise e desenvolvimento",
+                "url": "ads",
+                "img": "img/ads.png"
+            },
+            {
+                "nome": "Ciência da computação",
+                "url": "cc",
+                "img": "img/cc.png"
+            },
+            {
+                "nome": "Sistema de informação",
+                "url": "si",
+                "img": "img/si.png"
             }
+        ],
+        'cursosL2': [
+            {
+                "nome": "Banco de dados",
+                "url": "bd",
+                "img": "img/bd.png"
+            },
+            {
+                "nome": "Jogos Digitais",
+                "url": "jd",
+                "img": "img/jd.png"
+            },
+            {
+                "nome": "Redes de computadores",
+                "url": "rc",
+                "img": "img/rc.png"
+            }
+        ]
+    }
     return render(request, "cursos.html", context)
-    
 
-
-def detalheCursoADS(request):
+def detalheCurso(request, id=None):
+    print("ID", id)
     contextDetalheCursoADS = {
         "valorDetalheCurso1": "Entender as necessidades das empresas é fundamental para fazê-las crescer e gerar bons resultados. Desta maneira, um dos caminhos para alavancar os negócios e se destacar no mercado de trabalho é o da Tecnologia. Para isso, a Faculdade Impacta oferece a graduação em Análise e Desenvolvimento de Sistemas, que prepara você para atuar em todas as etapas de projetos de tecnologia da informação - concepção, gerência e manutenção, aplicação e mensuração de resultados.",
         "valorDetalheCurso2": "O curso é voltado para a criação de programas, softwares e sistemas para as empresas. As etapas do projeto de sistemas de software, como análise, projeto, teste, gestão, implantação e manutenção de sistemas de informação também estão entre os aprendizados da graduação.",
@@ -94,7 +127,6 @@ def detalheCursoADS(request):
         "valor53": "120 horas"
     }
     return render(request, "detalhe_curso.html", contextDetalheCursoADS)
-
 
 def detalheCursoBD(request):
     contextDetalheCursoBD = {
@@ -225,10 +257,9 @@ def detalheDisciplinaTecweb(request):
         'competencias': 'A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnoloógico',
         'bibliografia': 'Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia., ',
         'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado'
-        }
-    
-    return render(request, "detalhes_disciplina.html",contexto)
+    }
 
+    return render(request, "detalhes_disciplina.html",contexto)
 
 def detalheDisciplinaBd(request):
     contexto = {
@@ -237,7 +268,7 @@ def detalheDisciplinaBd(request):
         'competencias': 'A Impacta tem competência para ministrar esse curso, pois está bem posicionada no mercado entre as melhores do país. Possui professores preparados e uma grade curricular relevate para o atual momento tecnológico',
         'bibliografia': 'Fundada em 1988, a Faculdade Impacta é considerada uma das melhores instituições de tecnologia da América Latina devido ao seu intenso compromisso com a educação ao longo dos anos e à transformação da sociedade através da tecnologia.',
         'avaliacao': 'Nota Final = 60% MAC + 40% Prova ou Nota Final SE (Nota Final ≥ 6,0 e Frequência ≥ 75%) ENTÃO Aprovado Senão Reprovado'
-        }
+    }
     return render(request, "detalhes_disciplina.html",contexto)
 
 
@@ -256,7 +287,9 @@ def detalheDisciplinaDevops(request):
 
 
 def formularioCurso(request):
-    return render(request, "formulario_curso.html")
+    cursos = Curso.objects.all()
+    return render(request,"formulario_curso.html", {'cursos':cursos})
+
 
 
 def formularioDisciplina(request):
@@ -268,29 +301,29 @@ def formularioMatricula(request):
 
 
 def painelAdmin(request):
-    return render(request, "painel_admin.html")
+    return render(request, "painelAdmin.html")
 
-def detalheDisciplina(request):
-    return render(request, "detalhes_disciplina.html")
+def listarCurso(request):
+    cursos = Curso.objects.all()
+    return render(request, 'crudc.html', {'cursos': cursos})
 
-def detalheDisciplinaEngSoft(request):
-    contexto = {
-        'nome':'Tecnologia Web',
-        'objetivo': 'coco fedido',
-        'competencias': 'pablo gay',
-        'bibliografia': 'guilherme ama o baby',
-        'avaliacao': '>= 100'
-        }
-    
-    return render(request, "detalhes_disciplina.html",contexto)
+def inserirCurso(request):
+    context = {}
+    if request.method == 'POST':
+        Curso.objects.create (
+            nome=request.POST.get("curso")
+        )
+        return redirect('/curso/listar')
+    else:
+        return render(request, "formNovoCurso.html", context)
 
-def detalheDisciplinaGestProj(request):
-    contexto = {
-        'nome':'Gestão de Projetos',
-        'objetivo': 'aaa',
-        'competencias': 'bbb',
-        'bibliografia': 'ccc',
-        'avaliacao': '>= 100'
-        }
-    
-    return render(request, "detalhes_disciplina.html",contexto)
+def alterarCurso(request, idcurso):
+    cursos = Curso.objects.get(idcurso=idcurso)
+    context = {"cursos":cursos}
+    if request.method == 'POST':
+       curso = Curso.objects.get(idcurso=idcurso)
+       curso.nome = request.POST.get('curso')
+       curso.save()
+       return redirect('/curso/listar')
+    else:
+        return render(request, "formNovoCurso.html", {'cursos':cursos})

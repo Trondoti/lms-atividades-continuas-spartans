@@ -1,5 +1,6 @@
-{% extends "base.html" %}
+{% extends "baseforms.html" %}
 {% block content %}
+{% load %}
 
 		<main>
 			<div class="containers" id="novocurso">
@@ -99,7 +100,14 @@
                             <input type="submit" class="btn" value="SALVAR">
                         </div>
                     </fieldset>
-                </form>
+				</form>
+				<ul>
+					<li>
+						{% for i in cursos %}
+						pablo {{ i }}
+						{% endfor %}
+					</li>
+				</ul>
 			</div>
 		</main>
 {% endblock %}

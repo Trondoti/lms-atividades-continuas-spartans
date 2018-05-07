@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">LISTA DE ATIVIDADES</h1>
+                </div>
+                <div>
+                    <a href="{% url "inseriratividade" %}">INSERIR</a>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                          <td>atividade</td>
+                      </tr>
+                  </table>
+                  <ul>
+                      {% for atividade in atividades %}
+                      <li>
+                         {{ atividade.titulo }}
+                         <a href="{% url 'alteraratividade' atividade.idatividade %}">ALTERAR</a>
+                         <a href="{% url 'deletaratividade' atividade.idatividade %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                          
+                        </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

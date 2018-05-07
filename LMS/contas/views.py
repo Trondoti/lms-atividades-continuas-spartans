@@ -52,9 +52,7 @@ def deletarProfessor(request, idprofessor):
 
 def listarAlunos(request):
     alunos = Aluno.objects.all()
-    a = Aluno()
-    cargaHoraria = a.retornaCargaHoraria(1)
-    return render(request, 'listaAlunos.html', { 'alunos' : alunos }, {'cargaHoraria': cargaHoraria })
+    return render(request, 'listaAlunos.html', {'alunos':alunos})
 
 def inserirAluno(request):
     if request.method == 'POST':

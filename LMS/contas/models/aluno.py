@@ -14,9 +14,9 @@ class Aluno(Pessoa):
     def __str__(self):
 
         return self.nome
-  
-   
-    def retornaCargaHoraria(self):
+
+
+    def retornaCargaHoraria(self, idaluno):
         from restrito.models.solicitacaoMatricula import Solicitacaomatricula
         aluno = Aluno.objects.get(idaluno=self.idaluno)
         solicitacoes = Solicitacaomatricula.objects.filter(idaluno=self.idaluno)
@@ -24,5 +24,5 @@ class Aluno(Pessoa):
         for i in solicitacoes:
             cargaHoraria+= i.iddisciplinaofertada.iddisciplina.cargahoraria
         return cargaHoraria
-            
-        
+
+

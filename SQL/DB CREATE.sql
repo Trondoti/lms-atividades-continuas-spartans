@@ -142,7 +142,7 @@ idEntrega INT identity(1,1) PRIMARY KEY
 , [status] VARCHAR(20) DEFAULT('ENTREGUE') CHECK([status] = 'ENTREGUE' or [status] = 'CORRIGIDO')
 , idProfessor INT NOT NULL
 , nota DECIMAL(4,2) NULL
-, dtAvaliacao DATE NOT NULL
+, dtAvaliacao DATE NULL
 , obs VARCHAR(1000)
 , CONSTRAINT fkidAlunoEntrega FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkIdProfessorEntrega FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)

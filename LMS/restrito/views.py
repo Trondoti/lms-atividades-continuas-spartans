@@ -4,6 +4,7 @@ from curriculo.models.disciplina import Disciplina
 from curriculo.models.disciplinaOfertada import Disciplinaofertada
 from .models.atividadeVinculada import Atividadevinculada
 from contas.models.professor import Professor
+from contas.models.aluno import Aluno
 from .models.entrega import Entrega
     
 def listarAtividades(request):
@@ -132,49 +133,48 @@ def inserirEntrega(request):
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
+        'alunos': Aluno.objects.all(),
+        'atividadesvinculadas': Atividadevinculada.objects.all(),
         
     }
     if request.method == 'POST':
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
-        idatividade = Atividade.objects.get(idatividade=request.POST.get("atividade"))
-        iddisciplina = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("disciplina"))
-        Atividadevinculada.objects.create(
+        idatividade = Atividadevinculada.objects.get(idatividadevinculada=request.POST.get("atividadevinculada"))
+        idaluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
+        Entrega.objects.create(
+            idaluno=idaluno,
+            titulo=request.POST.get("titulo"),
+            resposta=request.POST.get("resposta"),
+            idatividadevinculada=idatividade,
             idprofessor=idprofessor,
-            idatividade=idatividade,
-            iddisciplinaofertada=iddisciplina,
-            rotulo=request.POST.get("rotulo"),
-            estado=request.POST.get("estado"),
-            dtiniciorespostas=request.POST.get("dtiniciorespostas"),
-            dtfimrespostas=request.POST.get("dtfimrespostas")
+           
         )
-        return redirect('listaratividadevinculada')
+        return redirect('listarentregas')
     else:
-        return render(request, "formNovaAtividadeVinculada.html", contexto)
+        return render(request, "formNovaEntrega.html", contexto)
 
-def alterarEntrega(request, idatividadevinculada):
+def alterarEntrega(request, identrega):
     if request.method == 'POST':
-        atividadevindulada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
-        idatividade = Atividade.objects.get(idatividade=request.POST.get("atividade"))
-        iddisciplina = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("disciplina"))
-        atividadevindulada.idprofessor = idprofessor,
-        atividadevindulada.idatividade = atividade,
-        atividadevindulada.iddisciplinaofertada = disciplina,
-        atividadevindulada.rotulo = request.POST.get("rotulo"),
-        atividadevindulada.estado = request.POST.get("estado"),
-        atividadevindulada.dtiniciorespostas = request.POST.get("dtiniciorespostas"),
-        atividadevindulada.dtfimrespostas = request.POST.get("dtfimrespostas")
-        atividadevindulada.save()
-        return redirect('listaratividadevinculada')
+        idatividade = Atividadevinculada.objects.get(idatividadevinculada=request.POST.get("atividadevinculada"))
+        idaluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
+        entrega = Entrega.objects.get(identrega=identrega)
+        entrega.idaluno=idaluno,
+        entrega.titulo=request.POST.get("titulo"),
+        entrega.resposta=request.POST.get("resposta"),
+        entrega.idatividadevinculada=idatividade,
+        entrega.idprofessor=idprofessor,
+        entrega.save()
+        return redirect('listarentregas')
     else:
         contexto ={
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
-        'atividadevinculada':Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-        
-    }
-        return render(request, "formNovaAtividadeVinculada.html", contexto)
+        'alunos': Aluno.objects.all(),
+        'atividadesvinculadas': Atividadevinculada.objects.all(),
+               }
+        return render(request, "formNovaEntrega.html", contexto)
 
 
 def deletarEntrega(request, idatividadevinculada):

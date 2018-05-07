@@ -4,22 +4,22 @@
 <body id="bodyLogin">
     	<main id="mainlogin">
         	<div id="arealogin">
-				<img src="{% static 'img/logo.png' %}" alt="logo da impacta" id="logoLogin" >
+				<img src="{% static "img/logo.png" %}" alt="logo da impacta" id="logoLogin" >
 				{% if erro %}
-				<p style='color:brown'>{{ erro }}</p>
+				<p style='color:red'>{{ erro }}</p>
 				{% else %}
 				{% endif %}
                 <form id="formLogin" method="POST" action="">
                     <fieldset>
 						<div class="containerInput">
 	                        <label>
-	                            <strong class="label">VIADO</strong>
+	                            <strong class="label">EMAIL</strong>
 	                            <input class="inputLogin" type="email" name="email">
 	                        </label>
 						</div>
 						<div class="containerInput">
 	                        <label>
-	                            <strong class="label">VIADO</strong>
+	                            <strong class="label">SENHA</strong>
 	                            <input class="inputLogin" type="password" name="senha">
 	                        </label>
 						</div>

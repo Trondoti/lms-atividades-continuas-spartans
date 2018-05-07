@@ -21,3 +21,19 @@ class Atividadevinculada(models.Model):
 
     def __str__(self):
         return self.rotulo
+
+    def atividadesVinculadaAvaliada(idAtividadeVinculada):
+        from restrito.models.entrega import Entrega
+        entregas = Entrega.objects.filter(idatividadevinculada = idAtividadeVinculada, status = "ENTREGUE")
+        alunos = []
+        for entrega in entregas:
+            alunos.append(entrega.idaluno)
+        return alunos
+
+    def atividadesVinculadaNaoAvaliada(idAtividadeVinculada):
+        from restrito.models.entrega import Entrega
+        entregas = Entrega.objects.filter(idatividadevinculada = idAtividadeVinculada, status = "CORRIGIDO")
+        alunos = []
+        for entrega in entregas:
+            alunos.append(entrega.idaluno)
+        return alunos

@@ -82,8 +82,8 @@ DATABASES = {
     'ENGINE': 'sql_server.pyodbc',
     'NAME': 'LMS',
     'USER': 'sa',
-    'PASSWORD': 'P@ssword1',
-    'HOST': 'ndd-not-pre813',
+    'PASSWORD': 'abc321',
+    'HOST': 'DESKTOP-9SF2B7V',
     'PORT': '',
 
     'OPTIONS': {

@@ -21,7 +21,7 @@ idAluno INT identity (1,1)  PRIMARY KEY
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
 , celular CHAR(9)  UNIQUE
-, foto VARCHAR (255) NULL
+, foto nvarchar NULL
 , dtExpiracao DATE DEFAULT GETDATE()
 , ra VARCHAR (20)
 )

@@ -11,3 +11,17 @@ class Professor(Pessoa):
 
     def __str__(self):
         return self.nome
+    
+
+    def retornaCargaHoraria(self,idprofessor):
+        professor = Professor.objects.get(idprofessor=idprofessor)
+        from curriculo.models.disciplinaOfertada import Disciplinaofertada
+        disciplinas = Disciplinaofertada.objects.all()
+        aulas = []
+        for i in disciplinas:
+            if i.idprofessor == professor:
+                aulas.append(i.iddisciplina)
+        cargaHoraria = 0
+        for i in aulas:
+            cargaHoraria+= i.cargahoraria
+        return cargaHoraria

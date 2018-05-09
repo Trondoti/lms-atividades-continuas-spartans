@@ -12,4 +12,7 @@ class Pessoa(models.Model):
     class Meta:
         abstract = True
 
+    def retornaCargaHoraria(self):
+        return "Metodo nao implementado"
+
 

@@ -18,6 +18,7 @@
                       {% for aluno in alunos %}
                       <li>
                          {{ aluno.nome }}
+                         {{ cargaHoraria}}
                          <a href="{% url 'alteraraluno' aluno.idaluno %}">ALTERAR</a>
                          <a href="{% url 'deletaraluno' aluno.idaluno %}">REMOVER</a>                      </li>
                       </li>

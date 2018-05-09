@@ -157,27 +157,29 @@ def alterarEntrega(request, identrega):
     if request.method == 'POST':
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
         idatividade = Atividadevinculada.objects.get(idatividadevinculada=request.POST.get("atividadevinculada"))
-        idaluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
+        aluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
         entrega = Entrega.objects.get(identrega=identrega)
-        entrega.idaluno=idaluno,
-        entrega.titulo=request.POST.get("titulo"),
-        entrega.resposta=request.POST.get("resposta"),
-        entrega.idatividadevinculada=idatividade,
-        entrega.idprofessor=idprofessor,
+        entrega.idaluno = aluno
+        entrega.titulo=request.POST.get("titulo")
+        entrega.resposta=request.POST.get("resposta")
+        entrega.idatividadevinculada=idatividade
+        entrega.idprofessor=idprofessor
         entrega.save()
         return redirect('listarentregas')
     else:
+        
         contexto ={
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
         'alunos': Aluno.objects.all(),
         'atividadesvinculadas': Atividadevinculada.objects.all(),
+        "entrega": Entrega.objects.get(identrega=identrega)
                }
         return render(request, "formNovaEntrega.html", contexto)
 
 
-def deletarEntrega(request, idatividadevinculada):
-    atividadevinculada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-    atividadevinculada.delete()
-    return redirect ('listaratividadevinculada')
+def deletarEntrega(request, identrega):
+    entrega = Entrega.objects.get(identrega=identrega)
+    entrega.delete()
+    return redirect ('listarentregas')

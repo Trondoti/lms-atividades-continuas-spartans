@@ -30,7 +30,7 @@ urlpatterns = [
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name = "alteraratividadevinculada"),
     path('listarentregas/', listarEntregas, name ='listarentregas'),
     path('inserirentrega/', inserirEntrega, name = 'inserirentrega'),
-    path('deletarentrega/<int:identrega>/', deletarAtividade, name = 'deletarentrega'),
+    path('deletarentrega/<int:identrega>/', deletarEntrega, name = 'deletarentrega'),
     path("alterarentrega/<int:identrega>/", alterarEntrega, name = "alterarentrega"),
     #path('admin/', admin.site.urls),
 ]

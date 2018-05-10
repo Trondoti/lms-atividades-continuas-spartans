@@ -396,10 +396,10 @@ go
  �Linguagem SQL�, ano 2018, 1�semestre, turma B, curso SI. ( INSERT ) */
 
 insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Constru��o de formul�rios com HTML5','Construir um formul�rio que tenha campos login e senha','Verificar os slides da aula anterior',01)
+values('ATIVIDADE TIPO 1','Construir um formul�rio que tenha campos login e senha','Verificar os slides da aula anterior',01)
 
 insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Layout do formul�rio','Construir o CSS3 do formul�rio de Login','Verificar os slides da aula anterior',01)
+values('ATIVIDADE TIPO 2','Construir o CSS3 do formul�rio de Login','Verificar os slides da aula anterior',01)
 
 go
 

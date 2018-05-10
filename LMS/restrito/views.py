@@ -65,27 +65,27 @@ def listarAtividadeVinculada(request):
     return render(request, 'listaAtividadesVinculadas.html', contexto)
 
 
-def inserirAtividadeVinculada(request):
+def inserirAtividadeVinculada(request, idatividade):
     contexto ={
         'professores':Professor.objects.all(),
-        'atividades': Atividade.objects.all(),
+        'atividade': Atividade.objects.get(idatividade=idatividade),
         'disciplinas': Disciplina.objects.all(),
         
     }
     if request.method == 'POST':
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
-        idatividade = Atividade.objects.get(idatividade=request.POST.get("atividade"))
+        atividade = Atividade.objects.get(idatividade=idatividade)
         iddisciplina = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("disciplina"))
         Atividadevinculada.objects.create(
             idprofessor=idprofessor,
-            idatividade=idatividade,
+            idatividade=atividade,
             iddisciplinaofertada=iddisciplina,
             rotulo=request.POST.get("rotulo"),
             estado=request.POST.get("estado"),
             dtiniciorespostas=request.POST.get("dtiniciorespostas"),
             dtfimrespostas=request.POST.get("dtfimrespostas")
         )
-        return redirect('listaratividadevinculada')
+        return redirect('listaratividades')
     else:
         return render(request, "formNovaAtividadeVinculada.html", contexto)
 
@@ -103,7 +103,7 @@ def alterarAtividadeVinculada(request, idatividadevinculada):
         atividadevindulada.dtiniciorespostas = request.POST.get("dtiniciorespostas"),
         atividadevindulada.dtfimrespostas = request.POST.get("dtfimrespostas")
         atividadevindulada.save()
-        return redirect('listaratividadevinculada')
+        return redirect('listaratividadesvinculadas')
     else:
         contexto ={
         'professores':Professor.objects.all(),
@@ -118,7 +118,7 @@ def alterarAtividadeVinculada(request, idatividadevinculada):
 def deletarAtividadeVinculada(request, idatividadevinculada):
     atividadevinculada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
     atividadevinculada.delete()
-    return redirect ('listaratividadevinculada')
+    return redirect ('listaratividadesvinculadas')
 
 
 def listarEntregas(request):

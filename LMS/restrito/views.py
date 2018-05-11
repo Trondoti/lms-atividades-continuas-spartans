@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from .models.atividade import Atividade
 from curriculo.models.disciplina import Disciplina
 from curriculo.models.disciplinaOfertada import Disciplinaofertada
-from .models.atividadevinculada import Atividadevinculada
+from .models.atividadeVinculada import Atividadevinculada
 from contas.models.professor import Professor
 from .models.entrega import Entrega
-    
+
 def listarAtividades(request):
     contexto = {
         "atividades":Atividade.objects.all()
@@ -56,7 +56,7 @@ def deletarAtividade(request, idatividade):
     return redirect ('listaratividades')
 
 
-   
+
 def listarAtividadeVinculada(request):
     contexto = {
         "atividades":Atividadevinculada.objects.all()
@@ -69,7 +69,7 @@ def inserirAtividadeVinculada(request):
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
-        
+
     }
     if request.method == 'POST':
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
@@ -109,7 +109,7 @@ def alterarAtividadeVinculada(request, idatividadevinculada):
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
         'atividadevinculada':Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-        
+
     }
         return render(request, "formNovaAtividadeVinculada.html", contexto)
 
@@ -132,7 +132,7 @@ def inserirEntrega(request):
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
-        
+
     }
     if request.method == 'POST':
         idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
@@ -172,7 +172,7 @@ def alterarEntrega(request, idatividadevinculada):
         'atividades': Atividade.objects.all(),
         'disciplinas': Disciplina.objects.all(),
         'atividadevinculada':Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-        
+
     }
         return render(request, "formNovaAtividadeVinculada.html", contexto)
 

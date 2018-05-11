@@ -5,7 +5,7 @@ USE LMS
 
 GO
 CREATE TABLE coordenador (
-idCoordenador int primary key identity (1,1) 
+idCoordenador int primary key identity (1,1)
 , logon VARCHAR (20) UNIQUE
 , senha VARCHAR (20) NOT NULL
 , nome VARCHAR(30) NOT NULL
@@ -167,7 +167,19 @@ idMensagem INT NOT NULL PRIMARY KEY identity (1,1)
 , CONSTRAINT fkidProfessorMensagem FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 )
 
-go
+GO
+CREATE TABLE sessao (
+id VARCHAR(32) PRIMARY KEY
+, idAluno INT NULL
+, idProfessor INT NULL
+, idCoordenador INT NULL
+, CONSTRAINT fkidAlunoSessao FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
+, CONSTRAINT fkidProfessorSessao FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
+, CONSTRAINT fkIdCoordenadorSessao FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
+)
+
+GO
+
 
 
 -------------------------------------------------------------------------------
@@ -231,8 +243,8 @@ insert into professor (logon,senha,nome,email,celular,dtExpiracao,apelido) value
 go
 
 ------------------------------GUILHERME-------------------------------------------------
-/*�	Cadastrem todos os cursos existentes nesta universidade, se quiserem, 
-podem utilizar os nomes reduzidos dos mesmos, ADS, SI, etc. ( INSERTT ) */ 
+/*�	Cadastrem todos os cursos existentes nesta universidade, se quiserem,
+podem utilizar os nomes reduzidos dos mesmos, ADS, SI, etc. ( INSERTT ) */
 go
 
 insert into Curso(Nome)
@@ -268,7 +280,7 @@ go
 /*	Criem 2 Disciplinas ( planos de ensino ) � Linguagem SQL e Tec Web
 ( utilizem dados reais para preencher a tabela,
  vejam os planos de ensino apresentados ( INSERT ) */
- 
+
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
 Values('Linguagem SQL', 'Aberto', 'Conceitos basicos, Linguagem SQL, Manipula��o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
 'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25,01)
@@ -302,7 +314,7 @@ Values('IOT','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado
 
 /* 	Ofertem a Disciplina �Linguagem SQL� em 2018, 1�semestre,
  turma B, para os cursos de SI e ADS. ( INSERT ) */
- 
+
 insert into disciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
 values
 (01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
@@ -333,7 +345,7 @@ go
 
 ----------------------------------- MATIAS-----------------------------------------------------------------------------------------
 go
-/* Atribuam datas de inicio e fim de matricula �s disciplinas 
+/* Atribuam datas de inicio e fim de matricula �s disciplinas
 ofertadas ( utilizem o UPDATE alterar uma disciplina ofertada j� criada ). (UPDATE ) */
 
 	update disciplinaOfertada set dtInicioMatricula = '2019-02-02' where idDisciplinaOfertada = '01'
@@ -344,7 +356,7 @@ ofertadas ( utilizem o UPDATE alterar uma disciplina ofertada j� criada ). (UP
 
 -----------------------------------------DOUGLAS------------------------------------------------------------
 go
-/* 	Preencham a solicita��o de matricula de pelo menos 3 alunos 
+/* 	Preencham a solicita��o de matricula de pelo menos 3 alunos
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
@@ -379,7 +391,7 @@ values (02,4,'2018-05-22',01,'Aprovada')
 
 -----------------------------------------DOUGLAS------------------------------------------------------------
 go
-/*	Atualize as solicita��es de matricula, 
+/*	Atualize as solicita��es de matricula,
 atribuindo status diversos �s mesmas, aprovando algumas, rejeitando outras ( UPDATE ) */
 update solicitacaoMatricula set [Status] = 'Aprovada' where idSolicitacaoMatricula = 02
 
@@ -410,8 +422,8 @@ go
 
 /* Realizem 2 entregas destes trabalhos vinculados, realizados por qualquer aluno. ( INSERT). */
 
-insert into entrega (idAluno,titulo,resposta,idAtividadeVinculada,idProfessor,dtAvaliacao,obs) 
-values 
+insert into entrega (idAluno,titulo,resposta,idAtividadeVinculada,idProfessor,dtAvaliacao,obs)
+values
 (1,'Atividade 1', 'segue minha resposta 1', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
 (2,'Atividade 1', 'segue minha resposta 2', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia')
 
@@ -419,7 +431,7 @@ values
 go
 -------------------------PABLO ----------------------
 
-/* Atualizem uma destas entregas, atribuindo uma nota pelo professor vigente 
+/* Atualizem uma destas entregas, atribuindo uma nota pelo professor vigente
 daquela disciplina ofertada. ( UPDATE ). */
 
 update entrega set nota ='10' where idEntrega ='1'

@@ -6,19 +6,25 @@ def index(request):
     return render(request, "index.html")
 
 def login(request):
-    context = {
-        "titulo":"entrar"
-    }
+    context = {}
 
     if request.method == 'POST':
         if autenticar(request):
-            return redirect ('/')
+            retorno = redirect ('/')
+            retorno.set_cookie("SPARTANSSESSION", request.sessao.id)
+            return retorno
         else:
             context["erro"] = "usuario ou senha inválidos"
             return render(request, "formLogin.html", context)
     else:
         return render(request, "formLogin.html", context)
 
+def logout(request):
+    sessao = request.sessao
+    retorno = redirect("/")
+    retorno.delete_cookie("SPARTANSSESSION")
+    sessao.delete()
+    return retorno
 
 def templateBase(request):
     return render(request, "base.html")

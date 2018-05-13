@@ -9,11 +9,11 @@ def autenticar(request):
     email = request.POST.get("email")
     senha = request.POST.get("senha")
     l = LoginHelper()
-    usuario = l.montarLogin(email)
+    usuario = l.montarUsuario(email)
 
-    if usuario.statusCode == 200:
+    if usuario.statuscode == 200:
         if usuario.senha == senha:
-            l.salvarSessao(usuario)
+            request.sessao = l.salvarSessao(usuario)
             return True
         else:
             return False

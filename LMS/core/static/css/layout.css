@@ -355,7 +355,7 @@ header img {
     font-size: 20px;
 }
 .label{
-    width: 6em;
+    width: 10em;
     display: inline-block;
 }
 #bodyLogin {
@@ -437,12 +437,6 @@ select option {
 
 #formularioCurso fieldset {
     border: none;
-}
-
-#novocurso {
-    background-image: url("../img/stars-bg2.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 }
 
 #novocurso.containers {

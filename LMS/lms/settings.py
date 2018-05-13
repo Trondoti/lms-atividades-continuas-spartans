@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'contas.middleware.SpartansMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,7 +84,7 @@ DATABASES = {
     'NAME': 'LMS',
     'USER': 'sa',
     'PASSWORD': 'P@ssword1',
-    'HOST': 'NDD-NOT-PRE813',
+    'HOST': 'DESKTOP-296MP4O\SQLEXPRESS',
     'PORT': '',
 
     'OPTIONS': {

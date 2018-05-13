@@ -1,25 +1,29 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load %}
+	<body id="bodyLogin">
 		<main>
 			<div class="containers" id="novocurso">
 				<form id="formularioCurso" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
                     {% if cursos.idcurso %}
-                    <h1>ALTERAR CURSO</h1>
+                    	<h1>ALTERAR CURSO</h1>
                     {% else %}
-                    <h1>ADICIONAR NOVO CURSO</h1>
-                    {% endif %}                    
-				    <fieldset>
-                        <label> Nome do curso
-                                <input type ='text' name ='curso' value = "{{ cursos.nome }}">
+	                    <h1>ADICIONAR NOVO CURSO</h1>
+                    {% endif %}
+
+					<div class="containerInput">
+                        <label>
+                            <strong class="label">NOME DO CURSO</strong>
+                            <input class="inputLogin" type="text" name="curso" value="{{cursos.nome}}">
                         </label>
-	                   
-                        <div id="divSubmitCurso">
-                            <input type="submit" class="btn" value="SALVAR">
-                    </fieldset>
+					</div>
+				    <div id="divSubmit">
+                        <input type="submit" class="btn">
+                    </div>
                 </form>
             </div>
-                
+
 			</div>
 		</main>
+	</body>
 {% endblock %}

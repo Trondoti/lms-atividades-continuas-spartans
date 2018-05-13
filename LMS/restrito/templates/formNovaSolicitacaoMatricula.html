@@ -1,0 +1,65 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+<main>
+    <div class="containers" id="novoaluno">
+        <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
+            {% if solicitacao.idsolicitacaomatricula %}
+            <h1>ALTERAR SOLICITACAO DE MATRICULA</h1>
+            {% else %}
+            <h1>ADICIONAR NOVA SOLICITACAO DE MATRICULA</h1>
+            {% endif %}
+            
+
+            <fieldset>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    Aluno: <select name = 'idAluno'>
+                        <option >SELECIONE</option>
+                        {% for aluno in alunos  %}
+                        <option value = '{{aluno.idaluno}}'>{{aluno.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    Disciplina Ofertada: <select name = 'idDisciplinaOfertada'>
+                        <option >SELECIONE</option>
+                        {% for do in disciplinaofertadas  %}
+                        <option value = '{{do.iddisciplinaofertada}}'>{{do.iddisciplina.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">DATA DA SOLICITACAO</strong>
+                        <input class="inputForm" type="date" name="dtSolicitacao" maxlength="30" value = '{{solicitacao.dtsolicitacao}}' required="required">
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    Coordenador: <select name = 'idCoordenador'>
+                        <option >SELECIONE</option>
+                        {% for coordenador in coordenadores  %}
+                        <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">STATUS</strong>
+                        <input class="inputForm" type="text" name="status" maxlength="" value = '{{solicitacao.status}}' required="required" value = "">
+                    </label>
+                </div>
+                <div id="divSubmitAluno">
+                    <input type="submit" class="btn" value="SALVAR">
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+</main>
+{% endblock %}

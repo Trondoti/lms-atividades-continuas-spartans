@@ -19,18 +19,25 @@ from django.conf.urls import url, include
 from restrito.views import listarAtividades, inserirAtividade, alterarAtividade, deletarAtividade
 from restrito.views import listarAtividadeVinculada, inserirAtividadeVinculada, alterarAtividadeVinculada, deletarAtividadeVinculada
 from restrito.views import listarEntregas, inserirEntrega, alterarEntrega, deletarEntrega
+from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao
+
 urlpatterns = [
     path('listaratividades/', listarAtividades, name ='listaratividades'),
     path('inseriratividade/', inserirAtividade, name = 'inseriratividade'),
     path('deletaratividade/<int:idatividade>/', deletarAtividade, name = 'deletaratividade'),
     path("alteraratividade/<int:idatividade>/", alterarAtividade, name = "alteraratividade"),
-    path('listaratividadesvinculadas/',listarAtividadeVinculada, name ='listaratividadesvinculadas'),
-    path('inseriratividadevinculada/<int:idatividade>/', inserirAtividadeVinculada, name = 'inseriratividadevinculada'),
+    path('listaratividadevinculada/',listarAtividadeVinculada, name ='listaratividadevinculada'),
+    path('inseriratividadevinculada/', inserirAtividadeVinculada, name = 'inseriratividadevinculada'),
     path('deletaratividadevinculada/<int:idatividadevinculada>/', deletarAtividadeVinculada, name = 'deletaratividadevinculada'),
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name = "alteraratividadevinculada"),
     path('listarentregas/', listarEntregas, name ='listarentregas'),
     path('inserirentrega/', inserirEntrega, name = 'inserirentrega'),
     path('deletarentrega/<int:identrega>/', deletarEntrega, name = 'deletarentrega'),
     path("alterarentrega/<int:identrega>/", alterarEntrega, name = "alterarentrega"),
+    path('listarsolicitacao/', listarSolicitacaoMatricula, name ='listarsolicitacao'),
+    path('inserirsolicitacao/', inserirSolicitacaoMatricula, name = 'inserirsolicitacao'),
+    path("alterarsolicitacao/<int:idsolicitacaomatricula>/", alterarSolicitacao, name = "alterarsolicitacao"),
+    path("deletarsolicitacao/<int:idsolicitacaomatricula>/", deletarSolicitacao, name = "deletarsolicitacao"),
+    
     #path('admin/', admin.site.urls),
 ]

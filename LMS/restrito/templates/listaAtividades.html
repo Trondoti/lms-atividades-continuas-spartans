@@ -20,6 +20,7 @@
                          {{ atividade.titulo }}
                          <a href="{% url 'alteraratividade' atividade.idatividade %}">ALTERAR</a>
                          <a href="{% url 'deletaratividade' atividade.idatividade %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                          
+                         <a href="{% url 'inseriratividadevinculada' atividade.idatividade %}">VINCULAR</a>
                         </li>
                     {% endfor %}
                   </ul>

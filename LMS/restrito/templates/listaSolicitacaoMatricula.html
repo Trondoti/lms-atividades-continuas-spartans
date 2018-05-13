@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">LISTA DE SOLICITACAO MATRICULA</h1>
+                </div>
+                <div>
+                    <a href="{% url "inserirsolicitacao" %}">INSERIR</a>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                          <td>SOLICITACAO DE MATRICULA</td>
+                      </tr>
+                  </table>
+                  <ul>
+                      {% for solicitacao in solicitacoes %}
+                      <li>
+                         {{ solicitacao.idaluno.nome }}
+                         <a href="{% url "alterarsolicitacao" solicitacao.idsolicitacaomatricula %}">ALTERAR</a>
+                         <a href="{% url "deletarsolicitacao" solicitacao.idsolicitacaomatricula %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>  
+                                                                
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

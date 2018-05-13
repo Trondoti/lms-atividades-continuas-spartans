@@ -5,6 +5,8 @@ from curriculo.models.disciplinaOfertada import Disciplinaofertada
 from .models.atividadeVinculada import Atividadevinculada
 from contas.models.professor import Professor
 from contas.models.aluno import Aluno
+from contas.models.coordenador import Coordenador
+from restrito.models.solicitacaoMatricula import Solicitacaomatricula
 from .models.entrega import Entrega
 
 def listarAtividades(request):
@@ -181,3 +183,55 @@ def deletarEntrega(request, idatividadevinculada):
     atividadevinculada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
     atividadevinculada.delete()
     return redirect ('listaratividadevinculada')
+
+def listarSolicitacaoMatricula(request):
+    contexto = {
+        "solicitacoes":Solicitacaomatricula.objects.all()
+    }
+    return render(request, 'listaSolicitacaoMatricula.html', contexto)
+
+def inserirSolicitacaoMatricula(request):
+    context = {
+        'alunos':Aluno.objects.all(),
+        'disciplinaofertadas': Disciplinaofertada.objects.all(),
+        'coordenadores': Coordenador.objects.all(),
+
+    }
+    if request.method == 'POST':
+        Solicitacaomatricula.objects.create (
+        idaluno = Aluno.objects.get(idaluno=request.POST.get("idAluno")),
+        iddisciplinaofertada = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("idDisciplinaOfertada")),
+        dtsolicitacao = request.POST.get('dtSolicitacao'),
+        idcoordenador = Coordenador.objects.get(idcoordenador=request.POST.get("idCoordenador")),
+        status = request.POST.get('status'),
+        )
+        return redirect('listarsolicitacao')
+    else:
+        return render(request, 'formNovaSolicitacaoMatricula.html', context)
+
+def alterarSolicitacao(request,idsolicitacaomatricula):
+    if request.method == 'POST':
+        solicitacaomatricula = Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)
+        aluno = Aluno.objects.get(idaluno=request.POST.get("idAluno"))
+        disciplinaofertada = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("idDisciplinaOfertada"))
+        coordenador = Coordenador.objects.get(idcoordenador=request.POST.get("idCoordenador"))
+        solicitacaomatricula.idaluno = aluno
+        solicitacaomatricula.iddisciplinaofertada = disciplinaofertada
+        solicitacaomatricula.status = request.POST.get('status')
+        solicitacaomatricula.dtsolicitacao = request.POST.get('dtSolicitacao')
+        solicitacaomatricula.idcoordenador = coordenador
+        solicitacaomatricula.save()
+        return redirect('listarsolicitacao')
+    else:
+        contexto ={
+        'alunos':Aluno.objects.all(),
+        'coordenadores': Coordenador.objects.all(),
+        'disciplinaofertadas': Disciplinaofertada.objects.all(),
+        'solicitacao' : Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula),
+               }
+        return render(request, "formNovaSolicitacaoMatricula.html", contexto)
+
+def deletarSolicitacao(request, idsolicitacaomatricula):
+    solicitacaomatricula = Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)
+    solicitacaomatricula.delete()
+    return redirect ('listarsolicitacao')

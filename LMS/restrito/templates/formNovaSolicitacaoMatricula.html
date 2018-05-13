@@ -1,0 +1,92 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+<main>
+    <div class="containers" id="novoaluno">
+        <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
+            {% if solicitacao.idsolicitacaomatricula %}
+            <h1>ALTERAR SOLICITACAO DE MATRICULA</h1>
+            {% else %}
+            <h1>ADICIONAR NOVA SOLICITACAO DE MATRICULA</h1>
+            {% endif %}
+            
+            <fieldset>
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    ALUNO: <select name = 'idAluno'>
+                        {% if solicitacao.idaluno  %}
+                        <option >{{solicitacao.idaluno.nome}}</option>
+                        {% else %}
+                        <option>SELECIONE</option>
+                        {% for aluno in alunos  %}
+                        <option value = '{{aluno.idaluno}}'>{{aluno.nome}}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                    </label>
+                </div>
+
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    DISCIPLIA OFERTADA: <select name = 'idDisciplinaOfertada'>
+                        {% if solicitacao.iddisciplinaofertada %}
+                        <option>{{solicitacao.iddisciplinaofertada.iddisciplina.nome}}</option>
+                        {% else %}
+                        {% endif %}
+                        <option>SELECIONE</option>
+                        {% for do in disciplinaofertadas  %}
+                        <option value = '{{do.iddisciplinaofertada}}'>{{do.iddisciplina.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                        <strong class="strongLabelForm">DATA DA SOLICITACAO</strong>
+                        <input class="inputForm" type="date" name="dtSolicitacao" maxlength="30" value = '{{solicitacao.dtsolicitacao}}' required="required">
+                    </label>
+                </div>
+
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    COORDENADOR: <select name = 'idCoordenador'>
+                        {% if solicitacao.idcoordenador %}
+                        <option >{{solicitacao.idcoordenador.nome}}</option>
+                        {% else %}
+                        {% endif %}
+                        <option>SELECIONE</option>
+                        {% for coordenador in coordenadores  %}
+                        <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+
+                <div class="containerInputForm">
+                    <label class="labelForm">
+                    STATUS: <select name = 'status'>
+                        {% if solicitacao.status %}
+                        <option >{{solicitacao.status}}</option>
+                        <option> SOLICITADA</option>
+                        <option> APROVADA</option>
+                        <option> REJEITADA</option>
+                        <option> CANCELADA</option>
+                        {% else %}
+                        <option> SOLICITADA</option>
+                        <option> APROVADA</option>
+                        <option> REJEITADA</option>
+                        <option> CANCELADA</option>
+                        {% endif %}
+                    </select>
+                    </label>
+                </div>         
+                <div id="divSubmitAluno">
+                    <input type="submit" class="btn" value="SALVAR">
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+</main>
+{% endblock %}

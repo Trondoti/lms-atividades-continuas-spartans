@@ -10,50 +10,77 @@
             <h1>ADICIONAR NOVA SOLICITACAO DE MATRICULA</h1>
             {% endif %}
             
-
             <fieldset>
                 <div class="containerInputForm">
                     <label class="labelForm">
-                    Aluno: <select name = 'idAluno'>
-                        <option >SELECIONE</option>
+                    ALUNO: <select name = 'idAluno'>
+                        {% if solicitacao.idaluno  %}
+                        <option >{{solicitacao.idaluno.nome}}</option>
+                        {% else %}
+                        <option>SELECIONE</option>
                         {% for aluno in alunos  %}
                         <option value = '{{aluno.idaluno}}'>{{aluno.nome}}</option>
                         {% endfor %}
+                        {% endif %}
                     </select>
                     </label>
                 </div>
+
                 <div class="containerInputForm">
                     <label class="labelForm">
-                    Disciplina Ofertada: <select name = 'idDisciplinaOfertada'>
-                        <option >SELECIONE</option>
+                    DISCIPLIA OFERTADA: <select name = 'idDisciplinaOfertada'>
+                        {% if solicitacao.iddisciplinaofertada %}
+                        <option>{{solicitacao.iddisciplinaofertada.iddisciplina.nome}}</option>
+                        {% else %}
+                        {% endif %}
+                        <option>SELECIONE</option>
                         {% for do in disciplinaofertadas  %}
                         <option value = '{{do.iddisciplinaofertada}}'>{{do.iddisciplina.nome}}</option>
                         {% endfor %}
                     </select>
                     </label>
                 </div>
+
                 <div class="containerInputForm">
                     <label class="labelForm">
                         <strong class="strongLabelForm">DATA DA SOLICITACAO</strong>
                         <input class="inputForm" type="date" name="dtSolicitacao" maxlength="30" value = '{{solicitacao.dtsolicitacao}}' required="required">
                     </label>
                 </div>
+
                 <div class="containerInputForm">
                     <label class="labelForm">
-                    Coordenador: <select name = 'idCoordenador'>
-                        <option >SELECIONE</option>
+                    COORDENADOR: <select name = 'idCoordenador'>
+                        {% if solicitacao.idcoordenador %}
+                        <option >{{solicitacao.idcoordenador.nome}}</option>
+                        {% else %}
+                        {% endif %}
+                        <option>SELECIONE</option>
                         {% for coordenador in coordenadores  %}
                         <option value = '{{coordenador.idcoordenador}}'>{{coordenador.nome}}</option>
                         {% endfor %}
                     </select>
                     </label>
                 </div>
+
                 <div class="containerInputForm">
                     <label class="labelForm">
-                        <strong class="strongLabelForm">STATUS</strong>
-                        <input class="inputForm" type="text" name="status" maxlength="" value = '{{solicitacao.status}}' required="required" value = "">
+                    STATUS: <select name = 'status'>
+                        {% if solicitacao.status %}
+                        <option >{{solicitacao.status}}</option>
+                        <option> SOLICITADA</option>
+                        <option> APROVADA</option>
+                        <option> REJEITADA</option>
+                        <option> CANCELADA</option>
+                        {% else %}
+                        <option> SOLICITADA</option>
+                        <option> APROVADA</option>
+                        <option> REJEITADA</option>
+                        <option> CANCELADA</option>
+                        {% endif %}
+                    </select>
                     </label>
-                </div>
+                </div>         
                 <div id="divSubmitAluno">
                     <input type="submit" class="btn" value="SALVAR">
                 </div>

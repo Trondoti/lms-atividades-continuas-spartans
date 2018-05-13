@@ -35,8 +35,8 @@
                             <label class="labelForm">
                                 DISCIPLINA: <select name = 'disciplina'>
                                 <option >SELECIONE</option>
-                                {% for disciplina in disciplinas %}
-                                <option value ='{{disciplina.iddisciplina}}'>{{ disciplina.nome }} </option>
+                                {% for do in disciplinasofertadas %}
+                                <option value ='{{do.iddisciplina.iddisciplina}}'>{{ do.iddisciplina.nome }} EM {{do.idcurso.nome}} </option>
                                 {% endfor %}
                             </label></br>
                         </select>                               
@@ -49,9 +49,15 @@
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">
-                                <strong class="strongLabelForm">ESTADO</strong>
-                                <input class="inputForm" type="text" name="estado" value = "{{ atividadevinculada.estado }}">
-                            </label>
+                                STATUS: <select name = 'estado'>
+                                <option >SELECIONE</option>
+                                <option value ='Disponibilizada'{% if di>Disponibilizada</option>
+                                <option value ='Aberta'>Aberta</option>
+                                <option value ='Fechada'>Fechada</option>
+                                <option value ='Encerrada'>Encerrada</option>
+                                <option value ='Prorrogada'>Prorrogada</option>
+                            </label></br>
+                        </select>                               
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">

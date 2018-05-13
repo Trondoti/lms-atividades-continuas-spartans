@@ -15,7 +15,7 @@
                     <label class="labelForm">
                     ALUNO: <select name = 'idAluno'>
                         {% if solicitacao.idaluno  %}
-                        <option >{{solicitacao.idaluno.nome}}</option>
+                        <option value = "{{ solicitacao.idaluno }}">{{solicitacao.idaluno.nome}}</option>
                         {% else %}
                         <option>SELECIONE</option>
                         {% for aluno in alunos  %}

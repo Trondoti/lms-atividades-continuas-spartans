@@ -82,8 +82,8 @@ DATABASES = {
     'ENGINE': 'sql_server.pyodbc',
     'NAME': 'LMS',
     'USER': 'sa',
-    'PASSWORD': 'abc321',
-    'HOST': 'DESKTOP-9SF2B7V',
+    'PASSWORD': 'P@ssword1',
+    'HOST': 'PABLOFE-PC\SQLEXPRESS',
     'PORT': '',
 
     'OPTIONS': {

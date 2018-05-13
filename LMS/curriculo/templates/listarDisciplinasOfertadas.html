@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">LISTA DE  DISCIPLINAS OFERTADAS</h1>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                        <td>DISCIPLINAS OFERTADAS</td>
+                    </tr>
+                  </table>
+                  <ul>
+                      {% for do in disciplinasofertadas %}
+                      <li>
+                         {{ do.iddisciplina.nome }}
+                        <a href="{% url 'alterardisciplinaofertada' do.iddisciplinaofertada %}">ALTERAR</a>
+                        <a href="{% url 'deletardisciplinaofertada' do.iddisciplinaofertada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                     
+                    </li>
+                     
+                      {% endfor %}
+                  </ul>
+                </div>
+
+            </div>
+        </main>
+{% endblock %}

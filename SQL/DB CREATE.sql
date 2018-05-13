@@ -65,10 +65,11 @@ GO
 CREATE TABLE curso (
 idCurso INT identity (1,1) PRIMARY KEY
 , nome varchar(30) UNIQUE NOT NULL
+,idCoordenador int null
+constraint fkIdCoordenadorCurso references coordenador (idCoordenador)
 )
 CREATE TABLE disciplinaOfertada (
 idDisciplinaOfertada INT identity (1,1) PRIMARY KEY
-,idCoordenador INT NOT NULL
 , dtInicioMatricula DATE NULL
 , dtFimMatricula DATE NULL
 , IdDisciplina INT NOT NULL
@@ -81,7 +82,6 @@ idDisciplinaOfertada INT identity (1,1) PRIMARY KEY
 , recursos VARCHAR(1000) NULL
 , criterioAvaliacao VARCHAR(1000) NULL
 , planoDeAulas VARCHAR(1000) NULL
-, CONSTRAINT fKIdCoordenadorDo FOREIGN KEY (IdCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT fkIdDisciplinaDo FOREIGN KEY (IdDisciplina) REFERENCES disciplina(idDisciplina)
 , CONSTRAINT fkIdProfessorDo FOREIGN KEY (IdProfessor) REFERENCES professor(idProfessor)
 , CONSTRAINT ckAno CHECK (ano BETWEEN 1900 AND 2100)
@@ -128,6 +128,7 @@ idAtividadeVinculada INT identity (1,1)NOT NULL PRIMARY KEY
 , CONSTRAINT fkidProfessor FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT fkidDisciplinaOfertadaAv FOREIGN KEY (IdDisciplinaOfertada) REFERENCES disciplinaOfertada (idDisciplinaOfertada)
 , estado VARCHAR (100)
+check (estado ='Disponibilizada' or estado ='Aberta' or estado = 'Fechada' or estado = 'Encerrada' or estado = 'Prorrogada')
 , dtInicioRespostas DATE
 , dtFimRespostas DATE
 )
@@ -141,15 +142,13 @@ idEntrega INT identity(1,1) PRIMARY KEY
 , idAtividadeVinculada INT NOT NULL
 , dtEntrega DATE DEFAULT GETDATE() NOT NULL
 , [status] VARCHAR(20) DEFAULT('ENTREGUE') CHECK([status] = 'ENTREGUE' or [status] = 'CORRIGIDO')
-, idProfessor INT NOT NULL
 , nota DECIMAL(4,2) NULL
 , dtAvaliacao DATE NULL
 , obs VARCHAR(1000)
 , CONSTRAINT fkidAlunoEntrega FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
-, CONSTRAINT fkIdProfessorEntrega FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT ckNota CHECK (nota BETWEEN 0 AND 10)
 , CONSTRAINT fkAtividadeVinculada FOREIGN KEY (idAtividadeVinculada)
-	 REFERENCES atividadeVinculada (idAtividadeVinculada)
+	REFERENCES atividadeVinculada (idAtividadeVinculada)
 )
 
 GO

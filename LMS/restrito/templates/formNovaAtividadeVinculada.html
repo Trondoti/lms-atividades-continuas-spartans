@@ -14,22 +14,22 @@
                         <div class="containerInputForm">
                             <label class="labelForm">
                                 PROFESSOR: <select name = 'professor'>
-                                <option >SELECIONE</option>
+                                {% if professor.idprofessor %}
+                                <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
+                                 {% else %}
+                                 <option >SELECIONE</option>
                                 {% for professor in professores %}
                                 <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
                                 {% endfor %}
+                                {% endif %}
                             </label></br>
                         </select>                               
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">
-                                ATIVIDADE: <select name = 'atividade'>
-                                <option >SELECIONE</option>
-                                {% for atividade in atividades %}
-                                <option value ='{{atividade.idatividade}}'>{{ atividade.titulo }} </option>
-                                {% endfor %}
-                            </label></br>
-                        </select>                               
+                                <strong class="strongLabelForm">ATIVIDADE</strong>
+                                <input class="inputForm" type="text" value = "{{ atividade.titulo }}" readonly = "readonly">
+                            </label>
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">
@@ -56,13 +56,13 @@
                         <div class="containerInputForm">
                             <label class="labelForm">
                                 <strong class="strongLabelForm">DATA INICIO RESPOSTAS</strong>
-                                <input class="inputForm" type="date" name="estado" value = "{{ atividadevinculada.dtiniciorespostas }}">
+                                <input class="inputForm" type="date" name="dtiniciorespostas" value = "{{ atividadevinculada.dtiniciorespostas }}">
                             </label>
                         </div>
                         <div class="containerInputForm">
                             <label class="labelForm">
                                 <strong class="strongLabelForm">DATA FIM RESPOSTAS</strong>
-                                <input class="inputForm" type="date" name="estado" value = "{{ atividadevinculada.dtfimrespostas }}">
+                                <input class="inputForm" type="date" name="dtfimrespostas" value = "{{ atividadevinculada.dtfimrespostas }}">
                             </label>
                         </div>
                        

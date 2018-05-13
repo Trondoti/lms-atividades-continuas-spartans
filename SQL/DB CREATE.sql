@@ -318,7 +318,9 @@ values
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
 
 (05,'2018-02-10','2024-04-02',04,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
-'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts')
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
+
+
 
 
 go
@@ -394,16 +396,26 @@ go
  �Linguagem SQL�, ano 2018, 1�semestre, turma B, curso SI. ( INSERT ) */
 
 insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Constru��o de formul�rios com HTML5','Construir um formul�rio que tenha campos login e senha','Verificar os slides da aula anterior',01)
+values('ATIVIDADE TIPO 1','Construir um formul�rio que tenha campos login e senha','Verificar os slides da aula anterior',01)
 
 insert into atividade (titulo,descricao,conteudo,idProfessor)
-values('Layout do formul�rio','Construir o CSS3 do formul�rio de Login','Verificar os slides da aula anterior',01)
+values('ATIVIDADE TIPO 2','Construir o CSS3 do formul�rio de Login','Verificar os slides da aula anterior',01)
 
 go
 
 insert into atividadeVinculada (idProfessor,idAtividade,idDisciplinaOfertada,rotulo,estado, dtInicioRespostas, dtFimRespostas)
 	values
-	(1,1,1,'AC7','ABERTA','05-16-2018', '05-25-2018')
+	--(1,1,1,'AC1','ABERTA','05-16-2018', '05-25-2018'),
+	(2,1,2,'AC2','ABERTA','05-16-2018', '05-25-2018'),
+	--(3,1,3,'AC3','ABERTA','05-16-2018', '05-25-2018'),
+	(4,1,4,'AC4','ABERTA','05-16-2018', '05-25-2018'),
+	(5,1,5,'AC5','ABERTA','05-16-2018', '05-25-2018'),
+	(1,2,1,'AC6','ABERTA','05-16-2018', '05-25-2018'),
+	(2,2,2,'AC7','ABERTA','05-16-2018', '05-25-2018'),
+	(3,2,3,'AC8','ABERTA','05-16-2018', '05-25-2018'),
+	(4,2,4,'AC9','ABERTA','05-16-2018', '05-25-2018'),
+	(5,2,5,'AC10','ABERTA','05-16-2018', '05-25-2018')
+	
 go
 -----------------------------------------------------------------------------------------------------
 ------------------------- PABLO --------------------
@@ -413,7 +425,15 @@ go
 insert into entrega (idAluno,titulo,resposta,idAtividadeVinculada,idProfessor,dtAvaliacao,obs) 
 values 
 (1,'Atividade 1', 'segue minha resposta 1', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(2,'Atividade 1', 'segue minha resposta 2', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia')
+(2,'Atividade 1', 'segue minha resposta 2', 2,2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(3,'Atividade 1', 'segue minha resposta 1', 3,3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(4,'Atividade 1', 'segue minha resposta 2', 4,4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(1,'Atividade 1', 'segue minha resposta 1', 5,5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(3,'Atividade 1', 'segue minha resposta 1', 2,2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(4,'Atividade 1', 'segue minha resposta 2', 3,3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(1,'Atividade 1', 'segue minha resposta 1', 4,4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 5,5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia')
 
 
 go

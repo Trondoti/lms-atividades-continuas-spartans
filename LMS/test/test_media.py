@@ -1,10 +1,8 @@
 from core.utils.utils import calculaMediaFinal
-<<<<<<< HEAD
-
 
 def test_calculaMediaFinal():
     assert calculaMediaFinal(10, 10) == 10.0
-=======
+
 from core.utils.utils import geraNumeroRA
 from core.utils.utils import calculaMedia
 from core.utils.utils import descontaNota
@@ -36,12 +34,12 @@ def test_calculaMediaFinal6():
 
 
 def test_calculaMediaFinal7():
-    assert calculaMediaFinal(10,11) == None  
+    assert calculaMediaFinal(10,11) == None
 
 
 def test_geraNumeroRA1():
     assert geraNumeroRA(1800020) == 1800021
-    
+
 
 def test_geraNumeroRA2():
     assert geraNumeroRA(1701234) == 1800001
@@ -96,5 +94,3 @@ def test_descontaNota4():
 
 def test_descontaNota5():
     assert descontaNota (6,20) == 4.8
-
->>>>>>> d8879cae0a1a0ba6382c6c756a94bf5d405530fc

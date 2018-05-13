@@ -1,8 +1,7 @@
 from django.db import models
-from .atividadeVinculada import Atividadevinculada
 from contas.models.aluno import Aluno
 from contas.models.professor import Professor
-
+from restrito.models.atividadeVinculada import Atividadevinculada
 
 class Entrega(models.Model):
     identrega = models.AutoField(db_column='idEntrega', primary_key=True)  # Field name made lowercase.
@@ -81,5 +80,3 @@ class Entrega(models.Model):
             )
 
         return atividadesEntregues
-
-    

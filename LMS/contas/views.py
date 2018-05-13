@@ -55,23 +55,40 @@ def listarAlunos(request):
     return render(request, 'listaAlunos.html', { 'alunos' : alunos })
 
 def inserirAluno(request):
+    context = {}
     if request.method == 'POST':
         file = request.FILES['foto']
         encoded = base64.b64encode(file.read())
+        email=request.POST.get("email")
+        logon=request.POST.get("logon")
         #senha = hashlib.sha224(request.POST.get("senha").encode('utf-8')).hexdigest()
         #print(senha);
-        Aluno.objects.create(
-            logon=request.POST.get("logon"),
-            senha=request.POST.get("senha"),
-            nome=request.POST.get("nome"),
-            email=request.POST.get("email"),
-            celular=request.POST.get("celular"),
-            foto=encoded
-        )
-
-        return redirect('listaralunos')
+        try:
+            aluno = Aluno.objects.get(email=email)
+            context = {"erro" : "Email já cadastrado"}
+            return render(request, "formNovoAluno.html", context)
+        except:
+            try:
+                aluno=Aluno.objects.get(logon=logon)
+                context = {"erro": "Logon já cadastrado em Aluno"}
+                return render(request, "formNovoAluno.html", context)
+            except:
+                    try:
+                        professor=Professor.objects.get(logon=logon)
+                        context = {"erro": "Logon já cadastrado em Professor"}
+                        return render(request, "formNovoAluno.html", context)
+                    except:
+                        Aluno.objects.create(
+                            logon=request.POST.get("logon"),
+                            senha=request.POST.get("senha"),
+                            nome=request.POST.get("nome"),
+                            email=request.POST.get("email"),
+                            celular=request.POST.get("celular"),
+                            foto=encoded
+                        )
+                        return redirect('listaralunos')
     else:
-        return render(request, "formNovoAluno.html")
+        return render(request, "formNovoAluno.html", context)
 
 def alterarAluno(request, idaluno):
     aluno = Aluno.objects.get(idaluno=idaluno)

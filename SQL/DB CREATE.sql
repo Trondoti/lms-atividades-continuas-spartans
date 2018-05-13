@@ -1,7 +1,7 @@
-CREATE DATABASE LMS
+CREATE DATABASE LMS42
 GO
 
-USE LMS
+USE LMS42
 
 GO
 CREATE TABLE coordenador (
@@ -298,11 +298,14 @@ Values('REDES','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�a
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
 Values('IOT','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+
+go
 ----------------------------------------------------------MATIAS--------------------------------------------------------------
 
 /* 	Ofertem a Disciplina �Linguagem SQL� em 2018, 1�semestre,
  turma B, para os cursos de SI e ADS. ( INSERT ) */
- 
+ go
+
 insert into disciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
 values
 (01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
@@ -318,8 +321,7 @@ values
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
 
 (05,'2018-02-10','2024-04-02',04,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
-'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
-
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts')
 
 
 

@@ -5,7 +5,9 @@
     <div class="containers" id="novocoordenador">
         <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
             <h1>ADICIONAR NOVO COORDENADOR</h1>
-
+            {% if mensagem %}
+            <p style= "color:{{cor}}"> {{ mensagem }} </style> </p>
+        {% endif %}
             <fieldset>
                 <div class="containerInputForm">
                     <label class="labelForm">

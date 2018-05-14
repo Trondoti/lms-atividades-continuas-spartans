@@ -242,14 +242,34 @@ def inserirCoordenador(request):
         return retorno
 
     if request.method == 'POST':
-        Coordenador.objects.create (
-            logon=request.POST.get("logon"),
-            senha=request.POST.get("senha"),
-            nome=request.POST.get("nome"),
-            email=request.POST.get("email"),
-            celular=request.POST.get("celular")
-        )
-        return redirect('listarcoordenadores')
+        email=request.POST.get("email")
+        logon=request.POST.get("logon")
+        try:
+            coordenador = Coordenador.objects.get(email=email)
+            context = {
+                "mensagem" : "Email já cadastrado em coordenador",
+                "statusCode": "500",
+                "cor": "red"
+                    }
+            return render(request, "formNovoCoordenador.html", context)
+        except:
+            try:
+                coordenador = Coordenador.objects.get(logon=logon)
+                context = {
+                    "mensagem" : "Logon já cadastrado em coordenador",
+                    "statusCode": "500",
+                    "cor": "red"
+                }
+                return render(request, "formNovoCoordenador.html", context)
+            except:
+                Coordenador.objects.create (
+                    logon=request.POST.get("logon"),
+                    senha=request.POST.get("senha"),
+                    nome=request.POST.get("nome"),
+                    email=request.POST.get("email"),
+                    celular=request.POST.get("celular")
+                )
+                return redirect('listarcoordenadores')
     else:
         return render(request, "formNovoCoordenador.html")
 

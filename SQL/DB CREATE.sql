@@ -42,7 +42,7 @@ idProfessor INT identity (1,1) PRIMARY KEY
 , senha VARCHAR (20) NOT NULL
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
-, celular CHAR(9)  UNIQUE
+, celular CHAR(11)  UNIQUE
 , dtExpiracao DATE DEFAULT GETDATE()
 , apelido VARCHAR (20)
 )
@@ -66,6 +66,8 @@ CHECK(cargaHoraria = 80 or cargaHoraria = 40)
 CHECK(percentualPratico >=0 AND percentualPratico <= 100)
 , percentualTeorico INT
 CHECK(percentualTeorico >=0 AND percentualTeorico <= 100)
+, idCoordenador INT NULL
+, CONSTRAINT fkIdCoordenador FOREIGN KEY(idCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT pkDisciplina PRIMARY KEY (idDisciplina)
 )
 GO
@@ -434,7 +436,7 @@ insert into atividadeVinculada (idProfessor,idAtividade,idDisciplinaOfertada,rot
 	(3,2,3,'AC8','ABERTA','05-16-2018', '05-25-2018'),
 	(4,2,4,'AC9','ABERTA','05-16-2018', '05-25-2018'),
 	(5,2,5,'AC10','ABERTA','05-16-2018', '05-25-2018')
-
+	
 go
 -----------------------------------------------------------------------------------------------------
 ------------------------- PABLO --------------------

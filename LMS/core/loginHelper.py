@@ -19,11 +19,11 @@ class LoginHelper():
             except:
                 try:
                     aluno = Aluno.objects.get(email=email)
-                    return  Usuario(200, "A", aluno.idaluno, aluno.logon, aluno.nome, aluno.senha, aluno.email, aluno.celular, aluno.dtexpiracao)
+                    return Usuario(200, "A", aluno.idaluno, aluno.logon, aluno.nome, aluno.senha, aluno.email, aluno.celular, aluno.dtexpiracao)
                 except:
                     try:
                         administrador = Administrador.objects.get(email=email)
-                        return  Usuario(200, "S", administrador.idadministrador, administrador.logon, administrador.nome, administrador.senha, administrador.email, administrador.celular, administrador.dtexpiracao)
+                        return Usuario(200, "S", administrador.idadministrador, administrador.logon, administrador.nome, administrador.senha, administrador.email, administrador.celular, administrador.dtexpiracao)
                     except:
                         return Usuario(404, None, None, None, None, None, None, None, None)
 
@@ -36,7 +36,7 @@ class LoginHelper():
                 idaluno = aluno
             )
         if(usuario.profile == "C"):
-            coordenador = Coordenador.objects.get(idcoordendaor=usuario.id)
+            coordenador = Coordenador.objects.get(idcoordenador=usuario.id)
 
             return Sessao.objects.create(
                 idcoordenador = coordenador

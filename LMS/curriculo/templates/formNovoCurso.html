@@ -14,9 +14,20 @@
 					<div class="containerInput">
                         <label>
                             <strong class="label">NOME DO CURSO</strong>
-                            <input class="inputLogin" type="text" name="curso" value="{{cursos.nome}}">
+                            <input class="inputLogin" type="text" name="curso" value="{{curso.nome}}">
                         </label>
 					</div>
+					<div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">COORDENADOR</strong>
+                            <select name='coordenador' class="inputForm" >
+                                <option value="">SELECIONE</option>
+								{% for coordenador in coordenadores %}
+									<option value="{{coordenador.idcoordenador}}" {% if coordenador.idcoordenador == curso.idcoordenador.idcoordenador %} selected {% endif %}>{{coordenador.nome}}</option>
+								{% endfor %}
+                            </select>
+                        </label>
+                    </div>
 				    <div id="divSubmit">
                         <input type="submit" class="btn">
                     </div>

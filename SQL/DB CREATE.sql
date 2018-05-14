@@ -1,7 +1,16 @@
 CREATE DATABASE LMS
 GO
-
+use master
 USE LMS
+create table administrador (
+idAdministrador int primary key identity (1,1)
+,logon VARCHAR (20) UNIQUE
+,senha VARCHAR (20) NOT NULL
+,nome varchar (40) null
+,email VARCHAR  (40) UNIQUE NOT NULL
+,celular CHAR(9)  UNIQUE
+,dtExpiracao DATE DEFAULT GETDATE()
+)
 
 GO
 CREATE TABLE coordenador (
@@ -21,7 +30,7 @@ idAluno INT identity (1,1)  PRIMARY KEY
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
 , celular CHAR(9)  UNIQUE
-, foto nvarchar(MAX) NULL
+, foto nvarchar (max) NULL
 , dtExpiracao DATE DEFAULT GETDATE()
 , ra VARCHAR (20)
 )
@@ -57,8 +66,6 @@ CHECK(cargaHoraria = 80 or cargaHoraria = 40)
 CHECK(percentualPratico >=0 AND percentualPratico <= 100)
 , percentualTeorico INT
 CHECK(percentualTeorico >=0 AND percentualTeorico <= 100)
-, idCoordenador INT NULL
-, CONSTRAINT fkIdCoordenador FOREIGN KEY(idCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT pkDisciplina PRIMARY KEY (idDisciplina)
 )
 GO
@@ -98,12 +105,10 @@ idSolicitacaoMatricula INT identity (1,1) PRIMARY KEY
 , idAluno INT NOT NULL
 , idDisciplinaOfertada INT NOT NULL
 , dtSolicitacao DATE DEFAULT GETDATE() NOT NULL
-, idCoordenador INT NULL
 , [status] VARCHAR (100) DEFAULT 'SOLICITADA' CHECK ([status]= 'SOLICITADA' or [status]= 'APROVADA' or [status]= 'REJEITADA' or [status]= 'CANCELADA')
 , CONSTRAINT fkIdAluno FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkIdDisciplinaOfertada FOREIGN KEY (idDisciplinaOfertada)
 	REFERENCES disciplinaOfertada (idDisciplinaOfertada)
-, CONSTRAINT fkIdCoordenadorSC FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
 )
 GO
 CREATE TABLE atividade
@@ -173,9 +178,11 @@ id VARCHAR(32) PRIMARY KEY
 , idAluno INT NULL
 , idProfessor INT NULL
 , idCoordenador INT NULL
+,idAdministrador int null
 , CONSTRAINT fkidAlunoSessao FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkidProfessorSessao FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT fkIdCoordenadorSessao FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
+,constraint fkIdAdmin foreign key (idAdministrador) references administrador (idAdministrador)
 )
 
 GO
@@ -361,17 +368,17 @@ go
 /* 	Preencham a solicita��o de matricula de pelo menos 3 alunos
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,01,'2018-04-03',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,01,'2018-04-03')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,02,'2018-04-08',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,02,'2018-04-08')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-03-05',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-03-05')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-06-03',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-06-03')
 
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,dtSolicitacao)
@@ -473,3 +480,9 @@ go
 update mensagem set DtResposta = '2018-04-17' where idMensagem = 1
 
 update mensagem set Resposta = 'A data da entrega � na proxima semana' where idMensagem = 1
+
+
+-------------------- Criação de usuario admin ------------------
+
+insert into administrador(logon,Senha,Nome,Email,Celular)
+Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')

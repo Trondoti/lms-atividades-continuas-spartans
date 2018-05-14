@@ -21,7 +21,7 @@ idAluno INT identity (1,1)  PRIMARY KEY
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
 , celular CHAR(9)  UNIQUE
-, foto nvarchar NULL
+, foto nvarchar(MAX) NULL
 , dtExpiracao DATE DEFAULT GETDATE()
 , ra VARCHAR (20)
 )
@@ -427,7 +427,7 @@ insert into atividadeVinculada (idProfessor,idAtividade,idDisciplinaOfertada,rot
 	(3,2,3,'AC8','ABERTA','05-16-2018', '05-25-2018'),
 	(4,2,4,'AC9','ABERTA','05-16-2018', '05-25-2018'),
 	(5,2,5,'AC10','ABERTA','05-16-2018', '05-25-2018')
-	
+
 go
 -----------------------------------------------------------------------------------------------------
 ------------------------- PABLO --------------------

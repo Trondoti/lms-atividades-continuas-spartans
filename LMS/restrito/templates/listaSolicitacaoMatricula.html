@@ -3,29 +3,44 @@
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE SOLICITACAO MATRICULA</h1>
+                    <h1 class="tituloCrud">LISTA DE SOLICITAÇÃO DE MATRICULA</h1>
                 </div>
                 <div>
-                    <a href="{% url "inserirsolicitacao" %}">INSERIR</a>
+                    <a class="buttonInsert" href="{% url "inserirsolicitacao" %}">+</a>
                 </div>
-                <div>
-                  <table>
-                    <tr>
-                          <td>SOLICITACAO DE MATRICULA</td>
-                      </tr>
-                  </table>
-                  <ul>
-                      {% for solicitacao in solicitacoes %}
-                      <li>
-                         {{ solicitacao.idaluno.nome }}
-                         <a href="{% url "alterarsolicitacao" solicitacao.idsolicitacaomatricula %}">ALTERAR</a>
-                         <a href="{% url "deletarsolicitacao" solicitacao.idsolicitacaomatricula %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>  
-                                                                
-                      </li>
-                    {% endfor %}
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        SOLICITAÇÃO DE MATRICULA
+                                    </th>
+                                    <th>
+                                        ALTERAR
+                                    </th>
+                                    <th>
+                                        REMOVER
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for solitacao in solitacoes %}                        
+                                    <tr>
+                                        <td>
+                                            {{ solitacao.idaluno.nome }}
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url "alterarsolicitacao" solicitacao.idsolicitacaomatricula %}">ALTERAR</a>
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url "deletarsolicitacao" solicitacao.idsolicitacaomatricula %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
+                                        </td>
+                                    </tr>
+                                {% endfor %}    
+                            </tbody>
+                        </table>    
                   </ul>
                 </div>
-
             </div>
         </main>
 {% endblock %}

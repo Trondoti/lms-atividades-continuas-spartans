@@ -6,25 +6,41 @@
                     <h1 class="tituloCrud">LISTA DE ATIVIDADES VINCULADAS</h1>
                 </div>
                 <div>
-                    <a href="{% url "inserirentrega" %}">INSERIR</a>
+                    <a class="buttonInsert" href="{% url "inserirentrega" %}">+</a>
                 </div>
-                <div>
-                  <table>
-                    <tr>
-                          <td>ENTREGAS</td>
-                      </tr>
-                  </table>
-                  <ul>
-                      {% for entrega in entregas %}
-                      <li>
-                         {{ entrega.titulo }}
-                         <a href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
-                         <a href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                          
-                        </li>
-                    {% endfor %}
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        NOME DAS ATIVIDADES ENTREGUES
+                                    </th>
+                                    <th>
+                                        ALTERAR
+                                    </th>
+                                    <th>
+                                        REMOVER
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for entrega in entregas %}                        
+                                    <tr>
+                                        <td>
+                                            {{ entrega.titulo }}
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
+                                        </td>
+                                    </tr>
+                                {% endfor %}    
+                            </tbody>
+                        </table>    
                   </ul>
                 </div>
-
             </div>
         </main>
 {% endblock %}

@@ -67,7 +67,7 @@ def listarAtividadeVinculada(request):
     return render(request, 'listaAtividadesVinculadas.html', contexto)
 
 
-def inserirAtividadeVinculada(request):
+def inserirAtividadeVinculada(request, idatividadevinculada):
     contexto ={
         'professores':Professor.objects.all(),
         'atividades': Atividade.objects.all(),

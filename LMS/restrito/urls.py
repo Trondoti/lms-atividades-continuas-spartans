@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url, include
 from restrito.views import listarAtividades, inserirAtividade, alterarAtividade, deletarAtividade
 from restrito.views import listarAtividadeVinculada, inserirAtividadeVinculada, alterarAtividadeVinculada, deletarAtividadeVinculada
-from restrito.views import listarEntregas, inserirEntrega, alterarEntrega, deletarEntrega, listarEntregasProfessor
+from restrito.views import listarEntregas, inserirEntrega, alterarEntrega, deletarEntrega
 from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao
 
 urlpatterns = [

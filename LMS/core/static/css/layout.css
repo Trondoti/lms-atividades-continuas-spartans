@@ -576,6 +576,69 @@ h1#formh1{
 form #novofiel {
     margin-left: 540px;
 }
+
+.buttonInsert {
+	background-color:#116FFF;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:28px;
+	padding:12px 20px;
+	text-decoration:none;
+    text-shadow:0px 1px 10px #283966;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}
+
+.myButton {
+	background-color:transparent;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	border:1px solid #116FFF;
+	display:inline-block;
+	cursor:pointer;
+	color:#116FFF;
+	font-family:Arial;
+	font-size:12px;
+	padding:4px 29px;
+	text-decoration:none;
+	text-shadow:0px -13px 50px #116FFF;
+}
+.myButton:hover {
+    background-color:#116FFF;
+    color: #FFFFFF;
+    border: 1px solid white ;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.table {
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    border-bottom-right-radius: 150px;
+    border-top-left-radius: 150px;
+    font-size: 20px;
+    line-height: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tituloCrud{
+    text-align: center;
+}
+
 .tabelaMatricula {
     width: 100%;
     border-top: 2px solid white;

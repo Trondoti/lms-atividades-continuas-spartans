@@ -6,22 +6,41 @@
                     <h1 class="tituloCrud">LISTA DE ATIVIDADES VINCULADAS</h1>
                 </div>
                 <div>
-                    <table>
-                        <tr>
-                          <td>atividade</td>
-                      </tr>
-                  </table>
-                  <ul>
-                      {% for atividade in atividades %}
-                      <li>
-                         {{ atividade.rotulo }}
-                         <a href="{% url 'alteraratividadevinculada' atividade.idatividadevinculada %}">ALTERAR</a>
-                         <a href="{% url 'deletaratividadevinculada' atividade.idatividadevinculada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
-                        </li>
-                    {% endfor %}
+                    <a class="buttonInsert" href="{% url "inseriratividadevinculada" %}">+</a>
+                </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        NOME DAS ATIVIDADES VINCULADAS
+                                    </th>
+                                    <th>
+                                        ALTERAR
+                                    </th>
+                                    <th>
+                                        REMOVER
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for atividade in atividades %}
+                                    <tr>
+                                        <td>
+                                            {{ atividade.rotulo }}
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url 'alteraratividadevinculada' atividade.idatividadevinculada %}">ALTERAR</a>
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url 'deletaratividadevinculada' atividade.idatividadevinculada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                   </ul>
                 </div>
-
             </div>
         </main>
 {% endblock %}

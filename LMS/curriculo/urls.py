@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from curriculo.views import listarCursos,inserirCurso,alterarCurso, deletarCurso
+from curriculo.views import listarCursos, inserirCurso, alterarCurso, deletarCurso
 from curriculo.views import listarDisciplinas, inserirDisciplina, alterarDisciplina, deletarDisciplina
 from curriculo.views import listarDisciplinasOfertadas,inserirDisciplinaOfertada,alterarDisciplinaOfertada,deletarDisciplinaOfertada
 

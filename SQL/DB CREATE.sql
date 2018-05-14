@@ -21,7 +21,7 @@ idAluno INT identity (1,1)  PRIMARY KEY
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
 , celular CHAR(9)  UNIQUE
-, foto nvarchar NULL
+, foto nvarchar (max) NULL
 , dtExpiracao DATE DEFAULT GETDATE()
 , ra VARCHAR (20)
 )
@@ -98,12 +98,10 @@ idSolicitacaoMatricula INT identity (1,1) PRIMARY KEY
 , idAluno INT NOT NULL
 , idDisciplinaOfertada INT NOT NULL
 , dtSolicitacao DATE DEFAULT GETDATE() NOT NULL
-, idCoordenador INT NULL
 , [status] VARCHAR (100) DEFAULT 'SOLICITADA' CHECK ([status]= 'SOLICITADA' or [status]= 'APROVADA' or [status]= 'REJEITADA' or [status]= 'CANCELADA')
 , CONSTRAINT fkIdAluno FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkIdDisciplinaOfertada FOREIGN KEY (idDisciplinaOfertada)
 	REFERENCES disciplinaOfertada (idDisciplinaOfertada)
-, CONSTRAINT fkIdCoordenadorSC FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
 )
 GO
 CREATE TABLE atividade
@@ -361,17 +359,17 @@ go
 /* 	Preencham a solicita��o de matricula de pelo menos 3 alunos
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,01,'2018-04-03',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,01,'2018-04-03')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,02,'2018-04-08',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,02,'2018-04-08')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-03-05',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-03-05')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-06-03',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-06-03')
 
 
 insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,dtSolicitacao)

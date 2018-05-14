@@ -43,6 +43,7 @@ idDisciplina INT identity (1,1)
 , nome VARCHAR (30) UNIQUE
 , data DATE DEFAULT GETDATE()
 , statusDisc VARCHAR (20) DEFAULT('ABERTO')
+check (statusDisc ='Aberta' or statusDisc = 'Fechada')
 , planoDeEnsino VARCHAR (1000)
 , cargaHoraria INT
 CHECK(cargaHoraria = 80 or cargaHoraria = 40)
@@ -56,7 +57,7 @@ CHECK(cargaHoraria = 80 or cargaHoraria = 40)
 CHECK(percentualPratico >=0 AND percentualPratico <= 100)
 , percentualTeorico INT
 CHECK(percentualTeorico >=0 AND percentualTeorico <= 100)
-, idCoordenador INT NOT NULL
+, idCoordenador INT NULL
 , CONSTRAINT fkIdCoordenador FOREIGN KEY(idCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT pkDisciplina PRIMARY KEY (idDisciplina)
 )

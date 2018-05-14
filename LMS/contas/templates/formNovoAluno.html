@@ -3,6 +3,10 @@
 {% load %}
 <main>
     <div class="containers" id="novoaluno">
+        {% if erro %}
+               <p style ='color:r red;'> {{ erro }}</p>
+            </style>
+        {% endif %}
         <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
             <h1>ADICIONAR NOVO ALUNO</h1>
 

@@ -1,112 +1,124 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load %}
+	<body id="bodyPrincipal">
 		<main>
             <div class="containers" id="novoaluno">
                 <form id="formulario" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
                     {% if disciplina.iddisciplina %}
-                    <h1>OFERTAR DISCIPLINA</h1>
+                    	<h1>OFERTAR DISCIPLINA</h1>
                     {% else %}
-                    <h1>Inserir disciplina ofertada</h1>
+                    	<h1>Inserir disciplina ofertada</h1>
                     {% endif %}
-                            
-                    <fieldset>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    COORDENADOR: <select name = 'coordenador'>
-                                    <option >SELECIONE</option>
-                                    {% for coordenador in coordenadores %}
-                                    <option value ='{{coordenador.idcoordenador}}'>{{ coordenador.nome }} </option>
-                                    {% endfor %}
-                                </label></br>
-                            </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">DATA INICIO MATRICULA</strong>
-                                    <input class="inputForm" type="date" name='dtiniciomatricula'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">DATA FIM MATRICULA</strong>
-                                    <input class="inputForm" type="date" name='dtfimmatricula'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <div class="containerInputForm">
-                                        <label class="labelForm">
-                                            <strong class="strongLabelForm">DISCIPLINA</strong>
-                                            <input class="inputForm" type="text" value = "{{ disciplina.nome }}" readonly = "readonly">
-                                        </label>
-                                </div>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    CURSO: <select name = 'curso'>
-                                    <option >SELECIONE</option>
-                                    {% for curso in cursos %}
-                                    <option value ='{{curso.idcurso}}'>{{ curso.nome }} </option>
-                                    {% endfor %}
-                                </label></br>
-                            </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">ANO</strong>
-                                    <input class="inputForm" type="number" name='ano'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">SEMESTRE</strong>
-                                    <input class="inputForm" type="number" name='semestre'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">TURMA</strong>
-                                    <input class="inputForm" type="number" name='turma'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                PROFESSOR: <select name = 'professor'>
-                                {% for professor in professores %}
-                                <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
+
+
+					<div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">COORDENADOR</strong>
+                            <select name='coordenador' class="inputForm" required="required">
+                                <option value="">SELECIONE</option>
+                                {% for coordenador in coordenadores  %}
+                                    <option value='{{coordenador.idcoordenador}}' {% if disciplinaofertada.idcoordenador.idcoordenador == coordenador.idcoordenador %} selected {% endif %}>{{coordenador.nome}}</option>
                                 {% endfor %}
-                                </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">METODOLOGIA</strong>
-                                    <input class="inputForm" type="text" name='metodologia'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">RECURSOS</strong>
-                                    <input class="inputForm" type="text" name='recursos'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">Critérios de avalição</strong>
-                                    <input class="inputForm" type="text" name='criterios'>
-                                </label>
-                        </div>
-                        <div class="containerInputForm">
-                                <label class="labelForm">
-                                    <strong class="strongLabelForm">Plano de aulas</strong>
-                                    <input class="inputForm" type="text" name='planodeaulas'>
-                                </label>
-                        </div>        
-                        <div id="divSubmitAluno">
-                            <input type="submit" class="btn" value="SALVAR">
-                        </div>
-                    </fieldset>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                COORDENADOR: <select name = 'coordenador'>
+                                <option >SELECIONE</option>
+                                {% for coordenador in coordenadores %}
+                                <option value ='{{coordenador.idcoordenador}}'>{{ coordenador.nome }} </option>
+                                {% endfor %}
+                            </label></br>
+                        </select>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">DATA INICIO MATRICULA</strong>
+                                <input class="inputForm" type="date" name='dtiniciomatricula'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">DATA FIM MATRICULA</strong>
+                                <input class="inputForm" type="date" name='dtfimmatricula'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <div class="containerInputForm">
+                                    <label class="labelForm">
+                                        <strong class="strongLabelForm">DISCIPLINA</strong>
+                                        <input class="inputForm" type="text" value = "{{ disciplina.nome }}" readonly = "readonly">
+                                    </label>
+                            </div>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                CURSO: <select name = 'curso'>
+                                <option >SELECIONE</option>
+                                {% for curso in cursos %}
+                                <option value ='{{curso.idcurso}}'>{{ curso.nome }} </option>
+                                {% endfor %}
+                            </label></br>
+                        </select>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">ANO</strong>
+                                <input class="inputForm" type="number" name='ano'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">SEMESTRE</strong>
+                                <input class="inputForm" type="number" name='semestre'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">TURMA</strong>
+                                <input class="inputForm" type="number" name='turma'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            PROFESSOR: <select name = 'professor'>
+                            {% for professor in professores %}
+                            <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
+                            {% endfor %}
+                            </label></br>
+                    </select>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">METODOLOGIA</strong>
+                                <input class="inputForm" type="text" name='metodologia'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">RECURSOS</strong>
+                                <input class="inputForm" type="text" name='recursos'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">Critérios de avalição</strong>
+                                <input class="inputForm" type="text" name='criterios'>
+                            </label>
+                    </div>
+                    <div class="containerInputForm">
+                            <label class="labelForm">
+                                <strong class="strongLabelForm">Plano de aulas</strong>
+                                <input class="inputForm" type="text" name='planodeaulas'>
+                            </label>
+                    </div>
+                    <div id="divSubmitAluno">
+                        <input type="submit" class="btn" value="SALVAR">
+                    </div>
                 </form>
             </div>
 		</main>
+	</body>
 {% endblock %}

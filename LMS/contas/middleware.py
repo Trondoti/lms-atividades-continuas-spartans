@@ -14,5 +14,6 @@ class SpartansMiddleware(object):
                     sessao.usuario = LoginHelper().pegarUsuarioPelaSessao(sessao)
                     request.sessao = sessao
                 except:
+                    print("nao encontrou a sessao no banco");
                     return self.get_response(request)
         return self.get_response(request)

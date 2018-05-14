@@ -1,63 +1,33 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load %}
+	<body id="bodyPrincipal">
 		<main>
             <div class="containers" id="novoaluno">
                 <form id="formulario" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
                     {% if entrega.identrega %}
-                    <h1>ALTERAR ENTREGA</h1>
+                    	<h1>ALTERAR ENTREGA</h1>
                     {% else %}
-                    <h1>ADICIONAR ENTREGA</h1>
+                    	<h1>ADICIONAR ENTREGA</h1>
                     {% endif %}
-                            
-                    <fieldset>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                ALUNO: <select name = 'aluno'>
-                                <option >SELECIONE</option>
-                                {% for aluno in alunos %}
-                                <option value ='{{aluno.idaluno}}'>{{ aluno.nome }} </option>
-                                {% endfor %}
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">TITULO</strong>
-                                <input class="inputForm" type="text" name="titulo" value = "{{ entrega.titulo }}">
-                            </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">RESPOSTA</strong>
-                                <input class="inputForm" type="text" name="resposta" value = "{{ entrega.resposta }}">
-                            </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                ATIVIDADE VINCULADA: <select name = 'atividadevinculada'>
-                                <option >SELECIONE</option>
-                                {% for i in atividadesvinculadas %}
-                                <option value ='{{i.idatividadevinculada}}'>{{ i.rotulo }} </option>
-                                {% endfor %}
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                PROFESSOR: <select name = 'professor'>
-                                <option >SELECIONE</option>
-                                {% for professor in professores %}
-                                <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
-                                {% endfor %}
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div id="divSubmitAluno">
-                            <input type="submit" class="btn" value="SALVAR">
-                        </div>
-                    </fieldset>
+
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">TITULO</strong>
+                            <input class="inputForm" type="text" name="titulo" value="{{entrega.titulo}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">RESPOSTA</strong>
+							<textarea class="inputForm textAreaPadrao" name="resposta" required="required" maxlength="1000">{{entrega.resposta}}</textarea>
+                        </label>
+                    </div>
+                    <div id="divSubmitCurso">
+                        <input type="submit" class="btn" value="SALVAR">
+                    </div>
                 </form>
             </div>
 		</main>
+	</body>
 {% endblock %}

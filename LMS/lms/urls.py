@@ -19,7 +19,6 @@ from django.conf.urls import url, include
 from core.views import templateBase, cursos, detalheCurso
 from core.views import detalheDisciplinaBd, detalheDisciplinaDevops, detalheDisciplinaTecweb
 from core.views import index, painelAdmin
-from core import urls
 from curriculo import urls as curriculo_urls
 from contas import urls as contas_urls
 from restrito import urls as restrito_urls
@@ -39,6 +38,6 @@ urlpatterns = [
     path('curriculo/', include(curriculo_urls)),
     path('contas/', include(contas_urls)),
     path('restrito/', include(restrito_urls)),
-    path('core/', include(core_urls)), 
-    
+    path('core/', include(core_urls)),
+
 ]

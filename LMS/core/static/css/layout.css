@@ -358,10 +358,11 @@ header img {
     width: 10em;
     display: inline-block;
 }
-#bodyLogin {
+#bodyPrincipal {
     background-image: url("../img/stars-bg2.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-attachment: fixed;
 }
 #formulario fieldset {
     width: 22em;
@@ -420,7 +421,7 @@ header img {
 }
 
 .strongLabelForm {
-    width: 12em;
+    width: 15em;
     display: inline-block;
 }
 
@@ -429,7 +430,7 @@ select option {
     color: white;
 }
 
-.textAreaCurso {
+.textAreaPadrao {
     width: 450px;
     height: 250px;
     resize: none;
@@ -572,7 +573,7 @@ h1#formh1{
 
 }
 
-form#novofiel{
+form #novofiel {
     margin-left: 540px;
 }
 

@@ -10,11 +10,25 @@ import time
 
 
 def listarProfessores(request):
-    professores = Professor.objects.all()
-    return render(request, 'listaProfessores.html', {'professores': professores})
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaProfessores.html', {'professores': Professor.objects.all()})
 
 def inserirProfessor(request):
-    context = {}
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
         email=request.POST.get("email")
         logon=request.POST.get("logon")
@@ -24,28 +38,28 @@ def inserirProfessor(request):
                 "mensagem": "Email já cadastrado em Professores",
                 "statusCode": "500",
                 "cor": "red"
-                }
+            }
             return render(request, "formNovoProfessor.html", context)
         except:
             try:
                 professor = Professor.objects.get(logon=logon)
                 context = {
-                "mensagem": "Logon já cadastrado em Professores",
-                "statusCode": "500",
-                "cor": "red"
+                    "mensagem": "Logon já cadastrado em Professores",
+                    "statusCode": "500",
+                    "cor": "red"
                 }
                 return render(request, "formNovoProfessor.html", context)
             except:
-                    try:
-                        professor=Aluno.objects.get(logon=logon)
-                        context = {
-                            "mensagem" : "Logon já cadastrado em Alunos",
-                            "statusCode": "500",
-                            "cor": "red"
-                                }       
-                        return render(request, "formNovoProfessor.html", context)
-                    except:
-                        Professor.objects.create (
+                try:
+                    professor=Aluno.objects.get(logon=logon)
+                    context = {
+                        "mensagem" : "Logon já cadastrado em Alunos",
+                        "statusCode": "500",
+                        "cor": "red"
+                    }
+                    return render(request, "formNovoProfessor.html", context)
+                except:
+                    Professor.objects.create (
                         logon = request.POST.get('logon'),
                         senha = request.POST.get('senha'),
                         nome = request.POST.get('nome'),
@@ -53,12 +67,20 @@ def inserirProfessor(request):
                         celular = request.POST.get('celular'),
                         dtexpiracao = request.POST.get('dtexpiracao'),
                         apelido = request.POST.get('apelido')
-                        )        
-                        return redirect('listarprofessores')
+                    )
+                    return redirect('listarprofessores')
     else:
-        return render(request, 'formNovoProfessor.html', context)
+        return render(request, 'formNovoProfessor.html')
 
 def alterarProfessor(request, idprofessor):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     professor = Professor.objects.get(idprofessor=idprofessor)
     if request.method == 'POST':
        professores = Professor.objects.get(idprofessor=idprofessor)
@@ -72,21 +94,43 @@ def alterarProfessor(request, idprofessor):
        professores.save()
        return redirect('listarprofessores')
     else:
-        return render(request, 'formNovoProfessor.html', {'professor':professor})
+        return render(request, 'formNovoProfessor.html', {'professor': professor})
 
 
 def deletarProfessor(request, idprofessor):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     professores = Professor.objects.get(idprofessor=idprofessor)
     professores.delete()
     return redirect ('listarprofessores')
 
 
 def listarAlunos(request):
-    alunos = Aluno.objects.all()
-    return render(request, 'listaAlunos.html', { 'alunos' : alunos })
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaAlunos.html', {'alunos': Aluno.objects.all()})
 
 def inserirAluno(request):
-    context = {}
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
         ultimoRA = Aluno.objects.all().aggregate(Max('ra'))
         file = request.FILES['foto']
@@ -101,42 +145,50 @@ def inserirAluno(request):
                 "mensagem" : "Email já cadastrado em alunos",
                 "statusCode": "500",
                 "cor": "red"
-                }
+            }
             return render(request, "formNovoAluno.html", context)
         except:
             try:
                 aluno=Aluno.objects.get(logon=logon)
                 context = {
-                "mensagem" : "Logon já cadastrado em alunos",
-                "statusCode": "500",
-                "cor": "red"
+                    "mensagem" : "Logon já cadastrado em alunos",
+                    "statusCode": "500",
+                    "cor": "red"
                 }
                 return render(request, "formNovoAluno.html", context)
             except:
-                    try:
-                        professor=Professor.objects.get(logon=logon)
-                        context = {
-                            "mensagem": "Logon já cadastrado em alunos",
-                            "statusCode": "500",
-                            "cor": "red"
-                                }       
-                        return render(request, "formNovoAluno.html", context)
-                    except:
-                        novoRA = Aluno.geraNumeroRA(ultimoRA)
-                        Aluno.objects.create(
-                            logon=request.POST.get("logon"),
-                            senha=request.POST.get("senha"),
-                            nome=request.POST.get("nome"),
-                            email=request.POST.get("email"),
-                            celular=request.POST.get("celular"),
-                            foto=encoded,
-                            ra = novoRA
-                        )
-                        return redirect('listaralunos')
+                try:
+                    professor=Professor.objects.get(logon=logon)
+                    context = {
+                        "mensagem": "Logon já cadastrado em alunos",
+                        "statusCode": "500",
+                        "cor": "red"
+                    }
+                    return render(request, "formNovoAluno.html", context)
+                except:
+                    novoRA = Aluno.geraNumeroRA(ultimoRA)
+                    Aluno.objects.create(
+                        logon=request.POST.get("logon"),
+                        senha=request.POST.get("senha"),
+                        nome=request.POST.get("nome"),
+                        email=request.POST.get("email"),
+                        celular=request.POST.get("celular"),
+                        foto=encoded,
+                        ra = novoRA
+                    )
+                    return redirect('listaralunos')
     else:
-        return render(request, "formNovoAluno.html", context)
+        return render(request, "formNovoAluno.html")
 
 def alterarAluno(request, idaluno):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     aluno = Aluno.objects.get(idaluno=idaluno)
     aluno.foto = aluno.foto[2:-1]
     if request.method == 'POST':
@@ -157,15 +209,38 @@ def alterarAluno(request, idaluno):
         return render(request, "formNovoAluno.html",  {"aluno":aluno})
 
 def deletarAluno(request, idaluno):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     aluno = Aluno.objects.get(idaluno=idaluno)
     aluno.delete()
     return redirect ('listaralunos')
 
 def listarCoordenadores(request):
-    coordenadores = Coordenador.objects.all()
-    return render(request, 'listaCoordenadores.html', {'coordenadores': coordenadores})
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaCoordenadores.html', {'coordenadores': Coordenador.objects.all()})
 
 def inserirCoordenador(request):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
         Coordenador.objects.create (
             logon=request.POST.get("logon"),
@@ -179,6 +254,14 @@ def inserirCoordenador(request):
         return render(request, "formNovoCoordenador.html")
 
 def alterarCoordenador(request, idcoordenador):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     coordenador = Coordenador.objects.get(idcoordenador=idcoordenador)
     if request.method == 'POST':
         coordenador = Coordenador.objects.get(idcoordenador=idcoordenador)
@@ -190,9 +273,17 @@ def alterarCoordenador(request, idcoordenador):
         coordenador.save()
         return redirect('listarcoordenadores')
     else:
-        return render(request, "formNovoCoordenador.html", { "coordenador" : coordenador })
+        return render(request, "formNovoCoordenador.html", {"coordenador": coordenador})
 
 def deletarCoordenador(request, idcoordenador):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+        
     coordenador = Coordenador.objects.get(idcoordenador=idcoordenador)
     coordenador.delete()
     return redirect ('listarcoordenadores')

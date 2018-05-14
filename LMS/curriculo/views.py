@@ -208,7 +208,6 @@ def alterarDisciplinaOfertada(request, iddisciplinaofertada):
         do = Disciplinaofertada.objects.get(iddisciplinaofertada=iddisciplinaofertada)
         do.dtiniciomatricula = request.POST.get("dtiniciomatricula")
         do.dtfimmatricula = request.POST.get("dtfimmatricula")
-        do.iddisciplina=do.iddisciplina
         do.idcurso=curso
         do.ano=request.POST.get("ano")
         do.semestre=request.POST.get("semestre")
@@ -217,7 +216,7 @@ def alterarDisciplinaOfertada(request, iddisciplinaofertada):
         do.metodologia=request.POST.get("metodologia")
         do.recursos = request.POST.get("recursos")
         do.criterioavaliacao = request.POST.get("criterios")
-        do.planodeaulas = request.POST.get("plano")
+        do.planodeaulas = request.POST.get("planodeaulas")
         do.save()
         return redirect('listardisciplinasofertadas')
     else:

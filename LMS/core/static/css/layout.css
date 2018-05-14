@@ -654,3 +654,7 @@ form #novofiel {
 .tabelaMatricula td {
     text-align: center;
 }
+
+.imgAluno {
+    width: 450px;
+}

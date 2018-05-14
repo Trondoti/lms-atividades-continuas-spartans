@@ -34,5 +34,3 @@ def verificaCopia(texto1, texto2):
         return True
     else:
         return False
-
-    

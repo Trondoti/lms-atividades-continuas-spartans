@@ -1,7 +1,16 @@
 CREATE DATABASE LMS
 GO
-
+use master
 USE LMS
+create table administrador (
+idAdministrador int primary key identity (1,1)
+,logon VARCHAR (20) UNIQUE
+,senha VARCHAR (20) NOT NULL
+,nome varchar (40) null
+,email VARCHAR  (40) UNIQUE NOT NULL
+,celular CHAR(9)  UNIQUE
+,dtExpiracao DATE DEFAULT GETDATE()
+)
 
 GO
 CREATE TABLE coordenador (
@@ -21,7 +30,7 @@ idAluno INT identity (1,1)  PRIMARY KEY
 , nome VARCHAR(30) NOT NULL
 , email VARCHAR  (40) UNIQUE NOT NULL
 , celular CHAR(9)  UNIQUE
-, foto nvarchar NULL
+, foto nvarchar (max) NULL
 , dtExpiracao DATE DEFAULT GETDATE()
 , ra VARCHAR (20)
 )
@@ -42,7 +51,7 @@ CREATE TABLE disciplina (
 idDisciplina INT identity (1,1)
 , nome VARCHAR (30) UNIQUE
 , data DATE DEFAULT GETDATE()
-, statusDisc VARCHAR (20) DEFAULT('ABERTO')
+, statusDisc VARCHAR (20) DEFAULT('Aberta')
 check (statusDisc ='Aberta' or statusDisc = 'Fechada')
 , planoDeEnsino VARCHAR (1000)
 , cargaHoraria INT
@@ -57,18 +66,17 @@ CHECK(cargaHoraria = 80 or cargaHoraria = 40)
 CHECK(percentualPratico >=0 AND percentualPratico <= 100)
 , percentualTeorico INT
 CHECK(percentualTeorico >=0 AND percentualTeorico <= 100)
-, idCoordenador INT NULL
-, CONSTRAINT fkIdCoordenador FOREIGN KEY(idCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT pkDisciplina PRIMARY KEY (idDisciplina)
 )
 GO
 CREATE TABLE curso (
 idCurso INT identity (1,1) PRIMARY KEY
 , nome varchar(30) UNIQUE NOT NULL
+,idCoordenador int null
+constraint fkIdCoordenadorCurso references coordenador (idCoordenador)
 )
 CREATE TABLE disciplinaOfertada (
 idDisciplinaOfertada INT identity (1,1) PRIMARY KEY
-,idCoordenador INT NOT NULL
 , dtInicioMatricula DATE NULL
 , dtFimMatricula DATE NULL
 , IdDisciplina INT NOT NULL
@@ -81,7 +89,6 @@ idDisciplinaOfertada INT identity (1,1) PRIMARY KEY
 , recursos VARCHAR(1000) NULL
 , criterioAvaliacao VARCHAR(1000) NULL
 , planoDeAulas VARCHAR(1000) NULL
-, CONSTRAINT fKIdCoordenadorDo FOREIGN KEY (IdCoordenador) REFERENCES coordenador(idCoordenador)
 , CONSTRAINT fkIdDisciplinaDo FOREIGN KEY (IdDisciplina) REFERENCES disciplina(idDisciplina)
 , CONSTRAINT fkIdProfessorDo FOREIGN KEY (IdProfessor) REFERENCES professor(idProfessor)
 , CONSTRAINT ckAno CHECK (ano BETWEEN 1900 AND 2100)
@@ -98,12 +105,10 @@ idSolicitacaoMatricula INT identity (1,1) PRIMARY KEY
 , idAluno INT NOT NULL
 , idDisciplinaOfertada INT NOT NULL
 , dtSolicitacao DATE DEFAULT GETDATE() NOT NULL
-, idCoordenador INT NULL
 , [status] VARCHAR (100) DEFAULT 'SOLICITADA' CHECK ([status]= 'SOLICITADA' or [status]= 'APROVADA' or [status]= 'REJEITADA' or [status]= 'CANCELADA')
 , CONSTRAINT fkIdAluno FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkIdDisciplinaOfertada FOREIGN KEY (idDisciplinaOfertada)
 	REFERENCES disciplinaOfertada (idDisciplinaOfertada)
-, CONSTRAINT fkIdCoordenadorSC FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
 )
 GO
 CREATE TABLE atividade
@@ -128,6 +133,7 @@ idAtividadeVinculada INT identity (1,1)NOT NULL PRIMARY KEY
 , CONSTRAINT fkidProfessor FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT fkidDisciplinaOfertadaAv FOREIGN KEY (IdDisciplinaOfertada) REFERENCES disciplinaOfertada (idDisciplinaOfertada)
 , estado VARCHAR (100)
+check (estado ='Disponibilizada' or estado ='Aberta' or estado = 'Fechada' or estado = 'Encerrada' or estado = 'Prorrogada')
 , dtInicioRespostas DATE
 , dtFimRespostas DATE
 )
@@ -141,15 +147,13 @@ idEntrega INT identity(1,1) PRIMARY KEY
 , idAtividadeVinculada INT NOT NULL
 , dtEntrega DATE DEFAULT GETDATE() NOT NULL
 , [status] VARCHAR(20) DEFAULT('ENTREGUE') CHECK([status] = 'ENTREGUE' or [status] = 'CORRIGIDO')
-, idProfessor INT NOT NULL
 , nota DECIMAL(4,2) NULL
 , dtAvaliacao DATE NULL
 , obs VARCHAR(1000)
 , CONSTRAINT fkidAlunoEntrega FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
-, CONSTRAINT fkIdProfessorEntrega FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT ckNota CHECK (nota BETWEEN 0 AND 10)
 , CONSTRAINT fkAtividadeVinculada FOREIGN KEY (idAtividadeVinculada)
-	 REFERENCES atividadeVinculada (idAtividadeVinculada)
+REFERENCES atividadeVinculada (idAtividadeVinculada)
 )
 
 GO
@@ -174,9 +178,11 @@ id VARCHAR(32) PRIMARY KEY
 , idAluno INT NULL
 , idProfessor INT NULL
 , idCoordenador INT NULL
+,idAdministrador int null
 , CONSTRAINT fkidAlunoSessao FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkidProfessorSessao FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT fkIdCoordenadorSessao FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
+,constraint fkIdAdmin foreign key (idAdministrador) references administrador (idAdministrador)
 )
 
 GO
@@ -283,55 +289,55 @@ go
  vejam os planos de ensino apresentados ( INSERT ) */
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('Linguagem SQL', 'Aberto', 'Conceitos basicos, Linguagem SQL, Manipula��o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
+Values('Linguagem SQL', 'Aberta', 'Conceitos basicos, Linguagem SQL, Manipula��o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
 'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25,01)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('Tecnologia Web','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('Tecnologia Web','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 go
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('BANCO DE DADOS','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('BANCO DE DADOS','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('DevOps','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('DevOps','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('LINGUAGEM PROGRAMACAO 1','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('LINGUAGEM PROGRAMACAO 1','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('REDES','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('REDES','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
-Values('IOT','ABERTO','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
+Values('IOT','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
 'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
 ----------------------------------------------------------MATIAS--------------------------------------------------------------
 
 /* 	Ofertem a Disciplina �Linguagem SQL� em 2018, 1�semestre,
  turma B, para os cursos de SI e ADS. ( INSERT ) */
 
-insert into disciplinaOfertada(IdCoordenador,DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
+insert into disciplinaOfertada(DtInicioMatricula,DtFimMatricula,IdDisciplina,IdCurso,Ano,Semestre,Turma,IdProfessor,Metodologia,Recursos,CriterioAvaliacao,PlanoDeAulas)
 values
-(01,'2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
+('2018-04-16','2019-04-16',01,01,2018,01,'ADS2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.',
 'M�quina virtual com servidor Microsoft SQL Server 2014','Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova '),
 
-(02,'2018-02-10','2024-04-02',01,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+('2018-02-10','2024-04-02',01,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
 
-(03,'2018-02-10','2024-04-02',02,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+('2018-02-10','2024-04-02',02,09,2018,02,'SI2B',01,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
 
-(04,'2018-02-10','2024-04-02',03,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+('2018-02-10','2024-04-02',03,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
 'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
 
-(05,'2018-02-10','2024-04-02',04,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
-'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts'),
+('2018-02-10','2024-04-02',04,09,2018,02,'SI2B',02,'Aulas utilizando projetor, lousa e computador, cada aula ter� 50 minutos e atividades cont�nuas di�rias.','Computadores com softwares apropriados para a disciplina',
+'Nota Final = 60% MAC + 40% Prova e Frequencia 75% ','Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts')
 
 
 
@@ -362,31 +368,31 @@ go
 /* 	Preencham a solicita��o de matricula de pelo menos 3 alunos
 em cada uma das 2 Disciplinas ofertadas. ( INSERT ) */
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,01,'2018-04-03',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,01,'2018-04-03')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,02,'2018-04-08',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,02,'2018-04-08')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-03-05',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-03-05')
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador)
-values (01,03,'2018-06-03',01)
-
-
-insert into solicitacaoMatricula (IDAluno,IDDisciplinaOfertada,DtSolicitacao, IDCoordenador)
-values (01,02,'2018-06-12',01)
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao)
+values (01,03,'2018-06-03')
 
 
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
-values (02,1,'2018-05-22',01,'Aprovada')
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
-values (02,2,'2018-05-22',01,'Aprovada')
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
-values (02,3,'2018-05-22',01,'Aprovada')
-insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao, idCoordenador,[status])
-values (02,4,'2018-05-22',01,'Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,dtSolicitacao)
+values (01,02,'2018-06-12')
+
+
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao,[status])
+values (02,1,'2018-05-22','Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao,[status])
+values (02,2,'2018-05-22','Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao,[status])
+values (02,3,'2018-05-22','Aprovada')
+insert into solicitacaoMatricula (idAluno,idDisciplinaOfertada,DtSolicitacao,[status])
+values (02,4,'2018-05-22','Aprovada')
 
 
 
@@ -418,9 +424,9 @@ go
 
 insert into atividadeVinculada (idProfessor,idAtividade,idDisciplinaOfertada,rotulo,estado, dtInicioRespostas, dtFimRespostas)
 	values
-	--(1,1,1,'AC1','ABERTA','05-16-2018', '05-25-2018'),
+	(1,1,1,'AC1','ABERTA','05-16-2018', '05-25-2018'),
 	(2,1,2,'AC2','ABERTA','05-16-2018', '05-25-2018'),
-	--(3,1,3,'AC3','ABERTA','05-16-2018', '05-25-2018'),
+	(3,1,3,'AC3','ABERTA','05-16-2018', '05-25-2018'),
 	(4,1,4,'AC4','ABERTA','05-16-2018', '05-25-2018'),
 	(5,1,5,'AC5','ABERTA','05-16-2018', '05-25-2018'),
 	(1,2,1,'AC6','ABERTA','05-16-2018', '05-25-2018'),
@@ -428,25 +434,25 @@ insert into atividadeVinculada (idProfessor,idAtividade,idDisciplinaOfertada,rot
 	(3,2,3,'AC8','ABERTA','05-16-2018', '05-25-2018'),
 	(4,2,4,'AC9','ABERTA','05-16-2018', '05-25-2018'),
 	(5,2,5,'AC10','ABERTA','05-16-2018', '05-25-2018')
-	
+
 go
 -----------------------------------------------------------------------------------------------------
 ------------------------- PABLO --------------------
 
 /* Realizem 2 entregas destes trabalhos vinculados, realizados por qualquer aluno. ( INSERT). */
 
-insert into entrega (idAluno,titulo,resposta,idAtividadeVinculada,idProfessor,dtAvaliacao,obs)
+insert into entrega (idAluno,titulo,resposta,idAtividadeVinculada,dtAvaliacao,obs)
 values
-(1,'Atividade 1', 'segue minha resposta 1', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(2,'Atividade 1', 'segue minha resposta 2', 2,2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(3,'Atividade 1', 'segue minha resposta 1', 3,3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(4,'Atividade 1', 'segue minha resposta 2', 4,4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(1,'Atividade 1', 'segue minha resposta 1', 5,5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(2,'Atividade 1', 'segue minha resposta 2', 1,1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(3,'Atividade 1', 'segue minha resposta 1', 2,2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(4,'Atividade 1', 'segue minha resposta 2', 3,3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(1,'Atividade 1', 'segue minha resposta 1', 4,4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
-(2,'Atividade 1', 'segue minha resposta 2', 5,5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia')
+(1,'Atividade 1', 'segue minha resposta 1', 1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(3,'Atividade 1', 'segue minha resposta 1', 3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(4,'Atividade 1', 'segue minha resposta 2', 4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(1,'Atividade 1', 'segue minha resposta 1', 5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 1,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(3,'Atividade 1', 'segue minha resposta 1', 2,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(4,'Atividade 1', 'segue minha resposta 2', 3,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(1,'Atividade 1', 'segue minha resposta 1', 4,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia'),
+(2,'Atividade 1', 'segue minha resposta 2', 5,'01-01-2018','Atividade Referente � AC5 de Linguagem SQL Professor Gustavo Maia')
 
 
 go
@@ -474,3 +480,9 @@ go
 update mensagem set DtResposta = '2018-04-17' where idMensagem = 1
 
 update mensagem set Resposta = 'A data da entrega � na proxima semana' where idMensagem = 1
+
+
+-------------------- Criação de usuario admin ------------------
+
+insert into administrador(logon,Senha,Nome,Email,Celular)
+Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')

@@ -30,9 +30,8 @@ urlpatterns = [
     path('inserirdisciplina/', inserirDisciplina, name = 'inserirdisciplina'),
     path('deletardisciplina/<int:iddisciplina>/', deletarDisciplina, name = 'deletardisciplina'),
     path("alterardisciplina/<int:iddisciplina>/", alterarDisciplina, name = "alterardisciplina"),
-    path('admin/', admin.site.urls),
-    path('listardisciplinasofertadas/',listarCursos, name ='listardisciplinasofertadas'),
-    path('inserirdisciplinaofertada/<int:iddisciplina>/', inserirDisciplinaOfertada, name = 'inserirdisciplinaofertada'),
-    path('deletardisciplinaofertada/<int:iddisciplinaofertada>/', deletarDisciplinaOfertada, name = 'alterardisciplinaofertada'),
+    path('listardisciplinasofertadas/',listarDisciplinasOfertadas, name ='listardisciplinasofertadas'), 
+    path('inserirdisciplinaofertada/<int:iddisciplina>/', inserirDisciplinaOfertada, name = 'inserirdisciplinaofertada'), ## SOMENTE VIA OFERTADA DA TELA DISCIPLINAS
+    path('deletardisciplinaofertada/<int:iddisciplinaofertada>/', deletarDisciplinaOfertada, name = 'deletardisciplinaofertada'),
     path("alterardisciplinaofertada/<int:iddisciplinaofertada>/", alterarDisciplinaOfertada, name = "alterardisciplinaofertada"),
 ]

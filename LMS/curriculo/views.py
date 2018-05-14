@@ -7,46 +7,84 @@ from contas.models.professor import Professor
 from restrito.models.atividade import Atividade
 
 def listarCursos(request):
-    cursos = Curso.objects.all()
-    return render(request, 'listaCursos.html', {'cursos': cursos})
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'listaCursos.html', {'cursos':  Curso.objects.all()})
 
 def inserirCurso(request):
-    context = {}
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
         Curso.objects.create(
-            nome=request.POST.get("curso")
+            nome=request.POST.get("curso"),
+            idcoordenador=Coordenador.objects.get(idcoordenador=request.POST.get("coordenador"))
         )
         return redirect('listarcursos')
     else:
-        return render(request, "formNovoCurso.html", context)
+        return render(request, "formNovoCurso.html", {"coordenadores": Coordenador.objects.all()})
 
 def alterarCurso(request, idcurso):
-    cursos = Curso.objects.get(idcurso=idcurso)
-    context = {"cursos": cursos}
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
         curso = Curso.objects.get(idcurso=idcurso)
         curso.nome = request.POST.get('curso')
+        curso.idcoordenador = Coordenador.objects.get(idcoordenador=request.POST.get("coordenador"))
         curso.save()
         return redirect('listarcursos')
     else:
-        return render(request, "formNovoCurso.html", {'cursos': cursos})
+        return render(request, "formNovoCurso.html", {'curso': Curso.objects.get(idcurso=idcurso), "coordenadores": Coordenador.objects.all()})
 
 def deletarCurso(request, idcurso):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     curso = Curso.objects.get(idcurso=idcurso)
     curso.delete()
     return redirect('listarcursos')
 
 def listarDisciplinas(request):
-    contexto = {
-        "disciplinas": Disciplina.objects.all()
-    }
-    return render(request, 'listaDisciplinas.html', contexto)
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'listaDisciplinas.html', {"disciplinas": Disciplina.objects.all()})
 
 def inserirDisciplina(request):
-    contexto = {'coordenadores': Coordenador.objects.all()}
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
-        idcoordenador = Coordenador.objects.get(
-            idcoordenador=request.POST.get("coordenador"))
         Disciplina.objects.create(
             nome=request.POST.get("nome"),
             data=request.POST.get("data"),
@@ -60,105 +98,149 @@ def inserirDisciplina(request):
             bibliografiabasica=request.POST.get("bibliografiabasica"),
             bibliografiacomplementar=request.POST.get("bibliografiacomplementar"),
             percentualpratico=request.POST.get("percentualpratico"),
-            percentualteorico=request.POST.get("percentualteorico"),
-            idcoordenador=idcoordenador
+            percentualteorico=request.POST.get("percentualteorico")
         )
         return redirect('listardisciplinas')
     else:
-        return render(request, "formNovaDisciplina.html", contexto)
+        return render(request, "formNovaDisciplina.html")
 
 def alterarDisciplina(request, iddisciplina):
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
-        idcoordenador = Coordenador.objects.get(idcoordenador=request.POST.get("coordenador"))
         disciplina = Disciplina.objects.get(iddisciplina=iddisciplina)
-        disciplina.nome = request.POST.get("nome"),
-        disciplina.data = request.POST.get("data"),
-        disciplina.statusdisc = request.POST.get("statusdisc"),
-        disciplina.planodeensino = request.POST.get("plano"),
-        disciplina.cargahoraria = request.POST.get("cargahoraria"),
-        disciplina.competencias = request.POST.get("competencias"),
-        disciplina.habilidades = request.POST.get("habilidades"),
-        disciplina.ementa = request.POST.get("ementa"),
-        disciplina.conteudoprogramatico = request.POST.get("conteudoprogramatico"),
-        disciplina.bibliografiabasica = request.POST.get("bibliografiabasica"),
-        disciplina.bibliografiacomplementar = request.POST.get("bibliografiacomplementar"),
-        disciplina.percentualpratico = request.POST.get("percentualpratico"),
-        disciplina.percentualteorico = request.POST.get("percentualteorico"),
-        disciplina.idcoordenador = idcoordenador
+        disciplina.nome = request.POST.get("nome")
+        disciplina.data = request.POST.get("data")
+        disciplina.statusdisc = request.POST.get("statusdisc")
+        disciplina.planodeensino = request.POST.get("plano")
+        disciplina.cargahoraria = request.POST.get("cargahoraria")
+        disciplina.competencias = request.POST.get("competencias")
+        disciplina.habilidades = request.POST.get("habilidades")
+        disciplina.ementa = request.POST.get("ementa")
+        disciplina.conteudoprogramatico = request.POST.get("conteudoprogramatico")
+        disciplina.bibliografiabasica = request.POST.get("bibliografiabasica")
+        disciplina.bibliografiacomplementar = request.POST.get("bibliografiacomplementar")
+        disciplina.percentualpratico = request.POST.get("percentualpratico")
+        disciplina.percentualteorico = request.POST.get("percentualteorico")
         disciplina.save()
         return redirect('listardisciplinas')
     else:
-        contexto = {
-            'coordenadores': Coordenador.objects.all(),
-            'disciplina': Disciplina.objects.get(iddisciplina=iddisciplina)
-        }
-        return render(request, "formNovaDisciplina.html", contexto)
+        return render(request, "formNovaDisciplina.html", {'disciplina': Disciplina.objects.get(iddisciplina=iddisciplina)})
 
 def deletarDisciplina(request, iddisciplina):
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     disciplina = Disciplina.objects.get(iddisciplina=iddisciplina)
     disciplina.delete()
     return redirect('listardisciplinas')
 
 def listarDisciplinasOfertadas(request):
-    contexto = {
-        "atividades":Atividadevinculada.objects.all()
-    }
-    return render(request, 'listarDisciplinas.html', contexto)
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'listarDisciplinasOfertadas.html', {"disciplinasofertadas":Disciplinaofertada.objects.all()})
 
 def inserirDisciplinaOfertada(request, iddisciplina):
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     contexto ={
-        'professores':Professor.objects.all(),
+        'professores': Professor.objects.all(),
         'disciplina': Disciplina.objects.get(iddisciplina=iddisciplina),
         'cursos': Curso.objects.all(),
     }
+
     if request.method == 'POST':
         professor = Professor.objects.get(idprofessor=request.POST.get("professor"))
         curso = Curso.objects.get(idcurso=request.POST.get("curso"))
-        coordenador = Coordenador.objects.get(idcoordenador=request.POST.get("coordenador"))
         disciplina = Disciplina.objects.get(iddisciplina = iddisciplina)
         Disciplinaofertada.objects.create(
-            idcoordenador=coordenador,
             dtiniciomatricula = request.POST.get("dtiniciomatricula"),
             dtfimmatricula = request.POST.get("dtfimmatricula"),
             iddisciplina=disciplina,
             idcurso=curso,
             ano=request.POST.get("ano"),
             semestre=request.POST.get("semestre"),
+            turma=request.POST.get("turma"),
             idprofessor=professor,
             metodologia=request.POST.get("metodologia"),
             recursos = request.POST.get("recursos"),
             criterioavaliacao = request.POST.get("criterios"),
-            planodeaulas = request.POST.get("plano")
+            planodeaulas = request.POST.get("planodeaulas")
         )
         return redirect('listardisciplinas')
     else:
         return render(request, "formNovaDisciplinaOfertada.html", contexto)
 
-def alterarDisciplinaOfertada(request, idatividadevinculada):
+def alterarDisciplinaOfertada(request, iddisciplinaofertada):
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
     if request.method == 'POST':
-        atividadevindulada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-        idprofessor = Professor.objects.get(idprofessor=request.POST.get("professor"))
-        idatividade = Atividade.objects.get(idatividade=request.POST.get("atividade"))
-        iddisciplina = Disciplinaofertada.objects.get(iddisciplinaofertada=request.POST.get("disciplina"))
-        atividadevindulada.idprofessor = idprofessor,
-        atividadevindulada.idatividade = atividade,
-        atividadevindulada.iddisciplinaofertada = disciplina,
-        atividadevindulada.rotulo = request.POST.get("rotulo"),
-        atividadevindulada.estado = request.POST.get("estado"),
-        atividadevindulada.dtiniciorespostas = request.POST.get("dtiniciorespostas"),
-        atividadevindulada.dtfimrespostas = request.POST.get("dtfimrespostas")
-        atividadevindulada.save()
-        return redirect('listaratividadesvinculadas')
+        professor = Professor.objects.get(idprofessor=request.POST.get("professor"))
+        curso = Curso.objects.get(idcurso=request.POST.get("curso"))
+        do = Disciplinaofertada.objects.get(iddisciplinaofertada=iddisciplinaofertada)
+        do.dtiniciomatricula = request.POST.get("dtiniciomatricula")
+        do.dtfimmatricula = request.POST.get("dtfimmatricula")
+        do.iddisciplina=do.iddisciplina
+        do.idcurso=curso
+        do.ano=request.POST.get("ano")
+        do.semestre=request.POST.get("semestre")
+        do.turma=request.POST.get("turma")
+        do.idprofessor=professor
+        do.metodologia=request.POST.get("metodologia")
+        do.recursos = request.POST.get("recursos")
+        do.criterioavaliacao = request.POST.get("criterios")
+        do.planodeaulas = request.POST.get("plano")
+        do.save()
+        return redirect('listardisciplinasofertadas')
     else:
+        do = Disciplinaofertada.objects.get(iddisciplinaofertada=iddisciplinaofertada)
         contexto ={
             'professores':Professor.objects.all(),
             'atividades': Atividade.objects.all(),
-            'disciplinas': Disciplina.objects.all(),
-            'atividadevinculada':Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
+            'disciplinaofertada': Disciplinaofertada.objects.get(iddisciplinaofertada=iddisciplinaofertada),
+            'cursos': Curso.objects.all(),
+            'disciplina': do.iddisciplina
         }
-    return render(request, "formNovaAtividadeVinculada.html", contexto)
+        return render(request, "formNovaDisciplinaOfertada.html", contexto)
 
-def deletarDisciplinaOfertada(request, idatividadevinculada):
-    atividadevinculada = Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
-    atividadevinculada.delete()
-    return redirect ('listaratividadesvinculadas')
+
+def deletarDisciplinaOfertada(request, iddisciplinaofertada):
+    try:
+        if request.sessao.usuario.profile != "S" and request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    disciplinaofertada = Disciplinaofertada.objects.get(iddisciplinaofertada=iddisciplinaofertada)
+    disciplinaofertada.delete()
+    return redirect ('listardisciplinasofertadas')

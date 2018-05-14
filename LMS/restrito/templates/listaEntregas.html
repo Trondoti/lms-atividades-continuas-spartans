@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for entrega in entregas %}                        
+                                {% for entrega in entregas %}
                                     <tr>
                                         <td>
                                             {{ entrega.titulo }}
@@ -33,12 +33,16 @@
                                             <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
+                                            <a class="myButton" href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
+<<<<<<< HEAD
                         </table>    
+=======
+                        </table>
+>>>>>>> master
                   </ul>
                 </div>
             </div>

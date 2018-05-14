@@ -97,17 +97,6 @@
                             <input class="inputForm" type="number" min="0" max="100"  name="percentualteorico" value="{{disciplina.percentualteorico}}" required="required">
                         </label>
                     </div>
-                    <div class="containerInputForm">
-                        <label class="labelForm">
-                            <strong class="strongLabelForm">COORDENADOR</strong>
-                            <select name='coordenador' class="inputForm" required="required">
-                                <option value="">SELECIONE</option>
-                                {% for coordenador in coordenadores  %}
-                                    <option value='{{coordenador.idcoordenador}}' {% if disciplina.idcoordenador.idcoordenador == coordenador.idcoordenador %} selected {% endif %}>{{coordenador.nome}}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
-                    </div>
                     <div id="divSubmitCurso">
                         <input type="submit" class="btn" value="SALVAR">
                     </div>

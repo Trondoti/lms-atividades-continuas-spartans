@@ -1,6 +1,7 @@
 from contas.models.professor import Professor
 from contas.models.aluno import Aluno
 from contas.models.coordenador import Coordenador
+from contas.models.administrador import Administrador
 from core.models.sessao import Sessao
 from core.models.usuario import Usuario
 
@@ -18,9 +19,13 @@ class LoginHelper():
             except:
                 try:
                     aluno = Aluno.objects.get(email=email)
-                    return  Usuario(200, "A", aluno.idaluno, aluno.logon, aluno.nome, aluno.senha, aluno.email, aluno.celular, aluno.dtexpiracao)
+                    return Usuario(200, "A", aluno.idaluno, aluno.logon, aluno.nome, aluno.senha, aluno.email, aluno.celular, aluno.dtexpiracao)
                 except:
-                    return Usuario(404, None, None, None, None, None, None, None, None)
+                    try:
+                        administrador = Administrador.objects.get(email=email)
+                        return Usuario(200, "S", administrador.idadministrador, administrador.logon, administrador.nome, administrador.senha, administrador.email, administrador.celular, administrador.dtexpiracao)
+                    except:
+                        return Usuario(404, None, None, None, None, None, None, None, None)
 
 
     def salvarSessao(self, usuario):
@@ -31,7 +36,7 @@ class LoginHelper():
                 idaluno = aluno
             )
         if(usuario.profile == "C"):
-            coordenador = Coordenador.objects.get(idcoordendaor=usuario.id)
+            coordenador = Coordenador.objects.get(idcoordenador=usuario.id)
 
             return Sessao.objects.create(
                 idcoordenador = coordenador
@@ -41,6 +46,12 @@ class LoginHelper():
 
             return Sessao.objects.create(
                 idprofessor = professor
+            )
+        if(usuario.profile == "S"):
+            administrador = Administrador.objects.get(idadministrador=usuario.id)
+
+            return Sessao.objects.create(
+                idadministrador = administrador
             )
 
     def pegarUsuarioPelaSessao(self, sessao):
@@ -53,4 +64,7 @@ class LoginHelper():
                 try:
                     return self.montarUsuario(sessao.idprofessor.email)
                 except:
-                    return Usuario(404, None, None, None, None, None, None, None, None)
+                    try:
+                        return self.montarUsuario(sessao.idadministrador.email)
+                    except:
+                        return Usuario(404, None, None, None, None, None, None, None, None)

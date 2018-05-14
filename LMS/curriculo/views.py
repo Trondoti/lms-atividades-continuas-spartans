@@ -154,7 +154,6 @@ def alterarDisciplinaOfertada(request, idatividadevinculada):
             'professores':Professor.objects.all(),
             'atividades': Atividade.objects.all(),
             'disciplinas': Disciplina.objects.all(),
-            'disciplinaofertada':
             'atividadevinculada':Atividadevinculada.objects.get(idatividadevinculada=idatividadevinculada)
         }
     return render(request, "formNovaAtividadeVinculada.html", contexto)

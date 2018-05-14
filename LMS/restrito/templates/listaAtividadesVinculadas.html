@@ -6,11 +6,8 @@
                     <h1 class="tituloCrud">LISTA DE ATIVIDADES VINCULADAS</h1>
                 </div>
                 <div>
-                    <a href="{% url "inseriratividadevinculada" %}">INSERIR</a>
-                </div>
-                <div>
-                  <table>
-                    <tr>
+                    <table>
+                        <tr>
                           <td>atividade</td>
                       </tr>
                   </table>
@@ -19,7 +16,7 @@
                       <li>
                          {{ atividade.rotulo }}
                          <a href="{% url 'alteraratividadevinculada' atividade.idatividadevinculada %}">ALTERAR</a>
-                         <a href="{% url 'deletaratividadevinculada' atividade.idatividadevinculada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                          
+                         <a href="{% url 'deletaratividadevinculada' atividade.idatividadevinculada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                         </li>
                     {% endfor %}
                   </ul>

@@ -1,82 +1,69 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load %}
+	<body id="bodyPrincipal">
 		<main>
             <div class="containers" id="novoaluno">
                 <form id="formulario" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
                     {% if atividade.idatividadevinculada %}
-                    <h1>ALTERAR ATIVIDADE VINCULADA</h1>
+                    	<h1>ALTERAR ATIVIDADE VINCULADA</h1>
                     {% else %}
-                    <h1>ADICIONAR ATIVIDADE VINCULADA</h1>
+                    	<h1>ADICIONAR ATIVIDADE VINCULADA</h1>
                     {% endif %}
-                            
-                    <fieldset>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                PROFESSOR: <select name = 'professor'>
-                                {% if professor.idprofessor %}
-                                <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
-                                 {% else %}
-                                 <option >SELECIONE</option>
-                                {% for professor in professores %}
-                                <option value ='{{professor.idprofessor}}'>{{ professor.nome }} </option>
-                                {% endfor %}
-                                {% endif %}
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">ATIVIDADE</strong>
-                                <input class="inputForm" type="text" value = "{{ atividade.titulo }}" readonly = "readonly">
-                            </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                DISCIPLINA: <select name = 'disciplina'>
-                                <option >SELECIONE</option>
-                                {% for do in disciplinasofertadas %}
-                                <option value ='{{do.iddisciplina.iddisciplina}}'>{{ do.iddisciplina.nome }} EM {{do.idcurso.nome}} </option>
-                                {% endfor %}
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">RÓTULO</strong>
-                                <input class="inputForm" type="text" name="rotulo" value = "{{ atividadevinculada.rotulo }}">
-                            </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                STATUS: <select name = 'estado'>
-                                <option >SELECIONE</option>
-                                <option value ='Disponibilizada'{% if di>Disponibilizada</option>
-                                <option value ='Aberta'>Aberta</option>
-                                <option value ='Fechada'>Fechada</option>
-                                <option value ='Encerrada'>Encerrada</option>
-                                <option value ='Prorrogada'>Prorrogada</option>
-                            </label></br>
-                        </select>                               
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">DATA INICIO RESPOSTAS</strong>
-                                <input class="inputForm" type="date" name="dtiniciorespostas" value = "{{ atividadevinculada.dtiniciorespostas }}">
-                            </label>
-                        </div>
-                        <div class="containerInputForm">
-                            <label class="labelForm">
-                                <strong class="strongLabelForm">DATA FIM RESPOSTAS</strong>
-                                <input class="inputForm" type="date" name="dtfimrespostas" value = "{{ atividadevinculada.dtfimrespostas }}">
-                            </label>
-                        </div>
-                       
-                        <div id="divSubmitAluno">
-                            <input type="submit" class="btn" value="SALVAR">
-                        </div>
-                    </fieldset>
+
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">ATIVIDADE</strong>
+                            <input class="inputForm" type="text" value="{{atividade.titulo}}" readonly="readonly" />
+                        </label>
+                    </div>
+					<div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">DISCIPLINA</strong>
+                            <select name='disciplinaofertada' class="inputForm" required="required">
+                                <option value="">SELECIONE</option>
+								{% for do in disciplinasofertadas %}
+	                            	<option value ='{{do.iddisciplinaofertada}}' {% if do.iddisciplinaofertada == atividadevinculada.iddisciplinaofertada.iddisciplinaofertada %} selected {% endif %}>{{do.iddisciplina.nome}} - em - {{do.idcurso.nome}}</option>
+	                            {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">RÓTULO</strong>
+                            <input class="inputForm" type="text" name="rotulo" value="{{atividadevinculada.rotulo}}" maxlength="100" />
+                        </label>
+                    </div>
+					<div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">STATUS</strong>
+                            <select name='estado' class="inputForm" required="required">
+                                <option value="">SELECIONE</option>
+								<option value='DISPONIBILIZADA' {% if atividadevinculada.estado == "DISPONIBILIZADA" %} selected {% endif %}>DISPONIBILIZADA</option>
+	                            <option value='ABERTA' {% if atividadevinculada.estado == "ABERTA" %} selected {% endif %}>ABERTA</option>
+	                            <option value='FECHADA' {% if atividadevinculada.estado == "FECHADA" %} selected {% endif %}>FECHADA</option>
+	                            <option value='ENCERRADA' {% if atividadevinculada.estado == "ENCERRADA" %} selected {% endif %}>ENCERRADA</option>
+	                            <option value='PRORROGADA' {% if atividadevinculada.estado == "PRORROGADA" %} selected {% endif %}>PRORROGADA</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">DATA INICIO RESPOSTAS</strong>
+                            <input class="inputForm" type="date" name="dtiniciorespostas" value="{{atividadevinculada.dtiniciorespostas|date:'Y-m-d'}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">DATA FIM RESPOSTAS</strong>
+                            <input class="inputForm" type="date" name="dtfimrespostas" value="{{atividadevinculada.dtfimrespostas|date:'Y-m-d'}}">
+                        </label>
+                    </div>
+                    <div id="divSubmitCurso">
+                        <input type="submit" class="btn" value="SALVAR">
+                    </div>
                 </form>
             </div>
 		</main>
+	</body>
 {% endblock %}

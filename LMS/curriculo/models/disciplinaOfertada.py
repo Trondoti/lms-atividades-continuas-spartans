@@ -1,5 +1,4 @@
 from django.db import models
-from contas.models.coordenador import Coordenador
 from .disciplina import Disciplina
 from .curso import Curso
 from contas.models.professor import Professor
@@ -7,7 +6,6 @@ from contas.models.professor import Professor
 
 class Disciplinaofertada(models.Model):
     iddisciplinaofertada = models.AutoField(db_column='idDisciplinaOfertada', primary_key=True)  # Field name made lowercase.
-    idcoordenador = models.ForeignKey(Coordenador, models.DO_NOTHING, db_column='idCoordenador')  # Field name made lowercase.
     dtiniciomatricula = models.DateField(db_column='dtInicioMatricula', blank=True, null=True)  # Field name made lowercase.
     dtfimmatricula = models.DateField(db_column='dtFimMatricula', blank=True, null=True)  # Field name made lowercase.
     iddisciplina = models.ForeignKey(Disciplina, models.DO_NOTHING, db_column='IdDisciplina')  # Field name made lowercase.

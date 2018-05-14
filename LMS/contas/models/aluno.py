@@ -1,5 +1,6 @@
 from .pessoa import Pessoa
 from django.db import models
+import time
 
 class Aluno(Pessoa):
     idaluno = models.AutoField(db_column='idAluno', primary_key=True)  # Field name made lowercase.
@@ -24,4 +25,9 @@ class Aluno(Pessoa):
             cargaHoraria+= i.iddisciplinaofertada.iddisciplina.cargahoraria
         return cargaHoraria
             
-        
+
+    def geraNumeroRA(ultimoRA):
+        ano = time.strftime("%y")
+        if(str(ultimoRA)[:2] == ano):
+            return ultimoRA+1
+        return int(''.join([str(ano), '00001']))        

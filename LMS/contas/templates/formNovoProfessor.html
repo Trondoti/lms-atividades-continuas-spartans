@@ -37,6 +37,9 @@
                         <strong class="strongLabelForm">EMAIL</strong>
                         <input class="inputForm" type="email" maxlength="40" name="email" placeholder="" required="required" value="{{professor.email}}">
                     </label>
+                {% if mensagem %}
+                    <p style= "color:{{cor}}"> {{ mensagem }} </style> </p>
+                {% endif %}
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">

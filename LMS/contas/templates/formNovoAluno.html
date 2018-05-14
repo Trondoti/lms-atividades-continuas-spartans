@@ -3,10 +3,6 @@
 {% load %}
 <main>
     <div class="containers" id="novoaluno">
-        {% if erro %}
-               <p style ='color:r red;'> {{ erro }}</p>
-            </style>
-        {% endif %}
         <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
             <h1>ADICIONAR NOVO ALUNO</h1>
 
@@ -34,6 +30,9 @@
                         <strong class="strongLabelForm">EMAIL</strong>
                         <input class="inputForm" type="email" name="email" placeholder="email@exemplo.com" maxlength="40" required="required" value = "{{ aluno.email }}">
                     </label>
+                {% if mensagem %}
+                    <p style= "color:{{cor}}"> {{ mensagem }} </style> </p>
+                {% endif %}
                 </div>
                 <div class="containerInputForm">
                     <label class="labelForm">

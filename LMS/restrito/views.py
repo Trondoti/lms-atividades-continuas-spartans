@@ -129,6 +129,12 @@ def listarEntregas(request):
     }
     return render(request, 'listaEntregas.html', contexto)
 
+def listarEntregasProfessor(request):
+    contexto = {
+        "entregas":Entrega.objects.all()
+    }
+    return render(request, 'listaEntregas.html', contexto)
+
 
 def inserirEntrega(request):
     contexto ={

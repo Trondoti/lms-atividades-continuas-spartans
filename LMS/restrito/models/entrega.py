@@ -80,3 +80,7 @@ class Entrega(models.Model):
             )
 
         return atividadesEntregues
+
+    def descontaNota(nota, porcentagem):
+        desconto = nota - (nota * porcentagem/100)
+        return desconto

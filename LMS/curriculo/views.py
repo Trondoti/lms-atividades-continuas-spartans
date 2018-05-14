@@ -88,8 +88,7 @@ def alterarDisciplina(request, iddisciplina):
         disciplina.ementa = request.POST.get("ementa"),
         disciplina.conteudoprogramatico = request.POST.get("conteudo"),
         disciplina.bibliografiabasica = request.POST.get("bbasica"),
-        disciplina.bibliografiacomplementar = request.POST.get(
-            "bcomplementar"),
+        disciplina.bibliografiacomplementar = request.POST.get("bcomplementar"),
         disciplina.percentualpratico = request.POST.get("ppratico"),
         disciplina.percentualteorico = request.POST.get("pteorico"),
         disciplina.idcoordenador = idcoordenador

@@ -3,8 +3,10 @@ from .models.professor import Professor
 from .models.aluno import Aluno
 from .models.coordenador import Coordenador
 from restrito.models.solicitacaoMatricula import Solicitacaomatricula
+from django.db.models import Max
 import base64
 import hashlib
+import time
 
 
 def listarProfessores(request):
@@ -14,16 +16,45 @@ def listarProfessores(request):
 def inserirProfessor(request):
     context = {}
     if request.method == 'POST':
-        Professor.objects.create (
-        logon = request.POST.get('logon'),
-        senha = request.POST.get('senha'),
-        nome = request.POST.get('nome'),
-        email = request.POST.get('email'),
-        celular = request.POST.get('celular'),
-        dtexpiracao = request.POST.get('dtexpiracao'),
-        apelido = request.POST.get('apelido')
-        )        
-        return redirect('listarprofessores')
+        email=request.POST.get("email")
+        logon=request.POST.get("logon")
+        try:
+            professor = Professor.objects.get(email=email)
+            context = {
+                "mensagem": "Email já cadastrado em Professores",
+                "statusCode": "500",
+                "cor": "red"
+                }
+            return render(request, "formNovoProfessor.html", context)
+        except:
+            try:
+                professor = Professor.objects.get(logon=logon)
+                context = {
+                "mensagem": "Logon já cadastrado em Professores",
+                "statusCode": "500",
+                "cor": "red"
+                }
+                return render(request, "formNovoProfessor.html", context)
+            except:
+                    try:
+                        professor=Aluno.objects.get(logon=logon)
+                        context = {
+                            "mensagem" : "Logon já cadastrado em Alunos",
+                            "statusCode": "500",
+                            "cor": "red"
+                                }       
+                        return render(request, "formNovoProfessor.html", context)
+                    except:
+                        Professor.objects.create (
+                        logon = request.POST.get('logon'),
+                        senha = request.POST.get('senha'),
+                        nome = request.POST.get('nome'),
+                        email = request.POST.get('email'),
+                        celular = request.POST.get('celular'),
+                        dtexpiracao = request.POST.get('dtexpiracao'),
+                        apelido = request.POST.get('apelido')
+                        )        
+                        return redirect('listarprofessores')
     else:
         return render(request, 'formNovoProfessor.html', context)
 
@@ -57,6 +88,7 @@ def listarAlunos(request):
 def inserirAluno(request):
     context = {}
     if request.method == 'POST':
+        ultimoRA = Aluno.objects.all().aggregate(Max('ra'))
         file = request.FILES['foto']
         encoded = base64.b64encode(file.read())
         email=request.POST.get("email")
@@ -65,26 +97,40 @@ def inserirAluno(request):
         #print(senha);
         try:
             aluno = Aluno.objects.get(email=email)
-            context = {"erro" : "Email já cadastrado"}
+            context = {
+                "mensagem" : "Email já cadastrado em alunos",
+                "statusCode": "500",
+                "cor": "red"
+                }
             return render(request, "formNovoAluno.html", context)
         except:
             try:
                 aluno=Aluno.objects.get(logon=logon)
-                context = {"erro": "Logon já cadastrado em Aluno"}
+                context = {
+                "mensagem" : "Logon já cadastrado em alunos",
+                "statusCode": "500",
+                "cor": "red"
+                }
                 return render(request, "formNovoAluno.html", context)
             except:
                     try:
                         professor=Professor.objects.get(logon=logon)
-                        context = {"erro": "Logon já cadastrado em Professor"}
+                        context = {
+                            "mensagem": "Logon já cadastrado em alunos",
+                            "statusCode": "500",
+                            "cor": "red"
+                                }       
                         return render(request, "formNovoAluno.html", context)
                     except:
+                        novoRA = Aluno.geraNumeroRA(ultimoRA)
                         Aluno.objects.create(
                             logon=request.POST.get("logon"),
                             senha=request.POST.get("senha"),
                             nome=request.POST.get("nome"),
                             email=request.POST.get("email"),
                             celular=request.POST.get("celular"),
-                            foto=encoded
+                            foto=encoded,
+                            ra = novoRA
                         )
                         return redirect('listaralunos')
     else:

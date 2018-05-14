@@ -638,3 +638,23 @@ form #novofiel {
 .tituloCrud{
     text-align: center;
 }
+
+.tabelaMatricula {
+    width: 100%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tabelaMatricula td {
+    text-align: center;
+}
+
+.imgAluno {
+    width: 450px;
+}

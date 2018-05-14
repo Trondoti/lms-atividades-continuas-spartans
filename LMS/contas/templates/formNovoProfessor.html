@@ -1,70 +1,66 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load %}
-<main>
-    <div class="containers" id="novoprofessor">
-        <form id="formulario" autocomplete="off" method="POST" action="">
-            
-            {% if professor.idprofessor %}
-            <h1>ALTERAR PROFESSOR</h1>
-            
-            
-            {% else %}
-           <h1>INSERIR PROFESSOR</h1>
-            {% endif %}
+    <body id="bodyPrincipal">
+        <main>
+            <div class="containers" id="novocurso">
+                <form id="formulario" autocomplete="off" method="POST" action="">
+                    {% if professor.idprofessor %}
+                        <h1>ALTERAR PROFESSOR</h1>
+                    {% else %}
+                       <h1>INSERIR PROFESSOR</h1>
+                    {% endif %}
 
-            <fieldset>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">LOGON</strong>
-                        <input class="inputForm" type="text" maxlength="20" name="logon" placeholder="" required="required" value="{{professor.logon}}">
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">SENHA</strong>
-                        <input class="inputForm" type="password" maxlength="20" name="senha" placeholder="" required="required">
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">NOME</strong>
-                        <input class="inputForm" type="text" maxlength="30" name="nome" placeholder="" required="required" value="{{professor.nome}}">
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">EMAIL</strong>
-                        <input class="inputForm" type="email" maxlength="40" name="email" placeholder="" required="required" value="{{professor.email}}">
-                    </label>
-                {% if mensagem %}
-                    <p style= "color:{{cor}}"> {{ mensagem }} </style> </p>
-                {% endif %}
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">DATA DE EXPIRAÇÃO</strong>
-                        <input class="inputForm" type="date" name="dtexpiracao" required="required" value="{{professor.dtexpiracao}}">
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">APELIDO</strong>
-                        <input class="inputForm" type="text" maxlength="20" name="apelido" required="required" value="{{professor.apelido}}">
-                    </label>
-                </div>
-                <div class="containerInputForm">
-                    <label class="labelForm">
-                        <strong class="strongLabelForm">CELULAR</strong>
-                        <input class="inputForm" type="text" maxlength="9" name="celular" required="required"value="{{professor.celular}}">
-                    </label>
-                </div>
-                <div id="divSubmitCurso">
-                    <input type="submit" class="btn" value="SALVAR">
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</main>
-<footer>
+                    {% if mensagem %}
+                        <p style= "color:{{cor}}"> {{ mensagem }} </style> </p>
+                    {% endif %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">LOGON</strong>
+                            <input class="inputForm" type="text" maxlength="20" name="logon" placeholder="" required="required" value="{{professor.logon}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">SENHA</strong>
+                            <input class="inputForm" type="password" maxlength="20" name="senha" placeholder="" required="required">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">NOME</strong>
+                            <input class="inputForm" type="text" maxlength="30" name="nome" placeholder="" required="required" value="{{professor.nome}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">EMAIL</strong>
+                            <input class="inputForm" type="email" maxlength="40" name="email" placeholder="" required="required" value="{{professor.email}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">DATA DE EXPIRAÇÃO</strong>
+                            <input class="inputForm" type="date" name="dtexpiracao" required="required" value="{{professor.dtexpiracao|date:'Y-m-d'}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">APELIDO</strong>
+                            <input class="inputForm" type="text" maxlength="20" name="apelido" required="required" value="{{professor.apelido}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">CELULAR</strong>
+                            <input class="inputForm" type="text" maxlength="11" name="celular" required="required"value="{{professor.celular}}">
+                        </label>
+                    </div>
+                    <div id="divSubmitCurso">
+                        <input type="submit" class="btn" value="SALVAR">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
 {% endblock %}

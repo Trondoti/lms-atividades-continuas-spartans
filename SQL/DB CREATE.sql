@@ -1,7 +1,16 @@
 CREATE DATABASE LMS
 GO
-
+use master
 USE LMS
+create table administrador (
+idAdministrador int primary key identity (1,1)
+,logon VARCHAR (20) UNIQUE
+,senha VARCHAR (20) NOT NULL
+,nome varchar (40) null
+,email VARCHAR  (40) UNIQUE NOT NULL
+,celular CHAR(9)  UNIQUE
+,dtExpiracao DATE DEFAULT GETDATE()
+)
 
 GO
 CREATE TABLE coordenador (
@@ -171,9 +180,11 @@ id VARCHAR(32) PRIMARY KEY
 , idAluno INT NULL
 , idProfessor INT NULL
 , idCoordenador INT NULL
+,idAdministrador int null
 , CONSTRAINT fkidAlunoSessao FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkidProfessorSessao FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 , CONSTRAINT fkIdCoordenadorSessao FOREIGN KEY (idCoordenador) REFERENCES coordenador (idCoordenador)
+,constraint fkIdAdmin foreign key (idAdministrador) references administrador (idAdministrador)
 )
 
 GO
@@ -471,3 +482,9 @@ go
 update mensagem set DtResposta = '2018-04-17' where idMensagem = 1
 
 update mensagem set Resposta = 'A data da entrega � na proxima semana' where idMensagem = 1
+
+
+-------------------- Criação de usuario admin ------------------
+
+insert into administrador(logon,Senha,Nome,Email,Celular)
+Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')

@@ -1,6 +1,4 @@
 from django.db import models
-from contas.models.coordenador import Coordenador
-
 
 class Disciplina(models.Model):
     iddisciplina = models.AutoField(db_column='idDisciplina', primary_key=True)  # Field name made lowercase.
@@ -17,7 +15,6 @@ class Disciplina(models.Model):
     bibliografiacomplementar = models.CharField(db_column='bibliografiaComplementar', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     percentualpratico = models.IntegerField(db_column='percentualPratico', blank=True, null=True)  # Field name made lowercase.
     percentualteorico = models.IntegerField(db_column='percentualTeorico', blank=True, null=True)  # Field name made lowercase.
-    idcoordenador = models.ForeignKey(Coordenador, models.DO_NOTHING, db_column='idCoordenador')  # Field name  # Field name made lowercase.
 
     class Meta:
         managed = False

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
-from curriculo.views import listarCursos,inserirCurso,alterarCurso, deletarCurso
+from curriculo.views import listarCursos, inserirCurso, alterarCurso, deletarCurso
 from curriculo.views import listarDisciplinas, inserirDisciplina, alterarDisciplina, deletarDisciplina
 from curriculo.views import listarDisciplinasOfertadas,inserirDisciplinaOfertada,alterarDisciplinaOfertada,deletarDisciplinaOfertada
 
@@ -30,9 +30,8 @@ urlpatterns = [
     path('inserirdisciplina/', inserirDisciplina, name = 'inserirdisciplina'),
     path('deletardisciplina/<int:iddisciplina>/', deletarDisciplina, name = 'deletardisciplina'),
     path("alterardisciplina/<int:iddisciplina>/", alterarDisciplina, name = "alterardisciplina"),
-    path('admin/', admin.site.urls),
-    path('listardisciplinasofertadas/',listarCursos, name ='listardisciplinasofertadas'),
-    path('inserirdisciplinaofertada/<int:iddisciplina>/', inserirDisciplinaOfertada, name = 'inserirdisciplinaofertada'),
-    path('deletardisciplinaofertada/<int:iddisciplinaofertada>/', deletarDisciplinaOfertada, name = 'alterardisciplinaofertada'),
+    path('listardisciplinasofertadas/',listarDisciplinasOfertadas, name ='listardisciplinasofertadas'), 
+    path('inserirdisciplinaofertada/<int:iddisciplina>/', inserirDisciplinaOfertada, name = 'inserirdisciplinaofertada'), ## SOMENTE VIA OFERTADA DA TELA DISCIPLINAS
+    path('deletardisciplinaofertada/<int:iddisciplinaofertada>/', deletarDisciplinaOfertada, name = 'deletardisciplinaofertada'),
     path("alterardisciplinaofertada/<int:iddisciplinaofertada>/", alterarDisciplinaOfertada, name = "alterardisciplinaofertada"),
 ]

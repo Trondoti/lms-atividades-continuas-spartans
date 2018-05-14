@@ -10,14 +10,11 @@ class Solicitacaomatricula(models.Model):
     idaluno = models.ForeignKey(Aluno, models.DO_NOTHING, db_column='idAluno')  # Field name made lowercase.
     iddisciplinaofertada = models.ForeignKey(Disciplinaofertada, models.DO_NOTHING, db_column='idDisciplinaOfertada')  # Field name made lowercase.
     dtsolicitacao = models.DateField(db_column='dtSolicitacao')  # Field name made lowercase.
-    idcoordenador = models.ForeignKey(Coordenador, models.DO_NOTHING, db_column='idCoordenador', blank=True, null=True)  # Field name made lowercase.
     status = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'solicitacaoMatricula'
-    
+
     def __str__(self):
         return self.idsolicitacaomatricula
-
-    

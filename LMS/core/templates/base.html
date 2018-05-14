@@ -37,10 +37,14 @@
                     <a href="{% url "index" %}#depoimentos">DEPOIMENTOS</a>
                     <a href="{% url "index" %}#premios">PRÊMIOS</a>
                 </nav>
-                <a id="buttonLogin" href="{% url "login" %}">LOGIN</a>
+                {% if request.sessao %}
+                    <a id="buttonLogin" href="{% url "logout" %}">LOGOUT</a>
+                {% else  %}
+                    <a id="buttonLogin" href="{% url "login" %}">LOGIN</a>
+                {% endif %}
             </div>
         </header>
-        {%block content %} 
+        {%block content %}
         {% endblock %}
         <footer>
             <h1>Faculdade Impacta Tecnologia</h1>

@@ -26,39 +26,37 @@
         <meta name="theme-color" content="#ffffff">
 	</head>
 	{% block content %}
-    <body>
+		<body id="bodyPrincipal">
+	    	<main id="mainlogin">
+	        	<div id="arealogin">
+	                <form id="formulario" autocomplete="off" method="POST" action="">
+	                    <fieldset>
+							<div class="containerInput">
+		                        <label>
+		                            <strong class="label">EMAIL</strong>
+		                            <input class="inputLogin" type="email" name="email">
+		                        </label>
+							</div>
+							<div class="containerInput">
+		                        <label>
+		                            <strong class="label">SENHA</strong>
+		                            <input class="inputLogin" type="password" name="senha">
+		                        </label>
+							</div>
+							<div class="containerInput">
+		                        <label id="rememberLabel">
+		                            <input type="checkbox" checked="checked" name="remember">
+									<strong class="label">LEMBRAR-ME</strong>
+		                        </label>
+							</div>
+	                        <div id="divSubmit">
+	                            <input type="submit" class="btn" value="FAZER LOGIN">
+	                        </div>
+	                    </fieldset>
+	                </form>
 
-	<body id="bodyLogin">
-    	<main id="mainlogin">
-        	<div id="arealogin">
-                <form id="formulario" autocomplete="off" method="POST" action="">
-                    <fieldset>
-						<div class="containerInput">
-	                        <label>
-	                            <strong class="label">EMAIL</strong>
-	                            <input class="inputLogin" type="email" name="email">
-	                        </label>
-						</div>
-						<div class="containerInput">
-	                        <label>
-	                            <strong class="label">SENHA</strong>
-	                            <input class="inputLogin" type="password" name="senha">
-	                        </label>
-						</div>
-						<div class="containerInput">
-	                        <label id="rememberLabel">
-	                            <input type="checkbox" checked="checked" name="remember">
-								<strong class="label">LEMBRAR-ME</strong>
-	                        </label>
-						</div>
-                        <div id="divSubmit">
-                            <input type="submit" class="btn" value="FAZER LOGIN">
-                        </div>
-                    </fieldset>
-                </form>
-
-            </div>
-    	</main>
-	</body>
+	            </div>
+	    	</main>
+		</body>
 	{% endblock %}
 </html>

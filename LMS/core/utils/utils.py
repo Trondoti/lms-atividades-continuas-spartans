@@ -13,7 +13,7 @@ def geraNumeroRA(ultimoRA):
     ano = time.strftime("%y")
     if(str(ultimoRA)[:2] == ano):
         return ultimoRA+1
-    return int(''.join([str(ano), (f'{1:05}')]))
+    return int(''.join([str(ano), '00001']))
 
 def calculaMedia(listaNotas):
     nota = 0
@@ -34,5 +34,3 @@ def verificaCopia(texto1, texto2):
         return True
     else:
         return False
-
-    

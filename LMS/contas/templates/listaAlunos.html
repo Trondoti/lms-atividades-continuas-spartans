@@ -5,27 +5,45 @@
                 <div>
                     <h1 class="tituloCrud">LISTA DE ALUNOS</h1>
                 </div>
+                
                 <div>
-                        <a href="{% url "inseriraluno" %}">INSERIR NOVO ALUNO</a>
-                </div>
-                <div>
-                  <table>
-                    <tr>
-                          <td>ALUNOS</td>
-                      </tr>
-                  </table>
-                  <ul>
-                      {% for aluno in alunos %}
-                      <li>
-                         {{ aluno.nome }}
-                         {{ cargaHoraria}}
-                         <a href="{% url 'alteraraluno' aluno.idaluno %}">ALTERAR</a>
-                         <a href="{% url 'deletaraluno' aluno.idaluno %}">REMOVER</a>                      </li>
-                      </li>
-                      {% endfor %}
-                  </ul>
+                    <a class="buttonInsert" href="{% url "inseriraluno" %}">+</a>
                 </div>
 
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    NOME DO CURSO
+                                </th>
+                                <th>
+                                    ALTERAR
+                                </th>
+                                <th>
+                                    REMOVER
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ aluno.nome }}
+                            {{ cargaHoraria}}
+                            {% for aluno in alunos %}                        
+                                <tr>
+                                    <td>
+                                        {{ aluno.nome }}
+                                    </td>
+                                    <td>
+                                        <a class="myButton" href="{% url 'alteraraluno' aluno.idaluno %}">ALTERAR</a>
+                                    </td>
+                                    <td>
+                                        <a class="myButton" href="{% url 'deletaraluno' aluno.idaluno %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "baseforms.html" %}
 {% block content %}
 {% load static %}
-<body id="bodyLogin">
+<body id="bodyPrincipal">
     	<main id="mainlogin">
         	<div id="arealogin">
 				<img src="{% static "img/logo.png" %}" alt="logo da impacta" id="logoLogin" >
@@ -10,29 +10,27 @@
 				{% else %}
 				{% endif %}
                 <form id="formLogin" method="POST" action="">
-                    <fieldset>
-						<div class="containerInput">
-	                        <label>
-	                            <strong class="label">EMAIL</strong>
-	                            <input class="inputLogin" type="email" name="email">
-	                        </label>
-						</div>
-						<div class="containerInput">
-	                        <label>
-	                            <strong class="label">SENHA</strong>
-	                            <input class="inputLogin" type="password" name="senha">
-	                        </label>
-						</div>
-						<div class="containerInput">
-	                        <label id="rememberLabel">
-	                            <input type="checkbox" checked="checked" name="remember">
-								<strong class="label">LEMBRAR-ME</strong>
-	                        </label>
-						</div>
-                        <div id="divSubmit">
-                            <input type="submit" class="btn">
-                        </div>
-                    </fieldset>
+                	<div class="containerInput">
+                        <label>
+                            <strong class="label">EMAIL</strong>
+                            <input class="inputLogin" type="email" name="email">
+                        </label>
+					</div>
+					<div class="containerInput">
+                        <label>
+                            <strong class="label">SENHA</strong>
+                            <input class="inputLogin" type="password" name="senha">
+                        </label>
+					</div>
+					<div class="containerInput">
+                        <label id="rememberLabel">
+                            <input type="checkbox" checked="checked" name="remember">
+							<strong class="label">LEMBRAR-ME</strong>
+                        </label>
+					</div>
+                    <div id="divSubmit">
+                        <input type="submit" class="btn">
+                    </div>
                 </form>
             </div>
     	</main>

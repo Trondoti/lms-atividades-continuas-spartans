@@ -1,6 +1,6 @@
 CREATE DATABASE LMS
 GO
-use master
+
 USE LMS
 create table administrador (
 idAdministrador int primary key identity (1,1)
@@ -486,3 +486,5 @@ update mensagem set Resposta = 'A data da entrega � na proxima semana' where i
 
 insert into administrador(logon,Senha,Nome,Email,Celular)
 Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')
+
+select * from professor

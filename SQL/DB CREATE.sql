@@ -1,6 +1,6 @@
-CREATE DATABASE LMS
+--CREATE DATABASE LMS
 GO
-use master
+
 USE LMS
 create table administrador (
 idAdministrador int primary key identity (1,1)
@@ -288,35 +288,35 @@ go
 ( utilizem dados reais para preencher a tabela,
  vejam os planos de ensino apresentados ( INSERT ) */
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('Linguagem SQL', 'Aberta', 'Conceitos basicos, Linguagem SQL, Manipula��o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
-'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25,01)
+'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25)
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('Tecnologia Web','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 
 go
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('BANCO DE DADOS','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('DevOps','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('LINGUAGEM PROGRAMACAO 1','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('REDES','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 
-insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico,IdCoordenador)
+insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('IOT','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
-'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50,01)
+'Tecnologias para desenvolvimento de aplica��es web com HTML5,CSS3 e JavaScripts','Introdu��o a HTML5,CSS3 e JavaScripts programa��o avan�ada, revis�o e prova','Use a Cabe�a!, HTML5 com CSS3.Rio de Janeiro: Alta Books, 2 edi��o, 2015','Moraes, Construindo Aplica��es Web. S�o Paulo, NovaTec,2015',50,50)
 ----------------------------------------------------------MATIAS--------------------------------------------------------------
 
 /* 	Ofertem a Disciplina �Linguagem SQL� em 2018, 1�semestre,
@@ -486,3 +486,6 @@ update mensagem set Resposta = 'A data da entrega � na proxima semana' where i
 
 insert into administrador(logon,Senha,Nome,Email,Celular)
 Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')
+
+insert into administrador(logon,Senha,Nome,Email,Celular)
+Values('teste','teste','teste','teste@teste.com','999942128')

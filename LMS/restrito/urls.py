@@ -23,20 +23,35 @@ from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricu
 
 urlpatterns = [
     path('listaratividades/', listarAtividades, name='listaratividades'),
+
     path('inseriratividade/', inserirAtividade, name='inseriratividade'),
+
     path("alteraratividade/<int:idatividade>/", alterarAtividade, name="alteraratividade"),
+
     path('deletaratividade/<int:idatividade>/', deletarAtividade, name='deletaratividade'),
+
     path('listaratividadevinculada/', listarAtividadeVinculada, name='listaratividadevinculada'),
+
     path('inseriratividadevinculada/<int:idatividade>/', inserirAtividadeVinculada, name='inseriratividadevinculada'),
+
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name="alteraratividadevinculada"),
+
     path('deletaratividadevinculada/<int:idatividadevinculada>/', deletarAtividadeVinculada, name='deletaratividadevinculada'),
+
     path('listarentregas/', listarEntregas, name='listarentregas'),
+
     path('inserirentrega/<int:idatividadevinculada>', inserirEntrega, name='inserirentrega'),
+
     path("alterarentrega/<int:identrega>/", alterarEntrega, name="alterarentrega"),
+
     path('deletarentrega/<int:identrega>/', deletarEntrega, name='deletarentrega'),
+
     path('listarsolicitacao/', listarSolicitacaoMatricula, name='listarsolicitacao'),
+
     path('inserirsolicitacao/', inserirSolicitacaoMatricula, name='inserirsolicitacao'),
+
     path("alterarsolicitacao/", alterarSolicitacao, name="alterarsolicitacao"),
+    
     path("deletarsolicitacao/", deletarSolicitacao, name="deletarsolicitacao"),
 
     #path('admin/', admin.site.urls),

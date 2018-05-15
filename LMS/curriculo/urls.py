@@ -23,15 +23,26 @@ from curriculo.views import listarDisciplinasOfertadas,inserirDisciplinaOfertada
 
 urlpatterns = [
     path('listarcursos/', listarCursos, name ='listarcursos'),
+
     path('inserircurso/', inserirCurso, name = 'inserircurso'),
+
     path('deletarcurso/<int:idcurso>/', deletarCurso, name = 'deletarcurso'),
+
     path("alterarcurso/<int:idcurso>/", alterarCurso, name = "alterarcurso"),
+
     path('listardisciplinas/', listarDisciplinas, name ='listardisciplinas'),
+
     path('inserirdisciplina/', inserirDisciplina, name = 'inserirdisciplina'),
+
     path('deletardisciplina/<int:iddisciplina>/', deletarDisciplina, name = 'deletardisciplina'),
+
     path("alterardisciplina/<int:iddisciplina>/", alterarDisciplina, name = "alterardisciplina"),
-    path('listardisciplinasofertadas/',listarDisciplinasOfertadas, name ='listardisciplinasofertadas'), 
+
+    path('listardisciplinasofertadas/',listarDisciplinasOfertadas, name ='listardisciplinasofertadas'),
+
     path('inserirdisciplinaofertada/<int:iddisciplina>/', inserirDisciplinaOfertada, name = 'inserirdisciplinaofertada'), ## SOMENTE VIA OFERTADA DA TELA DISCIPLINAS
+
     path('deletardisciplinaofertada/<int:iddisciplinaofertada>/', deletarDisciplinaOfertada, name = 'deletardisciplinaofertada'),
+
     path("alterardisciplinaofertada/<int:iddisciplinaofertada>/", alterarDisciplinaOfertada, name = "alterardisciplinaofertada"),
 ]

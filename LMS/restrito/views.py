@@ -275,13 +275,13 @@ def inserirSolicitacaoMatricula(request):
                 dtsolicitacao=time.strftime("%Y-%m-%d"),
                 status = "SOLICITADA",
             )
-        return redirect('alterarsolicitacao')
+        return redirect('aluno')
     else:
         return render(request, 'formNovaSolicitacaoMatricula.html', {'disciplinasofertadas': Disciplinaofertada.objects.filter(ano=int(time.strftime("%Y")))})
 
 def alterarSolicitacao(request):
     try:
-        if request.sessao.usuario.profile != "A":
+        if request.sessao.usuario.profile != "C":
             return redirect("/")
     except:
         retorno = redirect("/")
@@ -334,3 +334,8 @@ def deletarSolicitacao(request):
     solicitacaomatricula = Solicitacaomatricula.objects.filter(idaluno=request.sessao.usuario.id, status="SOLICITADA")
     solicitacaomatricula.delete()
     return redirect ('inserirsolicitacao')
+
+
+def aprovarSolicitacao(request):
+    i
+    return render(request, 'formAprovarSolicitacao.html', {"solicitacoes": Solicitacaomatricula.objects.filter(status="SOLICITADA")})

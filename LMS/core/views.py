@@ -344,3 +344,6 @@ def visaoAluno(request):
 
 def visaoProfessor(request):
     return render(request, 'visaoProfessor.html')
+
+def visaoCoordenador(request):
+    return render(request, 'visaoCoordenador.html')

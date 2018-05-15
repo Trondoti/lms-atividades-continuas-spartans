@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 from restrito.views import listarAtividades, inserirAtividade, alterarAtividade, deletarAtividade
 from restrito.views import listarAtividadeVinculada, inserirAtividadeVinculada, alterarAtividadeVinculada, deletarAtividadeVinculada
 from restrito.views import listarEntregasAlunos, inserirEntrega, alterarEntrega, deletarEntrega, listarEntregasProfessores
-from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao
+from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao, aprovarSolicitacao
 
 urlpatterns = [
     path('listaratividades/', listarAtividades, name='listaratividades'),
@@ -38,6 +38,7 @@ urlpatterns = [
     path('listarsolicitacao/', listarSolicitacaoMatricula, name='listarsolicitacao'),
     path('inserirsolicitacao/', inserirSolicitacaoMatricula, name='inserirsolicitacao'),
     path("alterarsolicitacao/", alterarSolicitacao, name="alterarsolicitacao"),
+    path("aprovarsolicitacao/", aprovarSolicitacao, name="aprovarsolicitacao"),
     path("deletarsolicitacao/", deletarSolicitacao, name="deletarsolicitacao"),
 
     #path('admin/', admin.site.urls),

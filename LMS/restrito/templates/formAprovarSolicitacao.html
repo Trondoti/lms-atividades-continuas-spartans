@@ -1,0 +1,36 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+    <body id="bodyPrincipal">
+        <main>
+            <div class="containers" id="novoaluno">
+                <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
+                        <h1>Aprovar Solicitações</h1>
+                    <table class="tabelaMatricula">
+                        <thead>
+                            <tr>
+                                <th>SELECIONAR</th>
+                                <th>NOME DA DISCIPLINA</th>
+                                <th>NOME DO CURSO</th>
+                                <th>CARGA HORARIA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in solicitacoes  %}
+                            {{s.idaluno}}
+                            <select name = 'status'>
+                                <option>{{s.status}}</option>
+                                <option>Rejeitada</option>
+                                <option>Cancelada</option>
+                            </select>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div id="divSubmitCurso">
+                        <input type="submit" class="btn" value="SALVAR">
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+{% endblock %}

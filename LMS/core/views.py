@@ -368,3 +368,13 @@ def visaoCoordenador(request):
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
     return render(request, 'visaoCoordenador.html')
+
+def visaoAdministrador(request):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'visaoAdministrador.html')

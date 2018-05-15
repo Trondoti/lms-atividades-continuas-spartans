@@ -1,4 +1,4 @@
-CREATE DATABASE LMS
+--CREATE DATABASE LMS
 GO
 
 USE LMS
@@ -291,7 +291,7 @@ go
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('Linguagem SQL', 'Aberta', 'Conceitos basicos, Linguagem SQL, Manipula��o de Dados e etc..' ,80,'Arquitetar um Banco de dados, Garantir a integridade e criar relatorios','Conhecimento aprofundado sobre SQL e sua linguagem',
-'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25,01)
+'Introdu��o a linguagem,Linguagem de Manipula��o de dados, Fun��es e Vis�es','Historia da Linguagem, O modelo fisico, Create, Alter, Drop e Update, Insert, Delete e Join,Revisao e Prova ','DATE, C.J. SQL e Teoria Relacional: Como escrever codigos em SQL precisos - S�o Paulo:Novatec, 2015','ELMASRI, R.E.; NAVATHE, S. B. Sistemas de Banco de Dados. Ed. S�o Paulo: Pearson. 2011',75,25)
 
 insert into disciplina(Nome,statusDisc, planoDeEnsino,cargaHoraria,competencias,habilidades,ementa,conteudoProgramatico,bibliografiaBasica,bibliografiaComplementar,percentualPratico,percentualTeorico)
 Values('Tecnologia Web','Aberta','Conceitos basicos de HTML5,CSS3,JavaScripts ao avan�ado, Introdu��o e ferramentas ao Django',80,'Desenvolver aplica��o Web','Conhecer e dominar as principais maneiras de  constru��o de publica��o de um site utilizando HTML5, CSS3 e JavaScripts',
@@ -488,4 +488,9 @@ update mensagem set Resposta = 'A data da entrega � na proxima semana' where i
 insert into administrador(logon,Senha,Nome,Email,Celular)
 Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')
 
+<<<<<<< HEAD
 select * from coordenador
+=======
+insert into administrador(logon,Senha,Nome,Email,Celular)
+Values('teste','teste','teste','teste@teste.com','999942128')
+>>>>>>> matias

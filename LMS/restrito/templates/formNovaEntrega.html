@@ -14,13 +14,13 @@
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">TITULO</strong>
-                            <input class="inputForm" type="text" name="titulo" value="{{entrega.titulo}}">
+                            <input class="inputForm mandatory" type="text" name="titulo" value="{{entrega.titulo}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">RESPOSTA</strong>
-							<textarea class="inputForm textAreaPadrao" name="resposta" required="required" maxlength="1000">{{entrega.resposta}}</textarea>
+														<textarea class="inputForm textAreaPadrao mandatory" name="resposta" maxlength="1000">{{entrega.resposta}}</textarea>
                         </label>
                     </div>
                     {% if request.sessao.usuario.profile == 'P'  %}
@@ -53,7 +53,7 @@
                     {% endif %}
 
                     <div id="divSubmitCurso">
-                        <input type="submit" class="btn" value="SALVAR">
+                        <input type="submit" class="btn" value="SALVAR" onclick="return formValidation();">
                     </div>
                 </form>
             </div>

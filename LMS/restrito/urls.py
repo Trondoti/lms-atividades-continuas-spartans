@@ -23,12 +23,19 @@ from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricu
 
 urlpatterns = [
     path('listaratividades/', listarAtividades, name='listaratividades'),
+
     path('inseriratividade/', inserirAtividade, name='inseriratividade'),
+
     path("alteraratividade/<int:idatividade>/", alterarAtividade, name="alteraratividade"),
+
     path('deletaratividade/<int:idatividade>/', deletarAtividade, name='deletaratividade'),
+
     path('listaratividadevinculada/', listarAtividadeVinculada, name='listaratividadevinculada'),
+
     path('inseriratividadevinculada/<int:idatividade>/', inserirAtividadeVinculada, name='inseriratividadevinculada'),
+
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name="alteraratividadevinculada"),
+
     path('deletaratividadevinculada/<int:idatividadevinculada>/', deletarAtividadeVinculada, name='deletaratividadevinculada'),
     path('listarentregasalunos/', listarEntregasAlunos, name='listarentregasalunos'),
     path('listarentregaspendentes/', listarEntregasPendentes, name='listarentregaspendentes'),

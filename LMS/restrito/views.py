@@ -173,6 +173,17 @@ def listarEntregasAlunos(request):
 
     return render(request, 'listaEntregasAlunos.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
 
+def listarEntregasPendentes(request):
+    try:
+        if request.sessao.usuario.profile != "A":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasPendentes.html', {"avs": Atividadevinculada.objects.all()})    
+
 def listarEntregasProfessores(request):
     try:
         if request.sessao.usuario.profile != "P":
@@ -184,7 +195,7 @@ def listarEntregasProfessores(request):
 
     return render(request, 'listaEntregasProfessores.html', {"entregas": Entrega.objects.filter(idatividadevinculada__idprofessor=request.sessao.usuario.id)})
 
-def inserirEntrega(request):
+def inserirEntrega(request, idatividadevinculada):
     try:
         if request.sessao.usuario.profile != "A":
             return redirect("/")
@@ -204,7 +215,7 @@ def inserirEntrega(request):
             dtentrega=time.strftime("%Y-%m-%d"),
             status="ENTREGUE"
         )
-        return redirect('listarentregas')
+        return redirect('listarentregaspendentes')
     else:
         return render(request, "formNovaEntrega.html")
 
@@ -224,7 +235,7 @@ def alterarEntrega(request, identrega):
         entrega.dtentrega=time.strftime("%Y-%m-%d")
         if request.sessao.usuario.profile == 'P':
             entrega.nota = request.POST.get("nota")
-            entrega.obs = request.POST.get("observacao")
+            entrega.obs = request.POST.get("obs")
             entrega.dtavaliacao=time.strftime("%Y-%m-%d")
             entrega.save()
             return redirect('listarentregasprofessores')

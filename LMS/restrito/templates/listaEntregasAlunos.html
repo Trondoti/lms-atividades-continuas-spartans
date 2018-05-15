@@ -24,7 +24,7 @@
                                 {% for entrega in entregas %}
                                     <tr>
                                         <td>
-                                            {{ entrega.titulo }}
+                                            {{ entrega.idatividadevinculada.rotulo }} em {{entrega.idatividadevinculada.iddisciplinaofertada.idcurso.nome}}
                                         </td>
                                         <td>
                                             <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>

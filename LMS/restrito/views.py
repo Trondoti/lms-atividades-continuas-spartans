@@ -199,7 +199,7 @@ def inserirEntrega(request, idatividadevinculada):
 
 def alterarEntrega(request, identrega):
     try:
-        if request.sessao.usuario.profile != "A":
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != 'P':
             return redirect("/")
     except:
         retorno = redirect("/")
@@ -210,7 +210,11 @@ def alterarEntrega(request, identrega):
         entrega = Entrega.objects.get(identrega=identrega)
         entrega.titulo=request.POST.get("titulo")
         entrega.resposta=request.POST.get("resposta")
-        dtentrega=time.strftime("%Y-%m-%d")
+        entrega.dtentrega=time.strftime("%Y-%m-%d")
+        if request.sessao.usuario.profile != 'P':
+            entrega.nota = request.POST.get("nota")
+            entrega.obs = request.POST.get("observacao")
+            entrega.dtavaliacao=time.strftime("%Y-%m-%d")
         entrega.save()
         return redirect('listarentregas')
     else:

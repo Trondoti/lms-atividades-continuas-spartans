@@ -84,7 +84,7 @@ DATABASES = {
     'NAME': 'LMS',
     'USER': 'sa',
     'PASSWORD': 'P@ssword1',
-    'HOST': 'ndd-not-pre813',
+    'HOST': 'NDD-NOT-PRE813',
     'PORT': '',
 
     'OPTIONS': {

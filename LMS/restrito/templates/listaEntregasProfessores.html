@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "baseProfessor.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE ENTREGAS REALIZADAS - {{request.sessao.usuario.nome}}</h1>
+                    <h1 class="tituloCrud">ENTREGAS PARA CORREÇÃO - {{request.sessao.usuario.nome}}</h1>
                 </div>
                     <div class="table">
                         <table>
@@ -35,7 +35,7 @@
                                     </tr>
                                 {% endfor %}
                             </tbody>
-                        </table>
+                        </table>    
                   </ul>
                 </div>
             </div>

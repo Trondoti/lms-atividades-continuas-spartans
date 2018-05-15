@@ -162,7 +162,7 @@ def deletarAtividadeVinculada(request, idatividadevinculada):
     atividadevinculada.delete()
     return redirect ('listaratividadevinculada')
 
-def listarEntregas(request):
+def listarEntregasAlunos(request):
     try:
         if request.sessao.usuario.profile != "A":
             return redirect("/")
@@ -171,9 +171,20 @@ def listarEntregas(request):
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
 
-    return render(request, 'listaEntregas.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
+    return render(request, 'listaEntregasAlunos.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
 
-def inserirEntrega(request, idatividadevinculada):
+def listarEntregasProfessores(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasProfessores.html', {"entregas": Entrega.objects.filter(idatividadevinculada__idprofessor=request.sessao.usuario.id)})
+
+def inserirEntrega(request):
     try:
         if request.sessao.usuario.profile != "A":
             return redirect("/")
@@ -211,12 +222,15 @@ def alterarEntrega(request, identrega):
         entrega.titulo=request.POST.get("titulo")
         entrega.resposta=request.POST.get("resposta")
         entrega.dtentrega=time.strftime("%Y-%m-%d")
-        if request.sessao.usuario.profile != 'P':
+        if request.sessao.usuario.profile == 'P':
             entrega.nota = request.POST.get("nota")
             entrega.obs = request.POST.get("observacao")
             entrega.dtavaliacao=time.strftime("%Y-%m-%d")
+            entrega.save()
+            return redirect('listarentregasprofessores')
         entrega.save()
-        return redirect('listarentregas')
+        return redirect('listarentregasalunos')
+
     else:
         return render(request, "formNovaEntrega.html", {'entrega': Entrega.objects.get(identrega=identrega)})
 

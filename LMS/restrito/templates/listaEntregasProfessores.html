@@ -1,19 +1,19 @@
-{% extends "baseProfessor.html" %}
+{% extends "base.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE ATIVIDADES</h1>
+                    <h1 class="tituloCrud">LISTA DE ENTREGAS REALIZADAS - {{request.sessao.usuario.nome}}</h1>
                 </div>
                 <div>
-                    <a class="buttonInsert" href="{% url "inseriratividade" %}">+</a>
+                    <a class="buttonInsert" href="{% url "inserirentrega" %}">+</a>
                 </div>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
                                     <th>
-                                        NOME DA ATIVIDADE
+                                        NOME DAS ATIVIDADES ENTREGUES
                                     </th>
                                     <th>
                                         ALTERAR
@@ -21,28 +21,22 @@
                                     <th>
                                         REMOVER
                                     </th>
-                                    <th>
-                                        VINCULAR
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for atividade in atividades %}                        
+                                {% for entrega in entregas %}
                                     <tr>
                                         <td>
-                                            {{ atividade.titulo }}
+                                            {{ entrega.titulo }}
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'alteraratividade' atividade.idatividade %}">ALTERAR</a>
+                                            <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'deletaratividade' atividade.idatividade %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
-                                        </td>
-                                        <td>                     
-                                            <a class="myButton" href="{% url 'inseriratividadevinculada' atividade.idatividade %}">VINCULAR</a>
+                                            <a class="myButton" href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
                         </table>    
                   </ul>

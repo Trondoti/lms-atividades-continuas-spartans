@@ -31,9 +31,9 @@
             <a href="{% url 'aluno' %}"><img src="{% static 'img/logo.png' %}"/></a>
             <div id="containerMenu">
                 <nav>
-                    <a href="{% url "listarentregasalunos" %}">LISTAR ENTREGAS</a>
-                    <a href="{% url "inserirentrega" %}">REALIZAR ENTREGAS</a>
-                    <a href="{% url "inserirsolicitacao" %}">MATRICULAR</a>
+                    <a class="buttontest" href="{% url "listarentregasalunos" %}">LISTAR ENTREGAS</a>
+                    <a class="buttontest" href="{% url "inserirentrega" %}">REALIZAR ENTREGAS</a>
+                    <a class="buttontest" href="{% url "inserirsolicitacao" %}">MATRICULAR</a>
                 </nav>
                 {% if request.sessao %}
                     <a id="buttonLogin" href="{% url "logout" %}">LOGOUT</a>

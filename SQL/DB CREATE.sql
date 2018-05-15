@@ -1,8 +1,8 @@
 CREATE DATABASE LMS
 GO
-DROP DATABASE LMS
 
 USE LMS
+
 create table administrador (
 idAdministrador int primary key identity (1,1)
 ,logon VARCHAR (20) UNIQUE

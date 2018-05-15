@@ -249,13 +249,12 @@ def deletarEntrega(request, idatividadevinculada):
 
 def listarSolicitacaoMatricula(request):
     try:
-        if request.sessao.usuario.profile != "P":
+        if request.sessao.usuario.profile != "C":
             return redirect("/")
     except:
         retorno = redirect("/")
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
-
     return render(request, 'listaSolicitacaoMatricula.html', {"solicitacoes": Solicitacaomatricula.objects.filter(status="SOLICITADA")})
 
 def inserirSolicitacaoMatricula(request):
@@ -336,6 +335,18 @@ def deletarSolicitacao(request):
     return redirect ('inserirsolicitacao')
 
 
-def aprovarSolicitacao(request):
-    i
-    return render(request, 'formAprovarSolicitacao.html', {"solicitacoes": Solicitacaomatricula.objects.filter(status="SOLICITADA")})
+def aprovarSolicitacao(request, idsolicitacaomatricula):
+    try:
+        if request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    if request.method == 'POST':
+        solicitacao = Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)
+        solicitacao.status=request.POST.get("status")
+        solicitacao.save()
+        return redirect('listarsolicitacao')
+    else:
+        return render(request, 'formAprovarSolicitacao.html', {"solicitacao": Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)})

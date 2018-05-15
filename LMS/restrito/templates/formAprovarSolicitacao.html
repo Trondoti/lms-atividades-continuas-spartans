@@ -1,36 +1,33 @@
-{% extends "baseforms.html" %}
+{% extends "baseCoordenador.html" %}
 {% block content %}
 {% load %}
-    <body id="bodyPrincipal">
-        <main>
-            <div class="containers" id="novoaluno">
-                <form id="formulario" autocomplete="off" method="POST" enctype="multipart/form-data">
-                        <h1>Aprovar Solicitações</h1>
-                    <table class="tabelaMatricula">
-                        <thead>
-                            <tr>
-                                <th>SELECIONAR</th>
-                                <th>NOME DA DISCIPLINA</th>
-                                <th>NOME DO CURSO</th>
-                                <th>CARGA HORARIA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for s in solicitacoes  %}
-                            {{s.idaluno}}
-                            <select name = 'status'>
-                                <option>{{s.status}}</option>
-                                <option>Rejeitada</option>
-                                <option>Cancelada</option>
+	<body id="bodyPrincipal">
+		<main>
+			<div class="containers" id="novocurso">
+				<form id="formularioCurso" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
+                    {% if solicitacao.idsolicitacaomatricula %}
+                    	<h1>APROVAR SOLICITACAO</h1>
+                    {% else %}
+	                    <h1>APROVAR SOLICITACAO</h1>
+                    {% endif %}
+					<div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">{{solicitacao.idaluno.nome}}</strong>
+                            <select name='status' class="inputForm" >
+                                <option value="SOLICITADA">SOLICITACADA</option>
+                                <option value="APROVADA">APROVADA</option>
+                                <option value="CANCELADA">REJEITADA</option>
+                                <option value="CANCELADA">CANCELADA</option>                                
                             </select>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <div id="divSubmitCurso">
-                        <input type="submit" class="btn" value="SALVAR">
+                        </label>
+                    </div>
+				    <div id="divSubmit">
+                        <input type="submit" class="btn">
                     </div>
                 </form>
             </div>
-        </main>
-    </body>
+
+			</div>
+		</main>
+	</body>
 {% endblock %}

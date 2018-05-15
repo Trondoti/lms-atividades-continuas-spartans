@@ -38,7 +38,7 @@ urlpatterns = [
     path('listarsolicitacao/', listarSolicitacaoMatricula, name='listarsolicitacao'),
     path('inserirsolicitacao/', inserirSolicitacaoMatricula, name='inserirsolicitacao'),
     path("alterarsolicitacao/", alterarSolicitacao, name="alterarsolicitacao"),
-    path("aprovarsolicitacao/", aprovarSolicitacao, name="aprovarsolicitacao"),
+    path("aprovarsolicitacao/<int:idsolicitacaomatricula>/", aprovarSolicitacao, name="aprovarsolicitacao"),
     path("deletarsolicitacao/", deletarSolicitacao, name="deletarsolicitacao"),
 
     #path('admin/', admin.site.urls),

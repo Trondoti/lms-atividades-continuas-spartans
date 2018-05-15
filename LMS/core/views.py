@@ -340,10 +340,31 @@ def alterarCurso(request, idcurso):
         return render(request, "formNovoCurso.html", {'cursos':cursos})
 
 def visaoAluno(request):
+    try:
+        if request.sessao.usuario.profile != "A":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     return render(request, 'visaoAluno.html')
 
 def visaoProfessor(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     return render(request, 'visaoProfessor.html')
 
 def visaoCoordenador(request):
+    try:
+        if request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     return render(request, 'visaoCoordenador.html')

@@ -23,6 +23,10 @@
 							<textarea class="inputForm textAreaPadrao" name="resposta" required="required" maxlength="1000">{{entrega.resposta}}</textarea>
                         </label>
                     </div>
+                    {% if request.sessao.usuario.profile = 'P' %}
+                    
+                    {% else %}
+                    {% endif %}
                     <div id="divSubmitCurso">
                         <input type="submit" class="btn" value="SALVAR">
                     </div>

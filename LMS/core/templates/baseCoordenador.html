@@ -31,7 +31,8 @@
             <a href="{% url 'coordenador' %}"><img src="{% static 'img/logo.png' %}"/></a>
             <div id="containerMenu">
                 <nav>
-                    <a href="{% url "listarsolicitacao" %}">APROVAR MATRICULAS</a>
+                    <a href="{% url "listarsolicitacao" %}">MATRICULAS</a>
+                    <a href="{% url "listardisciplinas" %}">DISCIPLINAS</a>
                 </nav>
                 {% if request.sessao %}
                     <a id="buttonLogin" href="{% url "logout" %}">LOGOUT</a>

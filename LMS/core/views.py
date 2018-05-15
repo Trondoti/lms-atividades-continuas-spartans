@@ -7,10 +7,15 @@ def index(request):
 
 def login(request):
     context = {}
-
     if request.method == 'POST':
         if autenticar(request):
-            retorno = redirect ('/')
+            if request.sessao.usuario.profile == 'A':
+                retorno=redirect ('aluno')
+            elif request.sessao.usuario.profile == 'P':
+                retorno=redirect ('professor')
+            elif request.sessao.usuario.profile == 'C':
+                retorno=redirect ('coordenador')
+            else: retorno=redirect ('administrador')
             retorno.set_cookie("SPARTANSSESSION", request.sessao.id)
             return retorno
         else:
@@ -333,3 +338,9 @@ def alterarCurso(request, idcurso):
        return redirect('/curso/listar')
     else:
         return render(request, "formNovoCurso.html", {'cursos':cursos})
+
+def visaoAluno(request):
+    return render(request, 'visaoAluno.html')
+
+def visaoProfessor(request):
+    return render(request, 'visaoProfessor.html')

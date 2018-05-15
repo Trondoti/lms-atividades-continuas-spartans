@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url, include
 from restrito.views import listarAtividades, inserirAtividade, alterarAtividade, deletarAtividade
 from restrito.views import listarAtividadeVinculada, inserirAtividadeVinculada, alterarAtividadeVinculada, deletarAtividadeVinculada
-from restrito.views import listarEntregas, inserirEntrega, alterarEntrega, deletarEntrega
+from restrito.views import listarEntregasAlunos, inserirEntrega, alterarEntrega, deletarEntrega, listarEntregasProfessores
 from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao
 
 urlpatterns = [
@@ -30,8 +30,9 @@ urlpatterns = [
     path('inseriratividadevinculada/<int:idatividade>/', inserirAtividadeVinculada, name='inseriratividadevinculada'),
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name="alteraratividadevinculada"),
     path('deletaratividadevinculada/<int:idatividadevinculada>/', deletarAtividadeVinculada, name='deletaratividadevinculada'),
-    path('listarentregas/', listarEntregas, name='listarentregas'),
-    path('inserirentrega/<int:idatividadevinculada>', inserirEntrega, name='inserirentrega'),
+    path('listarentregasalunos/', listarEntregasAlunos, name='listarentregasalunos'),
+    path('listarentregasprofessores/', listarEntregasProfessores, name='listarentregasprofessores'),
+    path('inserirentrega/', inserirEntrega, name='inserirentrega'),
     path("alterarentrega/<int:identrega>/", alterarEntrega, name="alterarentrega"),
     path('deletarentrega/<int:identrega>/', deletarEntrega, name='deletarentrega'),
     path('listarsolicitacao/', listarSolicitacaoMatricula, name='listarsolicitacao'),

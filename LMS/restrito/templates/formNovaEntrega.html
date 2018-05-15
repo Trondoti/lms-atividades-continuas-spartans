@@ -23,10 +23,35 @@
 							<textarea class="inputForm textAreaPadrao" name="resposta" required="required" maxlength="1000">{{entrega.resposta}}</textarea>
                         </label>
                     </div>
-                    {% if request.sessao.usuario.profile = 'P' %}
-                    
-                    {% else %}
+                    {% if request.sessao.usuario.profile == 'P'  %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">NOTA</strong>
+                            <input class="inputForm" min='1' max = '10' type="number" name="nota" value="{{entrega.nota}}">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">Observações</strong>
+							<textarea class="inputForm textAreaPadrao" name="obs" required="required" maxlength="1000">{{entrega.resposta}}</textarea>
+                        </label>
+                    </div>
                     {% endif %}
+                    {% if request.sessao.usuario.profile == "A"  %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">NOTA</strong>
+                            <input class="inputForm" min='1' max = '10' type="text" name="nota" value="{{entrega.nota}}" readonly>
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">Observações</strong>
+							<textarea class="inputForm textAreaPadrao" name="obs" required="required" maxlength="1000" readonly>{{entrega.resposta}}</textarea>
+                        </label>
+                    </div>
+                    {% endif %}
+
                     <div id="divSubmitCurso">
                         <input type="submit" class="btn" value="SALVAR">
                     </div>

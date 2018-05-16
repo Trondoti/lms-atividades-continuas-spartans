@@ -14,6 +14,7 @@ def autenticar(request):
     if usuario.statuscode == 200:
         if usuario.senha == senha:
             request.sessao = l.salvarSessao(usuario)
+            request.sessao.usuario = l.pegarUsuarioPelaSessao(request.sessao)
             return True
         else:
             return False

@@ -10,6 +10,7 @@ def login(request):
 
     if request.method == 'POST':
         if autenticar(request):
+            print(request.sessao.usuario.nome)
             retorno = redirect ('/')
             retorno.set_cookie("SPARTANSSESSION", request.sessao.id)
             return retorno

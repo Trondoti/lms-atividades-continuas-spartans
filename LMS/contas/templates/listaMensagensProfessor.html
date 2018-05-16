@@ -1,0 +1,43 @@
+{% extends "baseAluno.html" %}
+{% block content %}
+        <main>
+            <div>
+                <div>
+                    <h1 class="tituloCrud">Mensagens de: - {{request.sessao.usuario.nome}}</h1>
+                </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        MENSAGENS
+                                    </th>
+                                    <th>
+                                        RESPONDER
+                                    </th>
+                                    <th>
+                                        APAGAR
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for mensagem in mensagens %}
+                                    <tr>
+                                        <td>
+                                        {{ mensagem.assunto }} DE: {{mensagem.idaluno.nome}}
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url 'alterarmensagem' mensagem.idmensagem  %}">RESPONDER</a>
+                                        </td>
+                                        <td>
+                                            <a class="myButton" href="{% url ''  %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                  </ul>
+                </div>
+            </div>
+        </main>
+{% endblock %}

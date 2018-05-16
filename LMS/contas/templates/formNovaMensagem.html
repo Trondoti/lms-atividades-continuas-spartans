@@ -1,0 +1,89 @@
+{% extends "baseforms.html" %}
+{% block content %}
+{% load %}
+	<body id="bodyPrincipal">
+		<main>
+            <div class="containers" id="novoaluno">
+                <form id="formulario" autocomplete="off" method="POST" action="" enctype="multipart/form-data">
+                    {% if mensagem.idmensagem %}
+                    	<h1>RESPONDER MENSAGEM</h1>
+                    {% else %}
+                    	<h1>NOVA MENSAGEM</h1>
+                    {% endif %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">USUARIO</strong>
+							<input class="inputForm mandatory" type = 'text'value="{{request.sessao.usuario.nome}}" name="usuario" maxlength="1000">
+                        </label>
+                    </div>
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">ASSUNTO</strong>
+                            <input class="inputForm mandatory" type="text" name="assunto" value="{{mensagem.assunto}}">
+                        </label>
+                    </div>
+                    {% if request.sessao.usuario.profile == 'P' or mensagem.idmensagem  %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">PROFESSOR</strong>
+                            <input class="inputForm mandatory" type="text" name="referencia" value="{{mensagem.idprofessor.nome}}" readonly>
+                        </label>
+                    </div>                    
+                    {% else %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">PARA PROFESSOR: </strong>
+                            <select name='professor' class="inputForm mandatory" >
+                                <option value="">SELECIONE</option>
+								{% for professor in professores %}
+									<option value="{{professor.idprofessor}}" {% if professor.idprofessor == mensagem.idprofessor %} selected {% endif %}>{{professor.nome}}</option>
+								{% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                    {% endif %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">REFERENCIA</strong>
+                            <input class="inputForm mandatory" type="text" name="referencia" value="{{mensagem.referencia}}">
+                        </label>
+                    </div>
+                    {% if request.sessao.usuario.profile == 'A'  %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">Conteudo</strong>
+                            <textarea class="inputForm textAreaPadrao mandatory" name="conteudo" maxlength="500" value="">{{mensagem.conteudo}}</textarea>
+                            </label>
+                    </div>
+                    {% else %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">Conteudo</strong>
+                            <textarea class="inputForm textAreaPadrao mandatory" name="conteudo" maxlength="500" value="" readonly>{{mensagem.conteudo}}</textarea>
+                        </label>
+                    </div>
+                    {% endif %}
+                    {% if request.sessao.usuario.profile == 'P'  %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">RESPOSTA</strong>
+                            <textarea class="inputForm textAreaPadrao " name="resposta" maxlength="500">{{mensagem.resposta}}</textarea>
+                        </label>
+                    </div>
+                    {% else %}
+                    <div class="containerInputForm">
+                        <label class="labelForm">
+                            <strong class="strongLabelForm">RESPOSTA</strong>
+                            <textarea class="inputForm textAreaPadrao " name="resposta" maxlength="500" readonly>{{mensagem.resposta}}</textarea>
+                        </label>
+                    </div>
+                    {% endif %}
+
+                    <div id="divSubmitCurso">
+                        <input type="submit" class="btn" value="SALVAR" onclick="return formValidation();">
+                    </div>
+                </form>
+            </div>
+		</main>
+	</body>
+{% endblock %}

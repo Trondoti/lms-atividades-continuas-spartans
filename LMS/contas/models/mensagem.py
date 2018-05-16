@@ -1,6 +1,6 @@
 from django.db import models
-from aluno import Aluno
-from professor import Professor
+from .aluno import Aluno
+from .professor import Professor
 
 class Mensagem(models.Model):
     idmensagem = models.AutoField(db_column='idMensagem', primary_key=True)  # Field name made lowercase.

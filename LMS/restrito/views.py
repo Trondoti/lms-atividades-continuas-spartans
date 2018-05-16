@@ -215,8 +215,8 @@ def inserirEntrega(request, idatividadevinculada):
             resposta=request.POST.get("resposta"),
             idatividadevinculada=idatividade,
             dtentrega=time.strftime("%Y-%m-%d"),
-            obs="",
-            nota="",
+            #obs="",
+            #nota="",
             status="ENTREGUE"
         )
         return redirect('listarentregaspendentes')

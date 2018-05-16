@@ -87,12 +87,12 @@ def alterarProfessor(request, idprofessor):
     professor = Professor.objects.get(idprofessor=idprofessor)
     if request.method == 'POST':
        professores = Professor.objects.get(idprofessor=idprofessor)
-       professores.logon = request.POST.get('logon'),
-       professores.senha = request.POST.get('senha'),
-       professores.nome = request.POST.get('nome'),
-       professores.email = request.POST.get('email'),
-       professores.celular = request.POST.get('celular'),
-       professores.dtExpiracao = request.POST.get('dtexpiracao'),
+       professores.logon = request.POST.get('logon')
+       professores.senha = request.POST.get('senha')
+       professores.nome = request.POST.get('nome')
+       professores.email = request.POST.get('email')
+       professores.celular = request.POST.get('celular')
+       professores.dtExpiracao = request.POST.get('dtexpiracao')
        professores.apelido = request.POST.get('apelido')
        professores.save()
        return redirect('listarprofessores')

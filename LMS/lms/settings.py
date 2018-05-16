@@ -84,7 +84,7 @@ DATABASES = {
     'NAME': 'LMS',
     'USER': 'sa',
     'PASSWORD': 'P@ssword1',
-    'HOST': 'DESKTOP-296MP4O\SQLEXPRESS',
+    'HOST': 'ndd-not-pre813',
     'PORT': '',
 
     'OPTIONS': {
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 

@@ -19,6 +19,7 @@ from django.conf.urls import url, include
 from contas.views import listarProfessores, inserirProfessor, deletarProfessor, alterarProfessor
 from contas.views import listarAlunos, inserirAluno, alterarAluno, deletarAluno
 from contas.views import listarCoordenadores, inserirCoordenador, alterarCoordenador, deletarCoordenador
+from contas.views import listarMensagensAlunos, inserirMensagem,listarMensagensProfessores, alterarMensagem
 
 urlpatterns = [
     path('listarprofessores/', listarProfessores, name ='listarprofessores'),
@@ -44,6 +45,14 @@ urlpatterns = [
     path('deletarcoordenador/<int:idcoordenador>/', deletarCoordenador, name='deletarcoordenador'),
 
     path("alterarcoordenador/<int:idcoordenador>/", alterarCoordenador, name="alterarcoordenador"),
+
+    path("listarmensagensalunos/", listarMensagensAlunos, name="listarmensagensalunos"),
+
+    path("listarmensagensprofessores/", listarMensagensProfessores, name="listarmensagensprofessores"),
+
+    path("inserirmensagem/", inserirMensagem, name="inserirmensagem"),
+
+    path("alterarmensagem/<int:idmensagem>/", alterarMensagem, name="alterarmensagem"),
 
 
 ]

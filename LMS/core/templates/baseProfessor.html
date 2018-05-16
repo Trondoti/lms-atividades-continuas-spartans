@@ -33,6 +33,8 @@
                 <nav>
                     <a class="" href="{% url "listarentregasprofessores" %}">CORRIGIR</a>
                     <a class=""href="{% url "listaratividades" %}">INSERIR ATIVIDADES</a>
+                    <a class=""href="{% url "listarmensagensprofessores" %}">MENSAGENS</a>
+                    
                 </nav>
                 {% if request.sessao %}
                     <a id="buttonLogin" href="{% url "logout" %}">LOGOUT</a>

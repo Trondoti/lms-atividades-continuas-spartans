@@ -63,6 +63,7 @@
                             {% if request.sessao.usuario.profile == "C" %}
                                 <a href="{% url "listarsolicitacao" %}">MATRICULAS</a>
                                 <a href="{% url "listardisciplinas" %}">DISCIPLINAS</a>
+                                <a href="{% url "listardisciplinasofertadas" %}">DISCIPLINAS OFERTADAS</a>
                             {% else %}
                                 {% if request.sessao.usuario.profile == "S" %}
                                     <a class="" href="{% url "listarcursos" %}">Cursos</a>

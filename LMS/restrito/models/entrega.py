@@ -37,7 +37,6 @@ class Entrega(models.Model):
     def retornaAtividadesNaoEnviadasAluno(self, idAluno):
         from restrito.models.atividadeVinculada import Atividadevinculada
         from restrito.models.solicitacaoMatricula import Solicitacaomatricula
-
         matriculas = Solicitacaomatricula.objects.filter(status="APROVADA", idaluno=idAluno)
         atividadesNaoEntregues = []
 

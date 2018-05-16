@@ -1,7 +1,7 @@
-CREATE DATABASE LMS2
+CREATE DATABASE LMS3
 GO
 
-USE LMS2
+USE LMS3
 
 create table administrador (
 idAdministrador int primary key identity (1,1)

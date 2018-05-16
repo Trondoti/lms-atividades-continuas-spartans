@@ -355,7 +355,6 @@ def deletarSolicitacao(request):
     solicitacaomatricula.delete()
     return redirect ('inserirsolicitacao')
 
-
 def aprovarSolicitacao(request, idsolicitacaomatricula):
     try:
         if request.sessao.usuario.profile != "C":

@@ -1,11 +1,11 @@
-{% extends "baseAdministrador.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
                     <h1 class="tituloCrud">LISTA DE COORDENADORES</h1>
                 </div>
-                
+
                 <div>
                     <a class="buttonInsert" href="{% url "inserircoordenador" %}">+</a>
                 </div>
@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             {{ coordenador.nome }}
-                            {% for coordenador in coordenadores %}                        
+                            {% for coordenador in coordenadores %}
                                 <tr>
                                     <td>
                                         {{ coordenador.nome }}

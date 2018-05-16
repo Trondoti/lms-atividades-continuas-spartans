@@ -1,9 +1,9 @@
-{% extends "baseAluno.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">Mensagens de {{request.sessao.usuario.nome}}</h1>
+                    <h1 class="tituloCrud">Caixa de Saída de {{request.sessao.usuario.nome}}</h1>
                 </div>
                 <div>
                     <a class="buttonInsert" href="{% url "inserirmensagem" %}">+</a>
@@ -24,10 +24,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for mensagem in mensagens %}                        
+                            {% for mensagem in mensagens %}
                                 <tr>
                                     <td>
-                                        {{ mensagem.assunto }} para professor {{mensagem.idprofessor.nome}}
+                                        {%if mensagem.origem == "A" %}
+                                            {{ mensagem.assunto }} de {{mensagem.idaluno.nome}} para {{mensagem.idprofessor.nome}}
+                                        {% else %}
+                                            {{ mensagem.assunto }} de {{mensagem.idprofessor.nome}} para {{mensagem.idaluno.nome}}
+                                        {% endif %}
                                     </td>
                                     <td>
                                         <a class="myButton" href="{% url 'alterarmensagem' mensagem.idmensagem %}">ALTERAR</a>

@@ -1,4 +1,4 @@
-{% extends "baseProfessor.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
@@ -27,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for atividade in atividades %}                        
+                                {% for atividade in atividades %}
                                     <tr>
                                         <td>
                                             {{ atividade.titulo }}
@@ -36,15 +36,15 @@
                                             <a class="myButton" href="{% url 'alteraratividade' atividade.idatividade %}">ALTERAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'deletaratividade' atividade.idatividade %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
+                                            <a class="myButton" href="{% url 'deletaratividade' atividade.idatividade %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                         </td>
-                                        <td>                     
+                                        <td>
                                             <a class="myButton" href="{% url 'inseriratividadevinculada' atividade.idatividade %}">VINCULAR</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
-                        </table>    
+                        </table>
                   </ul>
                 </div>
             </div>

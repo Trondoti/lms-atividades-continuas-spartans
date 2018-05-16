@@ -1,4 +1,4 @@
-{% extends "baseCoordenador.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for so in solicitacoes %}                        
+                                {% for so in solicitacoes %}
                                     <tr>
                                         <td>
                                             {{ so.idaluno.nome }}
@@ -36,9 +36,9 @@
                                             <a>{{so.status}}</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
-                        </table>    
+                        </table>
                   </ul>
                 </div>
             </div>

@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
         <title>Faculdade Impacta</title>
+        <script type="text/javascript" src="{% static 'js/formValidation.js' %}"></script>
         <link rel="stylesheet" href ="{% static 'css/layout.css' %}" />
         <link rel="stylesheet" href ="{% static 'css/normalize.css' %}" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -26,26 +27,47 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
     </head>
-    <body>
+    <body id="bodyPrincipal">
         <header>
-            <a href="/"><img src="{% static 'img/logo.png' %}"/></a>
-            <div id="containerMenu">
+            {% if request.sessao.usuario.profile == "A" %}
+                <a href="{% url 'aluno' %}"><img src="{% static 'img/logo.png' %}"/></a>
+            {% else %}
+                {% if request.sessao.usuario.profile == "P" %}
+                    <a href="{% url 'professor' %}"><img src="{% static 'img/logo.png' %}"/></a>
+                {% else %}
+                    {% if request.sessao.usuario.profile == "C" %}
+                        <a href="{% url 'coordenador' %}"><img src="{% static 'img/logo.png' %}"/></a>
+                    {% else %}
+                        {% if request.sessao.usuario.profile == "S" %}
+                            <a href="{% url 'administrador' %}"><img src="{% static 'img/logo.png' %}"/></a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            <div id="containerMenuRestrito">
                 <nav>
-                    <a href="{% url "cursos" %}">CURSOS</a>
-                    <a href="{% url "index" %}#noticias">NOTICIAS</a>
-                    <a href="{% url "index" %}#depoimentos">DEPOIMENTOS</a>
-                    <a href="{% url "index" %}#premios">PRÊMIOS</a>
                     {% if request.sessao.usuario.profile == "A" %}
-                        <a href="{% url 'aluno' %}">AREA ONLINE</a>
+                        <a class="" href="{% url "listarentregasalunos" %}">ENTREGAS REALIZADAS</a>
+                        <a class="" href="{% url "listarentregaspendentes" %}">ENTREGAS PENDENTES</a>
+                        <a class="" href="{% url "inserirsolicitacao" %}">MATRICULAR</a>
+                        <a class="" href="{% url "listarmensagensentrada" %}">CAIXA DE ENTRADA</a>
+                        <a class="" href="{% url "listarmensagenssaida" %}">CAIXA DE SAIDA</a>
                     {% else %}
                         {% if request.sessao.usuario.profile == "P" %}
-                            <a href="{% url 'professor' %}">AREA ONLINE</a>
+                            <a class="" href="{% url "listarentregasprofessores" %}">CORRIGIR</a>
+                            <a class="" href="{% url "listaratividades" %}">INSERIR ATIVIDADES</a>
+                            <a class="" href="{% url "listarmensagensentrada" %}">CAIXA DE ENTRADA</a>
+                            <a class="" href="{% url "listarmensagenssaida" %}">CAIXA DE SAIDA</a>
                         {% else %}
                             {% if request.sessao.usuario.profile == "C" %}
-                                <a href="{% url 'coordenador' %}">AREA ONLINE</a>
+                                <a href="{% url "listarsolicitacao" %}">MATRICULAS</a>
+                                <a href="{% url "listardisciplinas" %}">DISCIPLINAS</a>
                             {% else %}
                                 {% if request.sessao.usuario.profile == "S" %}
-                                    <a href="{% url 'adminstrador' %}">AREA ONLINE</a>
+                                    <a class="" href="{% url "listarcursos" %}">Cursos</a>
+                                    <a class=""href="{% url "listaralunos" %}">Alunos</a>
+                                    <a class=""href="{% url "listarprofessores" %}">Professores</a>
+                                    <a class=""href="{% url "listarcoordenadores" %}">Coordenadores</a>
                                 {% endif %}
                             {% endif %}
                         {% endif %}
@@ -60,9 +82,6 @@
         </header>
         {%block content %}
         {% endblock %}
-        <footer>
-            <h1>Faculdade Impacta Tecnologia</h1>
-        </footer>
 
     </body>
 </html>

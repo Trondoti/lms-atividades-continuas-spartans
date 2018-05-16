@@ -169,7 +169,7 @@ idMensagem INT NOT NULL PRIMARY KEY identity (1,1)
 , dtEnvio DATE DEFAULT GETDATE()
 , dtResposta DATE  NULL
 , resposta VARCHAR (1000) NULL
-,origem varchar (1) not null
+, origem varchar (1) not null
 , CONSTRAINT fkidAlunoMensagem FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkidProfessorMensagem FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 )

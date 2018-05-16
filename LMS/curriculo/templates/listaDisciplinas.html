@@ -1,4 +1,4 @@
-{% extends "baseCoordenador.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
@@ -27,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for disciplina in disciplinas %}                        
+                                {% for disciplina in disciplinas %}
                                     <tr>
                                         <td>
                                             {{ disciplina.nome }}
@@ -36,15 +36,15 @@
                                             <a class="myButton" href="{% url 'alterardisciplina' disciplina.iddisciplina %}">ALTERAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'inserirdisciplinaofertada' disciplina.iddisciplina %}">OFERTAR</a>                                                                 
+                                            <a class="myButton" href="{% url 'inserirdisciplinaofertada' disciplina.iddisciplina %}">OFERTAR</a>
                                         </td>
-                                        <td>                     
+                                        <td>
                                             <a class="myButton" href="{% url 'deletardisciplina' disciplina.iddisciplina %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
-                        </table>    
+                        </table>
                   </ul>
                 </div>
             </div>

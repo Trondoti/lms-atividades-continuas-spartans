@@ -1,7 +1,7 @@
---CREATE DATABASE LMS
+CREATE DATABASE LMS2
 GO
 
-USE LMS
+USE LMS2
 
 create table administrador (
 idAdministrador int primary key identity (1,1)
@@ -160,15 +160,16 @@ REFERENCES atividadeVinculada (idAtividadeVinculada)
 GO
 CREATE TABLE mensagem (
 idMensagem INT NOT NULL PRIMARY KEY identity (1,1)
-, idAluno INT NOT NULL
-, idProfessor INT NOT NULL
+, idAluno INT  NULL
+, idProfessor INT  NULL
 , assunto VARCHAR (1000) NULL
 , referencia VARCHAR (1000) NULL
 , conteudo VARCHAR (1000) NULL
 , [status] VARCHAR (50) CHECK([status] = 'ENVIADO' or [status] = 'LIDO' or [status] = 'RESPONDIDO')
 , dtEnvio DATE DEFAULT GETDATE()
-, dtResposta DATE NOT NULL
+, dtResposta DATE  NULL
 , resposta VARCHAR (1000) NULL
+,origem varchar (1) not null
 , CONSTRAINT fkidAlunoMensagem FOREIGN KEY (idAluno) REFERENCES aluno (idAluno)
 , CONSTRAINT fkidProfessorMensagem FOREIGN KEY (idProfessor) REFERENCES professor (idProfessor)
 )
@@ -469,8 +470,8 @@ go
 /* �	Cadastrem o envio de 1 d�vida de um aluno qualquer, ao professor da
 disciplina de Linguagem SQL com a seguinte mensagem: �qual a data de entrega da AC6 ?� ( INSERT ) */
 
-insert into mensagem(idAluno,idProfessor,assunto,referencia,conteudo,[Status],dtEnvio, dtResposta, resposta)
-values(1,1,'Duvida','TecWeb','Qual a data da entrega da AC6?','Enviado','01-01-1992','01-10-1992','recebido')
+insert into mensagem(idAluno,idProfessor,assunto,referencia,conteudo,[Status],dtEnvio, dtResposta, resposta, origem)
+values(1,1,'Duvida','TecWeb','Qual a data da entrega da AC6?','Enviado','01-01-1992','01-10-1992','recebido', 'P')
 
 go
 -----------------------------------DOUGLAS ------------------------------

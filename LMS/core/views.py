@@ -7,11 +7,15 @@ def index(request):
 
 def login(request):
     context = {}
-
     if request.method == 'POST':
         if autenticar(request):
-            print(request.sessao.usuario.nome)
-            retorno = redirect ('/')
+            if request.sessao.usuario.profile == 'A':
+                retorno=redirect ('aluno')
+            elif request.sessao.usuario.profile == 'P':
+                retorno=redirect ('professor')
+            elif request.sessao.usuario.profile == 'C':
+                retorno=redirect ('coordenador')
+            else: retorno=redirect ('administrador')
             retorno.set_cookie("SPARTANSSESSION", request.sessao.id)
             return retorno
         else:
@@ -334,3 +338,43 @@ def alterarCurso(request, idcurso):
        return redirect('/curso/listar')
     else:
         return render(request, "formNovoCurso.html", {'cursos':cursos})
+
+def visaoAluno(request):
+    try:
+        if request.sessao.usuario.profile != "A":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'visaoAluno.html')
+
+def visaoProfessor(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'visaoProfessor.html')
+
+def visaoCoordenador(request):
+    try:
+        if request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'visaoCoordenador.html')
+
+def visaoAdministrador(request):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    return render(request, 'visaoAdministrador.html')

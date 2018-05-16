@@ -1,19 +1,16 @@
-{% extends "base.html" %}
+{% extends "baseAluno.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE DISCIPLINAS OFERTADAS</h1>
-                </div>
-                <div>
-                    <a class="buttonInsert" href="{% url "inserirdisciplina" %}">+</a>
+                    <h1 class="tituloCrud">LISTA DE ENTREGAS REALIZADAS - {{request.sessao.usuario.nome}}</h1>
                 </div>
                     <div class="table">
                         <table>
                             <thead>
                                 <tr>
                                     <th>
-                                        DISCIPLINAS OFERTADAS
+                                        NOME DAS ATIVIDADES ENTREGUES
                                     </th>
                                     <th>
                                         ALTERAR
@@ -24,21 +21,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for disciplina in disciplinas %}
+                                {% for entrega in entregas %}
                                     <tr>
                                         <td>
-                                            {{ do.iddisciplinasofertadas }}
+                                            {{ entrega.idatividadevinculada.rotulo }} em {{entrega.idatividadevinculada.iddisciplinaofertada.idcurso.nome}}
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'alterardisciplinaofertada' do.iddisciplinaofertada %}">ALTERAR</a>
+                                            <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url 'deletardisciplinaofertada' do.iddisciplinaofertada %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
+                                            <a class="myButton" href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
-                        </table>    
+                        </table>
                   </ul>
                 </div>
             </div>

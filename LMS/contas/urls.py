@@ -22,17 +22,28 @@ from contas.views import listarCoordenadores, inserirCoordenador, alterarCoorden
 
 urlpatterns = [
     path('listarprofessores/', listarProfessores, name ='listarprofessores'),
+
     path('inserirprofessor/', inserirProfessor, name = 'inserirprofessor'),
+
     path('deletarprofessor/<int:idprofessor>/', deletarProfessor, name = 'deletarprofessor'),
+
     path("alterarprofessor/<int:idprofessor>/", alterarProfessor, name = "alterarprofessor"),
+
     path('listaralunos/', listarAlunos, name='listaralunos'),
+
     path('inseriraluno/', inserirAluno, name='inseriraluno'),
+
     path('deletaraluno/<int:idaluno>/', deletarAluno, name='deletaraluno'),
+
     path("alteraraluno/<int:idaluno>/", alterarAluno, name="alteraraluno"),
+
     path('listarcoordenadores/', listarCoordenadores, name='listarcoordenadores'),
+
     path('inserircoordenador/', inserirCoordenador, name='inserircoordenador'),
+
     path('deletarcoordenador/<int:idcoordenador>/', deletarCoordenador, name='deletarcoordenador'),
+
     path("alterarcoordenador/<int:idcoordenador>/", alterarCoordenador, name="alterarcoordenador"),
 
-    
+
 ]

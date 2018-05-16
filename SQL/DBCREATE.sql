@@ -488,9 +488,5 @@ update mensagem set Resposta = 'A data da entrega � na proxima semana' where i
 insert into administrador(logon,Senha,Nome,Email,Celular)
 Values('spartansadmin','spartans','SPARTANS','spartans@spartans.com','999942131')
 
-<<<<<<< HEAD
-select * from coordenador
-=======
 insert into administrador(logon,Senha,Nome,Email,Celular)
 Values('teste','teste','teste','teste@teste.com','999942128')
->>>>>>> matias

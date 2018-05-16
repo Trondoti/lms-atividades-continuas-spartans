@@ -1,12 +1,12 @@
-{% load %}
+<!DOCTYPE html>
 {% load static %}
 <html lang="pt-br">
-	<head>
+    <head>
         <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
         <title>Faculdade Impacta</title>
-				<script type="text/javascript" src="{% static 'js/formValidation.js' %}"></script>
         <link rel="stylesheet" href ="{% static 'css/layout.css' %}" />
         <link rel="stylesheet" href ="{% static 'css/normalize.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="57x57" href = "{% static 'favicon/apple-icon-57x57.png' %}"/>
         <link rel="apple-touch-icon" sizes="60x60" href = "{% static 'favicon/apple-icon-60x60.png' %}"/>
         <link rel="apple-touch-icon" sizes="72x72" href="{% static 'favicon/apple-icon-72x72.png' %}"/>
@@ -25,39 +25,28 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-	</head>
-	{% block content %}
-		<body id="bodyPrincipal">
-	    	<main id="mainlogin" style="color: red">
-	        	<div id="arealogin">
-	                <form id="formulario" autocomplete="off" method="POST" action="">
-	                    <fieldset>
-							<div class="containerInput">
-		                        <label>
-		                            <strong class="label">EMAIL</strong>
-		                            <input class="inputLogin" type="email" name="email">
-		                        </label>
-							</div>
-							<div class="containerInput">
-		                        <label>
-		                            <strong class="label">SENHA</strong>
-		                            <input class="inputLogin" type="password" name="senha">
-		                        </label>
-							</div>
-							<div class="containerInput">
-		                        <label id="rememberLabel">
-		                            <input type="checkbox" checked="checked" name="remember">
-									<strong class="label">LEMBRAR-ME</strong>
-		                        </label>
-							</div>
-	                        <div id="divSubmit">
-	                            <input type="submit" class="btn" value="FAZER LOGIN">
-	                        </div>
-	                    </fieldset>
-	                </form>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'aluno' %}"><img src="{% static 'img/logo.png' %}"/></a>
+            <div id="containerMenu">
+                <nav>
+                    <a class="" href="{% url "listarentregasalunos" %}">ENTREGAS REALIZADAS</a>
+                    <a class="" href="{% url "listarentregaspendentes" %}">ENTREGAS PENDENTES</a>
+                    <a class="" href="{% url "inserirsolicitacao" %}">MATRICULAR</a>
+                </nav>
+                {% if request.sessao %}
+                    <a id="buttonLogin" href="{% url "logout" %}">LOGOUT</a>
+                {% else  %}
+                    <a id="buttonLogin" href="{% url "login" %}">LOGIN</a>
+                {% endif %}
+            </div>
+        </header>
+        {%block content %}
+        {% endblock %}
+        <footer>
+            <h1>Faculdade Impacta Tecnologia</h1>
+        </footer>
 
-	            </div>
-	    	</main>
-		</body>
-	{% endblock %}
+    </body>
 </html>

@@ -11,6 +11,7 @@ def autenticar(request):
     l = LoginHelper()
     usuario = l.montarUsuario(email)
 
+
     if usuario.statuscode == 200:
         if usuario.senha == senha:
             request.sessao = l.salvarSessao(usuario)

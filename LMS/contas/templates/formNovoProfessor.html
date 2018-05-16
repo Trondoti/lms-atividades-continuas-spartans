@@ -1,4 +1,4 @@
-{% extends "baseforms.html" %}
+{% extends "baseAdministrador.html" %}
 {% block content %}
 {% load %}
     <body id="bodyPrincipal">
@@ -17,47 +17,47 @@
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">LOGON</strong>
-                            <input class="inputForm" type="text" maxlength="20" name="logon" placeholder="" required="required" value="{{professor.logon}}">
+                            <input class="inputForm mandatory" type="text" maxlength="20" name="logon" placeholder="" value="{{professor.logon}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">SENHA</strong>
-                            <input class="inputForm" type="password" maxlength="20" name="senha" placeholder="" required="required">
+                            <input class="inputForm mandatory" type="password" maxlength="20" name="senha" placeholder="">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">NOME</strong>
-                            <input class="inputForm" type="text" maxlength="30" name="nome" placeholder="" required="required" value="{{professor.nome}}">
+                            <input class="inputForm mandatory" type="text" maxlength="30" name="nome" placeholder="" value="{{professor.nome}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">EMAIL</strong>
-                            <input class="inputForm" type="email" maxlength="40" name="email" placeholder="" required="required" value="{{professor.email}}">
+                            <input class="inputForm mandatory" type="email" maxlength="40" name="email" placeholder="" value="{{professor.email}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">DATA DE EXPIRAÇÃO</strong>
-                            <input class="inputForm" type="date" name="dtexpiracao" required="required" value="{{professor.dtexpiracao|date:'Y-m-d'}}">
+                            <input class="inputForm mandatory" type="date" name="dtexpiracao" value="{{professor.dtexpiracao|date:'Y-m-d'}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">APELIDO</strong>
-                            <input class="inputForm" type="text" maxlength="20" name="apelido" required="required" value="{{professor.apelido}}">
+                            <input class="inputForm mandatory" type="text" maxlength="20" name="apelido" value="{{professor.apelido}}">
                         </label>
                     </div>
                     <div class="containerInputForm">
                         <label class="labelForm">
                             <strong class="strongLabelForm">CELULAR</strong>
-                            <input class="inputForm" type="text" maxlength="11" name="celular" required="required"value="{{professor.celular}}">
+                            <input class="inputForm mandatory" type="text" maxlength="9" placeholder="999999999" name="celular" value="{{professor.celular}}">
                         </label>
                     </div>
                     <div id="divSubmitCurso">
-                        <input type="submit" class="btn" value="SALVAR">
+                        <input type="submit" class="btn" value="SALVAR" onclick="return formValidation();">
                     </div>
                 </form>
             </div>

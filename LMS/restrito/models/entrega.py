@@ -34,16 +34,21 @@ class Entrega(models.Model):
 
         return atividadesEntregues
 
-    def retornaAtividadesNaoEnviadasAluno(disciplinaOfertada, idAluno):
+    def retornaAtividadesNaoEnviadasAluno(self, idAluno):
         from restrito.models.atividadeVinculada import Atividadevinculada
-        atividades = Atividadevinculada.objects.filter(iddisciplinaofertada = disciplinaOfertada)
-        entregas = Entrega.objects.filter(idatividadevinculada__iddisciplinaofertada = disciplinaOfertada, idaluno = idAluno)
+        from restrito.models.solicitacaoMatricula import Solicitacaomatricula
+
+        matriculas = Solicitacaomatricula.objects.filter(status="APROVADA", idaluno=idAluno)
         atividadesNaoEntregues = []
-        if(len(entregas) == 0):
-            return atividades
-        for atividade in atividades:
-            if(not bool(len(entregas.filter(idatividadevinculada=atividade.idatividadevinculada)))):
-                atividadesNaoEntregues.append(atividade)
+
+        for m in matriculas:
+            atividades = Atividadevinculada.objects.filter(iddisciplinaofertada = m.iddisciplinaofertada.iddisciplinaofertada)
+            entregas = Entrega.objects.filter(idatividadevinculada__iddisciplinaofertada = m.iddisciplinaofertada.iddisciplinaofertada, idaluno = idAluno)
+            if(len(entregas) == 0):
+                return atividades
+            for atividade in atividades:
+                if(not bool(len(entregas.filter(idatividadevinculada=atividade.idatividadevinculada)))):
+                    atividadesNaoEntregues.append(atividade)
 
         return atividadesNaoEntregues
 

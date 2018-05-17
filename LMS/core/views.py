@@ -315,20 +315,40 @@ def painelAdmin(request):
     return render(request, "painelAdmin.html")
 
 def listarCurso(request):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     cursos = Curso.objects.all()
     return render(request, 'crudc.html', {'cursos': cursos})
 
 def inserirCurso(request):
-    context = {}
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     if request.method == 'POST':
         Curso.objects.create (
             nome=request.POST.get("curso")
         )
         return redirect('/curso/listar')
     else:
-        return render(request, "formNovoCurso.html", context)
+        return render(request, "formNovoCurso.html")
 
 def alterarCurso(request, idcurso):
+    try:
+        if request.sessao.usuario.profile != "S":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
     cursos = Curso.objects.get(idcurso=idcurso)
     context = {"cursos":cursos}
     if request.method == 'POST':

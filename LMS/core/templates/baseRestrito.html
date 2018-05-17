@@ -54,7 +54,9 @@
                         <a class="" href="{% url "listarmensagenssaida" %}">CAIXA DE SAIDA</a>
                     {% else %}
                         {% if request.sessao.usuario.profile == "P" %}
+                            <a class="" href="{% url "listarmediaalunos" %}">MEDIAS</a>
                             <a class="" href="{% url "listarentregasprofessores" %}">CORRIGIR</a>
+                            <a class="" href="{% url "listarcorrigidasprofessores" %}">CORREÇÕES FEITAS</a>
                             <a class="" href="{% url "listaratividades" %}">INSERIR ATIVIDADES</a>
                             <a class="" href="{% url "listaratividadevinculada" %}">ATIVIDADES VINCULADAS</a>
                             <a class="" href="{% url "listarmensagensentrada" %}">CAIXA DE ENTRADA</a>

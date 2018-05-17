@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
@@ -19,7 +19,7 @@
                       <li>
                          {{ entrega.titulo }}
                          <a href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>
-                         <a href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                          
+                         <a href="{% url 'deletarentrega' entrega.identrega %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                         </li>
                     {% endfor %}
                   </ul>

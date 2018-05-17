@@ -173,7 +173,7 @@ def listarEntregasAlunos(request):
 
 
 
-    return render(request, 'listaEntregasAlunos.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
+    return render(request, 'listaEntregasAlunos.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id, status="ENTREGUE")})
 
 def listarEntregasPendentes(request):
     try:
@@ -197,6 +197,84 @@ def listarEntregasProfessores(request):
 
     return render(request, 'listaEntregasProfessores.html', {"entregas": Entrega.objects.filter(idatividadevinculada__idprofessor=request.sessao.usuario.id, status="ENTREGUE")})
 
+def listarMediaAlunos(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    minhasMaterias = Disciplinaofertada.objects.filter(idprofessor=request.sessao.usuario.id, ano=time.strftime("%Y"))
+    listaMaterias = [];
+    for mm in minhasMaterias:
+        atividadesviculadas = Atividadevinculada.objects.filter(iddisciplinaofertada=mm.iddisciplinaofertada)
+        for av in atividadesviculadas:
+            entregas = Entrega.objects.filter(idatividadevinculada=av.idatividadevinculada, status="CORRIGIDO").order_by('idaluno')
+            idAlunoAux = 0
+            arrAlunos = []
+            dicAluno = {}
+            for e in entregas:
+                if idAlunoAux != e.idaluno.idaluno:
+                    if idAlunoAux != 0:
+                        arrAlunos.append(dicAluno)
+                    idAlunoAux = e.idaluno.idaluno
+                    dicAluno = {}
+                    dicAluno['notas'] = []
+
+                dicAluno["id"] = e.idaluno.idaluno
+                dicAluno["nome"] = e.idaluno.nome
+                dicAluno['notas'].append(float(e.nota))
+            if idAlunoAux != 0:
+                arrAlunos.append(dicAluno)
+
+            print("arrAlunos:", arrAlunos)
+            for aluno in arrAlunos:
+                if len(aluno['notas']) > 1:
+                    aluno['notas'].remove(max(aluno['notas']))
+                if len(aluno['notas']) > 1:
+                    aluno['notas'].remove(max(aluno['notas']))
+                if len(aluno['notas']) > 1:
+                    aluno['notas'].remove(max(aluno['notas']))
+                soma = 0
+                for nota in aluno['notas']:
+                    soma += nota
+                aluno['media'] = soma / len(aluno['notas'])
+
+            alunosMatriculados = Solicitacaomatricula.objects.filter(iddisciplinaofertada=mm.iddisciplinaofertada, status="APROVADA")
+            for am in alunosMatriculados:
+                alunoPresente = False
+                for aluno in arrAlunos:
+                    if am.idaluno.idaluno == aluno['id']:
+                        alunoPresente = True
+                if not alunoPresente:
+                    dicAluno = {
+                        "id": am.idaluno.idaluno,
+                        "nome": am.idaluno.nome,
+                        "notas": [],
+                        "media": 0
+                    }
+                    arrAlunos.append(dicAluno)
+            dicDisciplina = {
+                "nome": mm.iddisciplina.nome,
+                "alunos": arrAlunos
+            }
+            listaMaterias.append(dicDisciplina)
+    print("listaMaterias:", listaMaterias)
+    return render(request, 'listaMediasAluno.html', {"materias": listaMaterias})
+
+def listarCorrigidasProfessores(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasProfessores.html', {"entregas": Entrega.objects.filter(idatividadevinculada__idprofessor=request.sessao.usuario.id, status="CORRIGIDO")})
+
 def inserirEntrega(request, idatividadevinculada):
     try:
         if request.sessao.usuario.profile != "A":
@@ -215,8 +293,8 @@ def inserirEntrega(request, idatividadevinculada):
             resposta=request.POST.get("resposta"),
             idatividadevinculada=idatividade,
             dtentrega=time.strftime("%Y-%m-%d"),
-            #obs="",
-            #nota="",
+            obs="",
+            nota=0,
             status="ENTREGUE"
         )
         return redirect('listarentregaspendentes')
@@ -237,8 +315,13 @@ def alterarEntrega(request, identrega):
         entrega.titulo=request.POST.get("titulo")
         entrega.resposta=request.POST.get("resposta")
         entrega.dtentrega=time.strftime("%Y-%m-%d")
+        dtentrega = time.strftime(str(entrega.dtentrega))
+        dtlimite = time.strftime(str(entrega.idatividadevinculada.dtfimrespostas))
+        nota = float(request.POST.get("nota"))
+        if dtentrega > dtlimite:
+            nota = nota * 0.7
         if request.sessao.usuario.profile == 'P':
-            entrega.nota = request.POST.get("nota")
+            entrega.nota = nota
             entrega.obs = request.POST.get("obs")
             entrega.dtavaliacao=time.strftime("%Y-%m-%d")
             entrega.status="CORRIGIDO"

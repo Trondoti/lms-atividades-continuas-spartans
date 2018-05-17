@@ -2,6 +2,8 @@ from django.db import models
 from contas.models.aluno import Aluno
 from contas.models.professor import Professor
 from restrito.models.atividadeVinculada import Atividadevinculada
+from datetime import date, datetime, timedelta
+import time
 
 class Entrega(models.Model):
     identrega = models.AutoField(db_column='idEntrega', primary_key=True)  # Field name made lowercase.
@@ -41,7 +43,9 @@ class Entrega(models.Model):
         atividadesNaoEntregues = []
 
         for m in matriculas:
-            atividades = Atividadevinculada.objects.filter(iddisciplinaofertada = m.iddisciplinaofertada.iddisciplinaofertada)
+            print(m.iddisciplinaofertada.iddisciplinaofertada)
+            limit = datetime.now() + timedelta(days=-3)
+            atividades = Atividadevinculada.objects.filter(iddisciplinaofertada = m.iddisciplinaofertada.iddisciplinaofertada, dtiniciorespostas__lte=time.strftime("%Y-%m-%d"), dtfimrespostas__gte=limit.strftime('%Y-%m-%d'))
             entregas = Entrega.objects.filter(idatividadevinculada__iddisciplinaofertada = m.iddisciplinaofertada.iddisciplinaofertada, idaluno = idAluno)
             if(len(entregas) == 0):
                 return atividades
@@ -53,7 +57,6 @@ class Entrega(models.Model):
 
     def retornaAtividadesPendentesAluno(disciplinaOfertada, idAluno):
         from restrito.models.atividadeVinculada import Atividadevinculada
-        from datetime import date
         atividades = Atividadevinculada.objects.filter(iddisciplinaofertada = disciplinaOfertada, dtiniciorespostas__lte=date.today(), dtfimrespostas__gte=date.today())
         entregas = Entrega.objects.filter(idatividadevinculada__iddisciplinaofertada = disciplinaOfertada, idaluno = idAluno)
         if(len(entregas) == 0):

@@ -162,7 +162,7 @@ def deletarAtividadeVinculada(request, idatividadevinculada):
     atividadevinculada.delete()
     return redirect ('listaratividadevinculada')
 
-def listarEntregas(request):
+def listarEntregasAlunos(request):
     try:
         if request.sessao.usuario.profile != "A":
             return redirect("/")
@@ -171,7 +171,31 @@ def listarEntregas(request):
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
 
-    return render(request, 'listaEntregas.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
+
+
+    return render(request, 'listaEntregasAlunos.html', {"entregas": Entrega.objects.filter(idaluno=request.sessao.usuario.id)})
+
+def listarEntregasPendentes(request):
+    try:
+        if request.sessao.usuario.profile != "A":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasPendentes.html', {"avs": Entrega().retornaAtividadesNaoEnviadasAluno(request.sessao.usuario.id)})
+
+def listarEntregasProfessores(request):
+    try:
+        if request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasProfessores.html', {"entregas": Entrega.objects.filter(idatividadevinculada__idprofessor=request.sessao.usuario.id, status="ENTREGUE")})
 
 def inserirEntrega(request, idatividadevinculada):
     try:
@@ -191,15 +215,17 @@ def inserirEntrega(request, idatividadevinculada):
             resposta=request.POST.get("resposta"),
             idatividadevinculada=idatividade,
             dtentrega=time.strftime("%Y-%m-%d"),
+            #obs="",
+            #nota="",
             status="ENTREGUE"
         )
-        return redirect('listarentregas')
+        return redirect('listarentregaspendentes')
     else:
         return render(request, "formNovaEntrega.html")
 
 def alterarEntrega(request, identrega):
     try:
-        if request.sessao.usuario.profile != "A":
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != 'P':
             return redirect("/")
     except:
         retorno = redirect("/")
@@ -210,11 +236,20 @@ def alterarEntrega(request, identrega):
         entrega = Entrega.objects.get(identrega=identrega)
         entrega.titulo=request.POST.get("titulo")
         entrega.resposta=request.POST.get("resposta")
-        dtentrega=time.strftime("%Y-%m-%d")
+        entrega.dtentrega=time.strftime("%Y-%m-%d")
+        if request.sessao.usuario.profile == 'P':
+            entrega.nota = request.POST.get("nota")
+            entrega.obs = request.POST.get("obs")
+            entrega.dtavaliacao=time.strftime("%Y-%m-%d")
+            entrega.status="CORRIGIDO"
+            entrega.save()
+            return redirect('listarentregasprofessores')
         entrega.save()
-        return redirect('listarentregas')
+        return redirect('listarentregasalunos')
+
     else:
-        return render(request, "formNovaEntrega.html", {'entrega': Entrega.objects.get(identrega=identrega)})
+        entrega = Entrega.objects.get(identrega=identrega)
+        return render(request, "formNovaEntrega.html", {'entrega': entrega})
 
 def deletarEntrega(request, idatividadevinculada):
     try:
@@ -231,13 +266,12 @@ def deletarEntrega(request, idatividadevinculada):
 
 def listarSolicitacaoMatricula(request):
     try:
-        if request.sessao.usuario.profile != "P":
+        if request.sessao.usuario.profile != "C":
             return redirect("/")
     except:
         retorno = redirect("/")
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
-
     return render(request, 'listaSolicitacaoMatricula.html', {"solicitacoes": Solicitacaomatricula.objects.filter(status="SOLICITADA")})
 
 def inserirSolicitacaoMatricula(request):
@@ -257,9 +291,13 @@ def inserirSolicitacaoMatricula(request):
                 dtsolicitacao=time.strftime("%Y-%m-%d"),
                 status = "SOLICITADA",
             )
-        return redirect('alterarsolicitacao')
+        return redirect('aluno')
     else:
-        return render(request, 'formNovaSolicitacaoMatricula.html', {'disciplinasofertadas': Disciplinaofertada.objects.filter(ano=int(time.strftime("%Y")))})
+        try:
+            solicitacaomatricula = Solicitacaomatricula.objects.filter(idaluno=request.sessao.usuario.id, status="SOLICITADA")
+            return redirect('alterarsolicitacao')
+        except:
+            return render(request, 'formNovaSolicitacaoMatricula.html', {'disciplinasofertadas': Disciplinaofertada.objects.filter(ano=int(time.strftime("%Y")))})
 
 def alterarSolicitacao(request):
     try:
@@ -316,3 +354,19 @@ def deletarSolicitacao(request):
     solicitacaomatricula = Solicitacaomatricula.objects.filter(idaluno=request.sessao.usuario.id, status="SOLICITADA")
     solicitacaomatricula.delete()
     return redirect ('inserirsolicitacao')
+
+def aprovarSolicitacao(request, idsolicitacaomatricula):
+    try:
+        if request.sessao.usuario.profile != "C":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    if request.method == 'POST':
+        solicitacao = Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)
+        solicitacao.status=request.POST.get("status")
+        solicitacao.save()
+        return redirect('listarsolicitacao')
+    else:
+        return render(request, 'formAprovarSolicitacao.html', {"solicitacao": Solicitacaomatricula.objects.get(idsolicitacaomatricula=idsolicitacaomatricula)})

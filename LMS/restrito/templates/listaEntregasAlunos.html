@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE ATIVIDADES VINCULADAS</h1>
+                    <h1 class="tituloCrud">LISTA DE ENTREGAS REALIZADAS - {{request.sessao.usuario.nome}}</h1>
                 </div>
                     <div class="table">
                         <table>
@@ -24,7 +24,7 @@
                                 {% for entrega in entregas %}
                                     <tr>
                                         <td>
-                                            {{ entrega.titulo }}
+                                            {{ entrega.idatividadevinculada.rotulo }} em {{entrega.idatividadevinculada.iddisciplinaofertada.idcurso.nome}}
                                         </td>
                                         <td>
                                             <a class="myButton" href="{% url 'alterarentrega' entrega.identrega %}">ALTERAR</a>

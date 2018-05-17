@@ -3,22 +3,20 @@
         <main>
             <div>
                 <div>
-                    <h1 class="tituloCrud">LISTA DE ALUNOS</h1>
+                    <h1 class="tituloCrud">Caixa de Saída de {{request.sessao.usuario.nome}}</h1>
                 </div>
-
                 <div>
-                    <a class="buttonInsert" href="{% url "inseriraluno" %}">+</a>
+                    <a class="buttonInsert" href="{% url "inserirmensagem" %}">+</a>
                 </div>
-
                 <div class="table">
                     <table>
                         <thead>
                             <tr>
                                 <th>
-                                    NOME DO CURSO
+                                    Assunto
                                 </th>
                                 <th>
-                                    ALTERAR
+                                    ALTERAR CONTEUDO
                                 </th>
                                 <th>
                                     REMOVER
@@ -26,18 +24,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{ aluno.nome }}
-                            {{ cargaHoraria}}
-                            {% for aluno in alunos %}
+                            {% for mensagem in mensagens %}
                                 <tr>
                                     <td>
-                                        {{ aluno.nome }}
+                                        {%if mensagem.origem == "A" %}
+                                            {{ mensagem.assunto }} de {{mensagem.idaluno.nome}} para {{mensagem.idprofessor.nome}}
+                                        {% else %}
+                                            {{ mensagem.assunto }} de {{mensagem.idprofessor.nome}} para {{mensagem.idaluno.nome}}
+                                        {% endif %}
                                     </td>
                                     <td>
-                                        <a class="myButton" href="{% url 'alteraraluno' aluno.idaluno %}">ALTERAR</a>
+                                        <a class="myButton" href="{% url 'alterarmensagem' mensagem.idmensagem %}">ALTERAR</a>
                                     </td>
                                     <td>
-                                        <a class="myButton" href="{% url 'deletaraluno' aluno.idaluno %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
+                                        <a class="myButton" href="{% url ''  %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>
                                     </td>
                                 </tr>
                             {% endfor %}

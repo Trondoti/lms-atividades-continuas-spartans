@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from .models.professor import Professor
 from .models.aluno import Aluno
 from .models.coordenador import Coordenador
+from .models.mensagem import Mensagem
 from restrito.models.solicitacaoMatricula import Solicitacaomatricula
 from django.db.models import Max
+from django.db.models import Q
+from itertools import chain
 import base64
 import hashlib
 import time
@@ -84,12 +87,12 @@ def alterarProfessor(request, idprofessor):
     professor = Professor.objects.get(idprofessor=idprofessor)
     if request.method == 'POST':
        professores = Professor.objects.get(idprofessor=idprofessor)
-       professores.logon = request.POST.get('logon'),
-       professores.senha = request.POST.get('senha'),
-       professores.nome = request.POST.get('nome'),
-       professores.email = request.POST.get('email'),
-       professores.celular = request.POST.get('celular'),
-       professores.dtExpiracao = request.POST.get('dtexpiracao'),
+       professores.logon = request.POST.get('logon')
+       professores.senha = request.POST.get('senha')
+       professores.nome = request.POST.get('nome')
+       professores.email = request.POST.get('email')
+       professores.celular = request.POST.get('celular')
+       professores.dtExpiracao = request.POST.get('dtexpiracao')
        professores.apelido = request.POST.get('apelido')
        professores.save()
        return redirect('listarprofessores')
@@ -166,7 +169,7 @@ def inserirAluno(request):
                     }
                     return render(request, "formNovoAluno.html", context)
                 except:
-                    novoRA = Aluno.geraNumeroRA(ultimoRA)
+                    novoRA = Aluno.geraNumeroRA((int(ultimoRA['ra__max'])))
                     Aluno.objects.create(
                         logon=request.POST.get("logon"),
                         senha=request.POST.get("senha"),
@@ -303,7 +306,141 @@ def deletarCoordenador(request, idcoordenador):
         retorno = redirect("/")
         retorno.delete_cookie("SPARTANSSESSION")
         return retorno
-        
+
     coordenador = Coordenador.objects.get(idcoordenador=idcoordenador)
     coordenador.delete()
     return redirect ('listarcoordenadores')
+
+   ##inicio crud mensagem
+
+def listarEntregas(request):
+    try:
+        if request.sessao.usuario.profile != "A":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    return render(request, 'listaEntregasAlunos.html', {"entregas": Mensagem.objects.filter(idaluno=request.sessao.usuario.id)})
+
+def listarMensagensEntrada(request):
+    try:
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    if request.sessao.usuario.profile == "A":
+        mensagens = Mensagem.objects.filter(~Q(origem = "A"), Q(status="LIDO") | Q(status="ENVIADO"), idaluno=request.sessao.usuario.id)
+        mensagens2 = Mensagem.objects.filter(Q(origem = "A"), Q(status="RESPONDIDO"), idaluno=request.sessao.usuario.id)
+    if request.sessao.usuario.profile == "P":
+        mensagens = Mensagem.objects.filter(~Q(origem = "P"), Q(status="LIDO") | Q(status="ENVIADO"), idprofessor=request.sessao.usuario.id)
+        mensagens2 = Mensagem.objects.filter(Q(origem = "P"), Q(status="RESPONDIDO"), idprofessor=request.sessao.usuario.id)
+    return render(request, 'listaMensagensEntrada.html', {"mensagens": list(chain(mensagens, mensagens2))})
+
+def listarMensagensSaida(request):
+    try:
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    if request.sessao.usuario.profile == "A":
+        mensagens = Mensagem.objects.filter(idaluno=request.sessao.usuario.id, origem="A", status="ENVIADO")
+    if request.sessao.usuario.profile == "P":
+        mensagens = Mensagem.objects.filter(idprofessor=request.sessao.usuario.id, origem="P", status="ENVIADO")
+
+    return render(request, 'listaMensagensSaida.html', {"mensagens": mensagens})
+
+def inserirMensagem(request):
+    try:
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != "P":
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    context = {"professores": Professor.objects.all(), "alunos": Aluno.objects.all()}
+    if request.method == 'POST':
+        if request.sessao.usuario.profile == "A":
+            aluno = Aluno.objects.get(idaluno=request.sessao.usuario.id)
+            professor = Professor.objects.get(idprofessor=request.POST.get("professor"))
+        if request.sessao.usuario.profile == "P":
+            aluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
+            professor = Professor.objects.get(idprofessor=request.sessao.usuario.id)
+        Mensagem.objects.create(
+            idaluno=aluno,
+            idprofessor=professor,
+            assunto=request.POST.get("assunto"),
+            referencia=request.POST.get("referencia"),
+            conteudo=request.POST.get("conteudo"),
+            status = 'ENVIADO',
+            resposta='',
+            origem=request.sessao.usuario.profile,
+            dtenvio=time.strftime("%Y-%m-%d"),
+        )
+        return redirect('listarmensagenssaida')
+    return render(request, "formNovaMensagem.html", context)
+
+def alterarMensagem(request, idmensagem):
+    try:
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != 'P':
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+    context={
+        "mensagem": Mensagem.objects.get(idmensagem=idmensagem),
+        "professores": Professor.objects.all(),
+        "alunos": Aluno.objects.all()
+    }
+    if request.method == 'POST':
+        mensagem = Mensagem.objects.get(idmensagem=idmensagem)
+        if request.sessao.usuario.profile == "A":
+            if "professor" in request.POST:
+                aluno = Aluno.objects.get(idaluno=request.sessao.usuario.id)
+                professor = Professor.objects.get(idprofessor=request.POST.get("professor"))
+                mensagem.idaluno = aluno
+                mensagem.idprofessor = professor
+        if request.sessao.usuario.profile == "P":
+            if "aluno" in request.POST:
+                professor = Professor.objects.get(idprofessor=request.sessao.usuario.id)
+                aluno = Aluno.objects.get(idaluno=request.POST.get("aluno"))
+                mensagem.idaluno = aluno
+                mensagem.idprofessor = professor
+
+        mensagem.assunto = request.POST.get("assunto")
+        mensagem.referencia = request.POST.get("referencia")
+        mensagem.conteudo = request.POST.get("conteudo")
+        if mensagem.origem != request.sessao.usuario.profile:
+            mensagem.status = "RESPONDIDO"
+            mensagem.resposta = request.POST.get("resposta")
+            mensagem.dtresposta = time.strftime("%Y-%m-%d")
+        mensagem.save()
+        return redirect('listarmensagenssaida')
+    else:
+        mensagem = Mensagem.objects.get(idmensagem=idmensagem)
+        if mensagem.origem != request.sessao.usuario.profile:
+            mensagem.status="LIDO"
+            mensagem.save()
+        return render(request, "formNovaMensagem.html",context )
+
+def deletarMensagem(request, idmensagem):
+    try:
+        if request.sessao.usuario.profile != "A" and request.sessao.usuario.profile != 'P':
+            return redirect("/")
+    except:
+        retorno = redirect("/")
+        retorno.delete_cookie("SPARTANSSESSION")
+        return retorno
+
+    mensagem = Mensagem.objects.get(idmensagem=idmensagem)
+    if request.sessao.usuario.profile == mensagem.origem:
+        mensagem.delete()
+    return redirect('listarmensagensentrada')

@@ -18,25 +18,35 @@ from django.urls import path, include
 from django.conf.urls import url, include
 from restrito.views import listarAtividades, inserirAtividade, alterarAtividade, deletarAtividade
 from restrito.views import listarAtividadeVinculada, inserirAtividadeVinculada, alterarAtividadeVinculada, deletarAtividadeVinculada
-from restrito.views import listarEntregas, inserirEntrega, alterarEntrega, deletarEntrega
-from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao
+from restrito.views import listarEntregasAlunos, inserirEntrega, alterarEntrega, deletarEntrega, listarEntregasProfessores, listarEntregasPendentes
+from restrito.views import listarSolicitacaoMatricula, inserirSolicitacaoMatricula, alterarSolicitacao, deletarSolicitacao, aprovarSolicitacao
 
 urlpatterns = [
     path('listaratividades/', listarAtividades, name='listaratividades'),
+
     path('inseriratividade/', inserirAtividade, name='inseriratividade'),
+
     path("alteraratividade/<int:idatividade>/", alterarAtividade, name="alteraratividade"),
+
     path('deletaratividade/<int:idatividade>/', deletarAtividade, name='deletaratividade'),
+
     path('listaratividadevinculada/', listarAtividadeVinculada, name='listaratividadevinculada'),
+
     path('inseriratividadevinculada/<int:idatividade>/', inserirAtividadeVinculada, name='inseriratividadevinculada'),
+
     path("alteraratividadevinculada/<int:idatividadevinculada>/", alterarAtividadeVinculada, name="alteraratividadevinculada"),
+
     path('deletaratividadevinculada/<int:idatividadevinculada>/', deletarAtividadeVinculada, name='deletaratividadevinculada'),
-    path('listarentregas/', listarEntregas, name='listarentregas'),
-    path('inserirentrega/<int:idatividadevinculada>', inserirEntrega, name='inserirentrega'),
+    path('listarentregasalunos/', listarEntregasAlunos, name='listarentregasalunos'),
+    path('listarentregaspendentes/', listarEntregasPendentes, name='listarentregaspendentes'),
+    path('listarentregasprofessores/', listarEntregasProfessores, name='listarentregasprofessores'),
+    path('inserirentrega/<int:idatividadevinculada>/', inserirEntrega, name='inserirentrega'),
     path("alterarentrega/<int:identrega>/", alterarEntrega, name="alterarentrega"),
     path('deletarentrega/<int:identrega>/', deletarEntrega, name='deletarentrega'),
     path('listarsolicitacao/', listarSolicitacaoMatricula, name='listarsolicitacao'),
     path('inserirsolicitacao/', inserirSolicitacaoMatricula, name='inserirsolicitacao'),
     path("alterarsolicitacao/", alterarSolicitacao, name="alterarsolicitacao"),
+    path("aprovarsolicitacao/<int:idsolicitacaomatricula>/", aprovarSolicitacao, name="aprovarsolicitacao"),
     path("deletarsolicitacao/", deletarSolicitacao, name="deletarsolicitacao"),
 
     #path('admin/', admin.site.urls),

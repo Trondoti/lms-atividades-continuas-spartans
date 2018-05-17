@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
                 <div>
                     <h1 class="tituloCrud">LISTA DE CURSOS</h1>
                 </div>
-                
+
                 <div>
                     <a class="buttonInsert" href="{% url "inserircurso" %}">+</a>
                 </div>
@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for curso in cursos %}                        
+                            {% for curso in cursos %}
                                 <tr>
                                     <td>
                                         {{ curso.nome }}

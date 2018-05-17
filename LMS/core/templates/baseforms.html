@@ -4,6 +4,7 @@
 	<head>
         <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
         <title>Faculdade Impacta</title>
+		<script type="text/javascript" src="{% static 'js/formValidation.js' %}"></script>
         <link rel="stylesheet" href ="{% static 'css/layout.css' %}" />
         <link rel="stylesheet" href ="{% static 'css/normalize.css' %}" />
         <link rel="apple-touch-icon" sizes="57x57" href = "{% static 'favicon/apple-icon-57x57.png' %}"/>
@@ -27,7 +28,7 @@
 	</head>
 	{% block content %}
 		<body id="bodyPrincipal">
-	    	<main id="mainlogin">
+	    	<main id="mainlogin" style="color: red">
 	        	<div id="arealogin">
 	                <form id="formulario" autocomplete="off" method="POST" action="">
 	                    <fieldset>

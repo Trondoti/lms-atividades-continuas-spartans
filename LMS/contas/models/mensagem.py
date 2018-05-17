@@ -1,6 +1,6 @@
 from django.db import models
-from aluno import Aluno
-from professor import Professor
+from .aluno import Aluno
+from .professor import Professor
 
 class Mensagem(models.Model):
     idmensagem = models.AutoField(db_column='idMensagem', primary_key=True)  # Field name made lowercase.
@@ -10,6 +10,7 @@ class Mensagem(models.Model):
     referencia = models.CharField(max_length=1000, blank=True, null=True)
     conteudo = models.CharField(max_length=1000, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
+    origem = models.CharField(max_length=1, blank=True, null=True)
     dtenvio = models.DateField(db_column='dtEnvio', blank=True, null=True)  # Field name made lowercase.
     dtresposta = models.DateField(db_column='dtResposta')  # Field name made lowercase.
     resposta = models.CharField(max_length=1000, blank=True, null=True)

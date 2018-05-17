@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseRestrito.html" %}
 {% block content %}
         <main>
             <div>
@@ -19,26 +19,26 @@
                                         ALTERAR
                                     </th>
                                     <th>
-                                        REMOVER
+                                        STATUS
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for solitacao in solitacoes %}                        
+                                {% for so in solicitacoes %}
                                     <tr>
                                         <td>
-                                            {{ solitacao.idaluno.nome }}
+                                            {{ so.idaluno.nome }}
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url "alterarsolicitacao" solicitacao.idsolicitacaomatricula %}">ALTERAR</a>
+                                            <a class="myButton" href="{% url "aprovarsolicitacao" so.idsolicitacaomatricula %}">APROVAR</a>
                                         </td>
                                         <td>
-                                            <a class="myButton" href="{% url "deletarsolicitacao" solicitacao.idsolicitacaomatricula %}" onclick="return confirm('Tem certeza que deseja excluir?')">REMOVER</a>                                                                 
+                                            <a>{{so.status}}</a>
                                         </td>
                                     </tr>
-                                {% endfor %}    
+                                {% endfor %}
                             </tbody>
-                        </table>    
+                        </table>
                   </ul>
                 </div>
             </div>

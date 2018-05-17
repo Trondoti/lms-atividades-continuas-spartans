@@ -45,7 +45,7 @@
                                 <a href="{% url 'coordenador' %}">AREA ONLINE</a>
                             {% else %}
                                 {% if request.sessao.usuario.profile == "S" %}
-                                    <a href="{% url 'adminstrador' %}">AREA ONLINE</a>
+                                    <a href="{% url 'administrador' %}">AREA ONLINE</a>
                                 {% endif %}
                             {% endif %}
                         {% endif %}
